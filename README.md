@@ -134,7 +134,7 @@ Reproducible benchmark runs with full audit trail:
 
 1. Go to **Actions** → **MemGraph RealMemBench**
 2. Click **Run workflow**
-3. Select mode: `compare` (attention vs h2o) or `single`
+3. Select mode: `compare` (attention vs mem0 vs summary) or `single`
 4. Results appear in Actions summary + downloadable artifacts
 
 CI runs on GitHub infrastructure — commit hash, logs, and artifacts form a verifiable chain.
@@ -142,7 +142,8 @@ CI runs on GitHub infrastructure — commit hash, logs, and artifacts form a ver
 ### Baselines
 
 - **attention** — MemGraph v7 AttentionRouter: memo full injection + cosine top-k selective recall + focus decay
-- **h2o** — Heavy-Hitter + Recent baseline: keeps the 20% most frequently attended turns (cumulative cosine similarity as attention score proxy) + 10% most recent turns. Inspired by [H2O (Heavy-Hitter Oracle)](https://arxiv.org/abs/2306.14048), adapted to the application layer. Note: the original H2O operates at the transformer KV cache level during inference; this baseline applies the same eviction heuristic (heavy hitters + recent) at the prompt construction level.
+- **mem0** — [Mem0](https://github.com/mem0ai/mem0) baseline: production memory library. Stores conversation sessions via `memory.add()`, retrieves via `memory.search()` with semantic matching.
+- **summary** — Rolling Summary baseline: LLM generates a rolling summary after each session (similar to ChatGPT's conversation summary). At query time, the full summary is used as context. Tests whether compression-based approaches preserve enough detail.
 
 ### Results (v7, AttentionRouter, 207 sessions)
 

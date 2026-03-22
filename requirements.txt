@@ -16,5 +16,8 @@ yake>=0.4
 # Benchmark filler 池构建（WildChat）
 datasets>=2.14
 
+# Mem0 baseline
+mem0ai>=0.1
+
 # 可选：graphiti-core 用于对话知识图谱（后续扩展）
 # graphiti-core>=0.28

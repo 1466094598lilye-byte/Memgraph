@@ -12,7 +12,7 @@ on:
         required: false
         default: ''
       activator:
-        description: 'Activator (only for single mode): attention/h2o/full_context/layered'
+        description: 'Activator (only for single mode): attention/mem0/summary/h2o/full_context/layered'
         required: false
         default: 'attention'
       sessions:
@@ -67,7 +67,7 @@ jobs:
           echo "=================================="
 
           if [ "$MODE" = "compare" ]; then
-            ACTIVATORS="attention h2o"
+            ACTIVATORS="attention mem0 summary"
           else
             ACTIVATORS="${{ github.event.inputs.activator || 'attention' }}"
           fi

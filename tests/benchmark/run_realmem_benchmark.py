@@ -216,6 +216,18 @@ def run_persona_benchmark(
             total_sessions, total_queries,
         )
 
+    if activator_mode == "mem0":
+        return _run_mem0_baseline(
+            persona_name, persona_data, query_info,
+            total_sessions, total_queries,
+        )
+
+    if activator_mode == "summary":
+        return _run_summary_baseline(
+            persona_name, persona_data, query_info,
+            total_sessions, total_queries, eval_model,
+        )
+
     from memgraph import MemGraph
     mg = MemGraph(llm_provider="openai", model=eval_model, activator_mode=activator_mode)
 
@@ -518,6 +530,245 @@ def _run_context_baseline(mode, persona_name, persona_data, query_info, total_se
                 f"avg_recall: {avg_recall:.1%}  "
                 f"session_time: {session_time:.1f}s"
             )
+
+    return results
+
+
+def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, total_queries):
+    """Mem0 baseline: uses mem0 library for memory storage and retrieval.
+
+    Static mode: ingest all sessions → then run all queries.
+    """
+    from mem0 import Memory
+    from mem0.configs.base import MemoryConfig
+
+    api_key = os.environ.get("OPENAI_API_KEY", "")
+    base_url = os.environ.get("OPENAI_BASE_URL", "")
+
+    config = MemoryConfig(
+        llm={
+            "provider": "openai",
+            "config": {
+                "model": "deepseek-chat",
+                "api_key": api_key,
+                "openai_base_url": base_url,
+            }
+        },
+        embedder={
+            "provider": "openai",
+            "config": {
+                "model": "text-embedding-3-small",
+                "api_key": api_key,
+                "openai_base_url": base_url,
+            }
+        },
+    )
+
+    try:
+        mem = Memory(config)
+    except Exception as e:
+        # Fallback: if DeepSeek doesn't support embeddings, use huggingface
+        print(f"  ⚠️ OpenAI embedder failed ({e}), falling back to huggingface embedder")
+        config = MemoryConfig(
+            llm={
+                "provider": "openai",
+                "config": {
+                    "model": "deepseek-chat",
+                    "api_key": api_key,
+                    "openai_base_url": base_url,
+                }
+            },
+            embedder={
+                "provider": "huggingface",
+                "config": {
+                    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
+                }
+            },
+        )
+        mem = Memory(config)
+
+    user_id = f"bench_{persona_name}"
+
+    # Phase 1: Ingest all sessions
+    print("  [mem0] Phase 1: Ingesting all sessions...")
+    for si, session in iter_sessions(persona_data):
+        turns = session.get("dialogue_turns", [])
+        session_id = session.get("session_identifier", f"S{si}")
+
+        session_text = "\n".join(
+            f"{t.get('speaker', 'user').capitalize()}: {t.get('content', '')}"
+            for t in turns
+            if not t.get("is_query")
+        )
+
+        if session_text.strip():
+            try:
+                mem.add(
+                    session_text,
+                    user_id=user_id,
+                    metadata={"session_id": session_id},
+                )
+            except Exception as e:
+                print(f"  ⚠️ mem0 add failed for session {si}: {e}")
+
+        if (si + 1) % 10 == 0 or si == total_sessions - 1:
+            print(f"  [mem0] Ingested {si + 1}/{total_sessions} sessions")
+
+    # Phase 2: Run queries
+    print("  [mem0] Phase 2: Running queries...")
+    results = []
+    for qi, q in enumerate(query_info):
+        query_text = q["query_content"]
+        gt_memories = q["ground_truth_memories"]
+
+        t0 = time.time()
+
+        try:
+            search_results = mem.search(query=query_text, user_id=user_id, limit=10)
+            if search_results and "results" in search_results:
+                retrieved = [r.get("memory", "") for r in search_results["results"]]
+            else:
+                retrieved = []
+        except Exception as e:
+            print(f"  ⚠️ mem0 search failed for query {qi}: {e}")
+            retrieved = []
+
+        result_text = "\n".join(retrieved) if retrieved else "(no memories found)"
+        retrieval_latency = time.time() - t0
+
+        judge_result, judge_usage = llm_judge_memory_recall(result_text, gt_memories)
+        recall = judge_result["hits"] / judge_result["total"] if judge_result["total"] > 0 else 0.0
+
+        results.append({
+            "persona": persona_name,
+            "query_id": q["query_id"],
+            "query_content": query_text[:200],
+            "topic": q["topic"],
+            "category": q["category_name"],
+            "session_index": q["session_index"],
+            "session_identifier": q.get("session_identifier", ""),
+            "turn_index": q["turn_index"],
+            "result_text": result_text[:500],
+            "gt_memory_count": len(gt_memories),
+            "gt_memories": [m.get("content", "") for m in gt_memories],
+            "recall": recall,
+            "hits": judge_result["hits"],
+            "total": judge_result["total"],
+            "judge_details": judge_result.get("details"),
+            "retrieval_latency": retrieval_latency,
+            "judge_usage": judge_usage,
+            "encode_usage_snapshot": {},
+            "graph_snapshot": {"type": "mem0", "retrieved_count": len(retrieved)},
+            "mode": "mem0",
+        })
+
+        if (qi + 1) % 5 == 0 or qi == len(query_info) - 1:
+            avg_recall = statistics.mean([r["recall"] for r in results])
+            print(f"  [mem0] queries: {qi + 1}/{len(query_info)}  avg_recall: {avg_recall:.1%}")
+
+    return results
+
+
+def _run_summary_baseline(persona_name, persona_data, query_info, total_sessions, total_queries, eval_model):
+    """Summary-based baseline: maintains a rolling LLM-generated summary.
+
+    Similar to ChatGPT's conversation summary approach.
+    Static mode: summarize all sessions → then run all queries against the summary.
+    """
+    client = _get_openai_client()
+    summary = ""
+
+    _SUMMARY_UPDATE_PROMPT = """Update this conversation summary with the new session content.
+Keep ALL specific facts: numbers, dates, names, decisions, preferences, plans, constraints.
+Do not lose any concrete details — they are more important than narrative flow.
+Keep the summary under 4000 characters.
+
+Current summary:
+{summary}
+
+New session content:
+{session_text}
+
+Updated summary:"""
+
+    # Phase 1: Build rolling summary
+    print("  [summary] Phase 1: Building rolling summary...")
+    for si, session in iter_sessions(persona_data):
+        turns = session.get("dialogue_turns", [])
+
+        session_text = "\n".join(
+            f"{t.get('speaker', 'user').capitalize()}: {t.get('content', '')}"
+            for t in turns
+            if not t.get("is_query")
+        )
+
+        if not session_text.strip():
+            continue
+
+        # Truncate session text if too long
+        if len(session_text) > 6000:
+            session_text = session_text[:6000] + "\n... (truncated)"
+
+        prompt = _SUMMARY_UPDATE_PROMPT.format(
+            summary=summary if summary else "(empty — first session)",
+            session_text=session_text,
+        )
+
+        try:
+            resp = client.chat.completions.create(
+                model=eval_model,
+                max_tokens=2000,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            summary = resp.choices[0].message.content or summary
+        except Exception as e:
+            print(f"  ⚠️ summary update failed for session {si}: {e}")
+
+        if (si + 1) % 10 == 0 or si == total_sessions - 1:
+            print(f"  [summary] Processed {si + 1}/{total_sessions} sessions  summary_len={len(summary)}")
+
+    print(f"  [summary] Final summary length: {len(summary)} chars")
+
+    # Phase 2: Run queries
+    print("  [summary] Phase 2: Running queries...")
+    results = []
+    for qi, q in enumerate(query_info):
+        query_text = q["query_content"]
+        gt_memories = q["ground_truth_memories"]
+
+        t0 = time.time()
+        result_text = summary
+        retrieval_latency = time.time() - t0
+
+        judge_result, judge_usage = llm_judge_memory_recall(result_text, gt_memories)
+        recall = judge_result["hits"] / judge_result["total"] if judge_result["total"] > 0 else 0.0
+
+        results.append({
+            "persona": persona_name,
+            "query_id": q["query_id"],
+            "query_content": query_text[:200],
+            "topic": q["topic"],
+            "category": q["category_name"],
+            "session_index": q["session_index"],
+            "session_identifier": q.get("session_identifier", ""),
+            "turn_index": q["turn_index"],
+            "result_text": "",
+            "gt_memory_count": len(gt_memories),
+            "gt_memories": [m.get("content", "") for m in gt_memories],
+            "recall": recall,
+            "hits": judge_result["hits"],
+            "total": judge_result["total"],
+            "judge_details": judge_result.get("details"),
+            "retrieval_latency": retrieval_latency,
+            "judge_usage": judge_usage,
+            "encode_usage_snapshot": {},
+            "graph_snapshot": {"type": "summary", "summary_length": len(summary)},
+            "mode": "summary",
+        })
+
+        if (qi + 1) % 5 == 0 or qi == len(query_info) - 1:
+            avg_recall = statistics.mean([r["recall"] for r in results])
+            print(f"  [summary] queries: {qi + 1}/{len(query_info)}  avg_recall: {avg_recall:.1%}")
 
     return results
 
@@ -917,8 +1168,8 @@ def main():
         "--activator",
         type=str,
         default="layered",
-        choices=["layered", "simple", "attention", "full_context", "h2o"],
-        help="Activator 模式: layered / simple / attention / full_context / h2o",
+        choices=["layered", "simple", "attention", "full_context", "h2o", "mem0", "summary"],
+        help="Activator mode: attention / mem0 / summary / layered / simple / full_context / h2o",
     )
     parser.add_argument(
         "--list-personas", action="store_true", help="列出可用 persona 后退出"
