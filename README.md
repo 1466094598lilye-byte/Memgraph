@@ -7,26 +7,28 @@
 MemGraph v7 uses an **Attention-Routed Memory** architecture inspired by how human memory works: humans don't fear catastrophic forgetting because they're always forgetting — what matters is jumping to the right information at each turn.
 
 ```
-┌──────────────────────────────────────────────────────────┐
-│                      Query Input                          │
-│                          ↓                                │
-│                 ┌────────────────┐                        │
-│                 │ AttentionRouter │                        │
-│                 └───────┬────────┘                        │
-│            ┌────────────┼────────────┐                    │
-│            ↓            ↓            ↓                    │
-│    ┌──────────────┐ ┌────────┐ ┌──────────┐              │
-│    │  Memo Store   │ │ Focus  │ │ Turn     │              │
-│    │  (全量注入)    │ │ Track  │ │ Retrieval│              │
-│    │              │ │        │ │ (top-k)  │              │
-│    │ key-value     │ │ active │ │ cosine   │              │
-│    │ precise facts │ │ thread │ │ semantic │              │
-│    └──────────────┘ └────────┘ └──────────┘              │
-│            │            │            │                    │
-│            └────────────┴────────────┘                    │
-│                         ↓                                 │
-│               Merged Context Output                       │
-└──────────────────────────────────────────────────────────┘
+┌───────────────────────────────────────────────────────┐
+│                     Query Input                        │
+│                         ↓                              │
+│              ┌──────────────────┐                      │
+│              │  1. Memo Store    │  ← 全量注入          │
+│              │  (precise facts)  │    (small, always)   │
+│              └────────┬─────────┘                      │
+│                       ↓                                │
+│              ┌──────────────────┐                      │
+│              │  2. Turn Store    │  ← cosine top-k     │
+│              │  (all turns +     │    选择性加载         │
+│              │   embeddings)     │                      │
+│              └────────┬─────────┘                      │
+│                       ↓                                │
+│              ┌──────────────────┐                      │
+│              │  3. Focus Decay   │  ← 焦点外衰减        │
+│              │  (active thread   │    焦点内加权         │
+│              │   weighting)      │                      │
+│              └────────┬─────────┘                      │
+│                       ↓                                │
+│              Merged Context Output                     │
+└───────────────────────────────────────────────────────┘
 ```
 
 ### Core Design Principles
