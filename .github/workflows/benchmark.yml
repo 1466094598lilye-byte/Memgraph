@@ -8,9 +8,9 @@ on:
         required: false
         default: 'compare'
       persona:
-        description: 'Persona (empty = ALL personas)'
+        description: 'Persona name (default: Lin_Wanyu, use ALL for all personas)'
         required: false
-        default: ''
+        default: 'Lin_Wanyu'
       activator:
         description: 'Activator (only for single mode): attention/mem0/summary/h2o/full_context/layered'
         required: false
@@ -86,7 +86,7 @@ jobs:
             CMD="$CMD --static"
             CMD="$CMD --output ${OUTPUT}"
 
-            if [ -n "$PERSONA" ]; then
+            if [ "$PERSONA" != "ALL" ] && [ -n "$PERSONA" ]; then
               CMD="$CMD --persona ${PERSONA}"
             fi
 
