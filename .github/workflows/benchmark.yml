@@ -47,7 +47,7 @@ on:
 jobs:
   benchmark:
     runs-on: ubuntu-latest
-    timeout-minutes: 180
+    timeout-minutes: 300
     
     name: "${{ github.event.inputs.persona }} × ${{ github.event.inputs.mode }}"
 
