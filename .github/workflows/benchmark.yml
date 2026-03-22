@@ -154,10 +154,80 @@ jobs:
             fi
           done
 
-      - name: Upload results
+      - name: Upload results as artifact
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: benchmark-results
           path: tests/benchmark/benchmark_*.json
           retention-days: 90
+
+      - name: Commit results to main
+        if: success()
+        run: |
+          # Check if there are new result files to commit
+          if ls tests/benchmark/benchmark_*.json 1>/dev/null 2>&1; then
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            
+            TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+            
+            # Generate a run report
+            mkdir -p benchmark_reports
+            REPORT="benchmark_reports/run_${GITHUB_RUN_NUMBER}_$(date +%Y%m%d_%H%M%S).md"
+            
+            echo "# Benchmark Run #${GITHUB_RUN_NUMBER}" > "$REPORT"
+            echo "" >> "$REPORT"
+            echo "- **Date:** ${TIMESTAMP}" >> "$REPORT"
+            echo "- **Commit:** ${GITHUB_SHA}" >> "$REPORT"
+            echo "- **Run URL:** https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> "$REPORT"
+            echo "- **Triggered by:** ${GITHUB_ACTOR}" >> "$REPORT"
+            echo "- **Mode:** ${{ github.event.inputs.mode || 'compare' }}" >> "$REPORT"
+            echo "- **Persona:** ${{ github.event.inputs.persona || 'ALL' }}" >> "$REPORT"
+            echo "- **Sessions:** ${{ github.event.inputs.sessions || 'all' }}" >> "$REPORT"
+            echo "" >> "$REPORT"
+            echo "## Results" >> "$REPORT"
+            echo "" >> "$REPORT"
+            echo "| Activator | Overall Recall | Queries | GT Memories |" >> "$REPORT"
+            echo "|-----------|---------------|---------|-------------|" >> "$REPORT"
+            
+            python3 -c "
+          import json, glob, os
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
+              name = os.path.basename(f)
+              parts = name.replace('benchmark_', '').split('_')
+              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
+              try:
+                  with open(f) as fp:
+                      data = json.load(fp)
+                  recall = data.get('overall_recall', 'N/A')
+                  if isinstance(recall, float): recall = f'{recall:.1%}'
+                  queries = data.get('total_queries', 'N/A')
+                  gt = data.get('total_gt_memories', 'N/A')
+                  print(f'| {activator} | {recall} | {queries} | {gt} |')
+              except: print(f'| {activator} | ERROR | - | - |')
+          " >> "$REPORT"
+            
+            echo "" >> "$REPORT"
+            echo "## Detail" >> "$REPORT"
+            echo "" >> "$REPORT"
+            for f in tests/benchmark/benchmark_*.json; do
+              echo "### $(basename $f)" >> "$REPORT"
+              echo '```json' >> "$REPORT"
+              python3 -c "
+          import json, sys
+          with open('$f') as fp: data = json.load(fp)
+          summary = {k: data[k] for k in ['overall_recall','total_queries','total_gt_memories','by_category','by_topic'] if k in data}
+          json.dump(summary, sys.stdout, indent=2, ensure_ascii=False)
+          " >> "$REPORT" 2>/dev/null
+              echo '' >> "$REPORT"
+              echo '```' >> "$REPORT"
+              echo '' >> "$REPORT"
+            done
+            
+            git add tests/benchmark/benchmark_*.json benchmark_reports/
+            git commit -m "ci: benchmark run #${GITHUB_RUN_NUMBER} results [skip ci]"
+            git push
+          else
+            echo "No benchmark result files found, skipping commit"
+          fi
