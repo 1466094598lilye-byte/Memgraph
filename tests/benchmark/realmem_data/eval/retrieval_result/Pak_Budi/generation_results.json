@@ -1,0 +1,17 @@
+{
+  "Q-0001": {
+    "question": "AI, I'm a driver. I'm tired every day and my back hurts. What should I do first to feel better?",
+    "ranked_items": [
+      {
+        "res_type": "entity",
+        "entity_name": "\"PERSONAL DRIVER OR CHAUFFEUR\"",
+        "entity_type": "\"GOAL/INTENTION\"",
+        "content": "\"A career path where the user can utilize their driving skills in a more personal and stable environment.\"",
+        "rank": 1
+      }
+    ],
+    "id": "Q-0001",
+    "generated_answer": "",
+    "evidence_used": "---- idx 1 ----\n\"PERSONAL DRIVER OR CHAUFFEUR\": \"A career path where the user can utilize their driving skills in a more personal and stable environment.\""
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "Q-0001": {
+    "question": "Regarding the WhatsApp project tool from last time, I have already provided you with the details. What do you need from me to move forward?",
+    "ranked_items": [
+      {
+        "res_type": "entity",
+        "entity_name": "\"WHATSAPP\"",
+        "entity_type": "\"OBJECT\"",
+        "content": "\"A messaging platform where the user needs project management tools to operate, crucial for communication within the user's team.\"",
+        "rank": 1
+      }
+    ],
+    "id": "Q-0001",
+    "generated_answer": "",
+    "evidence_used": "---- idx 1 ----\n\"WHATSAPP\": \"A messaging platform where the user needs project management tools to operate, crucial for communication within the user's team.\""
+  }
+}

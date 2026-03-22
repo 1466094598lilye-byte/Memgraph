@@ -1,0 +1,163 @@
+name: MemGraph RealMemBench
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Run mode: compare (all activators) or single'
+        required: false
+        default: 'compare'
+      persona:
+        description: 'Persona (empty = ALL personas)'
+        required: false
+        default: ''
+      activator:
+        description: 'Activator (only for single mode): attention/h2o/full_context/layered'
+        required: false
+        default: 'attention'
+      sessions:
+        description: 'Limit sessions per persona (empty = all)'
+        required: false
+        default: ''
+
+jobs:
+  benchmark:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.12
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        working-directory: .
+        run: |
+          pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Verify import
+        working-directory: .
+        run: |
+          python -c "from memgraph import MemGraph; print('✅ import OK')"
+
+      - name: Run benchmark
+        working-directory: .
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+        run: |
+          MODE="${{ github.event.inputs.mode || 'compare' }}"
+          PERSONA="${{ github.event.inputs.persona }}"
+          SESSIONS="${{ github.event.inputs.sessions }}"
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+
+          echo "=================================="
+          echo "MemGraph RealMemBench"
+          echo "=================================="
+          echo "Mode:      ${MODE}"
+          echo "Persona:   ${PERSONA:-ALL}"
+          echo "Sessions:  ${SESSIONS:-all}"
+          echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
+          echo "Python:    $(python --version)"
+          echo "=================================="
+
+          if [ "$MODE" = "compare" ]; then
+            ACTIVATORS="attention h2o"
+          else
+            ACTIVATORS="${{ github.event.inputs.activator || 'attention' }}"
+          fi
+
+          for ACT in $ACTIVATORS; do
+            echo ""
+            echo "========================================="
+            echo "  Running activator: ${ACT}"
+            echo "========================================="
+            echo ""
+
+            OUTPUT="tests/benchmark/benchmark_${ACT}_${TIMESTAMP}.json"
+
+            CMD="python -m tests.benchmark.run_realmem_benchmark"
+            CMD="$CMD --activator ${ACT}"
+            CMD="$CMD --static"
+            CMD="$CMD --output ${OUTPUT}"
+
+            if [ -n "$PERSONA" ]; then
+              CMD="$CMD --persona ${PERSONA}"
+            fi
+
+            if [ -n "$SESSIONS" ]; then
+              CMD="$CMD --limit-sessions ${SESSIONS}"
+            fi
+
+            echo "Running: $CMD"
+            $CMD || echo "⚠️ ${ACT} failed with exit code $?"
+            echo ""
+          done
+
+      - name: Generate comparison summary
+        if: always()
+        working-directory: .
+        run: |
+          echo "## MemGraph RealMemBench Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "| Activator | Overall Recall | Total Queries | Total GT Memories |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|---------------|---------------|-------------------|" >> $GITHUB_STEP_SUMMARY
+
+          python3 -c "
+          import json, glob, os
+
+          files = sorted(glob.glob('tests/benchmark/benchmark_*.json'))
+          for f in files:
+              name = os.path.basename(f)
+              # Extract activator name from filename
+              parts = name.replace('benchmark_', '').split('_')
+              # activator is everything before the timestamp (last 2 parts: date_time.json)
+              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
+
+              try:
+                  with open(f) as fp:
+                      data = json.load(fp)
+                  recall = data.get('overall_recall', 'N/A')
+                  if isinstance(recall, float):
+                      recall = f'{recall:.1%}'
+                  queries = data.get('total_queries', 'N/A')
+                  gt = data.get('total_gt_memories', 'N/A')
+                  print(f'| {activator} | {recall} | {queries} | {gt} |')
+              except Exception as e:
+                  print(f'| {activator} | ERROR | - | - |')
+          " >> $GITHUB_STEP_SUMMARY
+
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "---" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          # Detailed per-activator breakdown
+          for f in tests/benchmark/benchmark_*.json; do
+            if [ -f "$f" ]; then
+              echo "### $(basename $f)" >> $GITHUB_STEP_SUMMARY
+              echo '```json' >> $GITHUB_STEP_SUMMARY
+              python3 -c "
+          import json, sys
+          with open('$f') as fp:
+              data = json.load(fp)
+          summary = {k: data[k] for k in ['overall_recall','total_queries','total_gt_memories','by_category','by_topic'] if k in data}
+          json.dump(summary, sys.stdout, indent=2, ensure_ascii=False)
+          " 2>/dev/null || echo "Failed to parse"
+              echo '' >> $GITHUB_STEP_SUMMARY
+              echo '```' >> $GITHUB_STEP_SUMMARY
+              echo '' >> $GITHUB_STEP_SUMMARY
+            fi
+          done
+
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: benchmark-results
+          path: tests/benchmark/benchmark_*.json
+          retention-days: 90

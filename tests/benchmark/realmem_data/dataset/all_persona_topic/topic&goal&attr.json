@@ -1,0 +1,382 @@
+{
+  "topics": [
+    {
+      "topic_name": "Academic Writing",
+      "topic_id": "academic_writing",
+      "project_attributes": [
+        "Topic Selection & Ideation",
+        "Literature Review & Research Summary",
+        "Drafting & Content Generation",
+        "Citation & Formatting",
+        "Proofreading & Polishing",
+        "Other Academic Inquiries"
+      ]
+    },
+    {
+      "topic_name": "Project Management",
+      "topic_id": "project_management",
+      "project_attributes": [
+        "Project Planning & Roadmap",
+        "Task Breakdown & Delegation",
+        "Progress Tracking & Status Sync",
+        "Meeting Minutes & Action Items",
+        "Other Project Management Attributes"
+      ]
+    },
+    {
+      "topic_name": "Career Development",
+      "topic_id": "career_development",
+      "project_attributes": [
+        "Resume & Cover Letter Optimization",
+        "Mock Interview Simulation",
+        "Behavioral Interview Preparation",
+        "Technical Skill Assessment",
+        "Career Path Planning",
+        "Other Career Inquiries"
+      ]
+    },
+    {
+      "topic_name": "Health Consultation",
+      "topic_id": "health_consultation",
+      "project_attributes": [
+        "Sleep & Lifestyle Habits",
+        "Health Knowledge & Checkup Interpretation",
+        "Nutritional Guidance",
+        "Other Health-Related Inquiries"
+      ]
+    },
+    {
+      "topic_name": "Financial Planning",
+      "topic_id": "financial_planning",
+      "project_attributes": [
+        "Risk Management",
+        "Goal-Oriented Financial Planning",
+        "Financial Status Diagnosis & Budgeting",
+        "Financial Literacy Education"
+      ]
+    },
+    {
+      "topic_name": "Mental Health Support",
+      "topic_id": "mental_health",
+      "project_attributes": [
+        "Crisis Intervention Guidelines",
+        "Interpersonal Relationship Management",
+        "Cognitive Restructuring & Suggestions",
+        "Emotional Counseling & Listening"
+      ]
+    },
+    {
+      "topic_name": "Travel Planning",
+      "topic_id": "travel_planning",
+      "project_attributes": [
+        "Travel Plan",
+        "Attraction Scheme",
+        "Food Scheme",
+        "Other Tourism-Related Attributes"
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Kyoto Deep Autumn Tour",
+          "description": "Plan a 9-day deep tour of Kyoto, avoiding regular tourist crowds, including reservations for 3 hidden gardens and a kimono photography package. Budget: 15k CNY per person."
+        },
+        {
+          "id": 2,
+          "title": "New Zealand South Island RV Self-Drive",
+          "description": "Create a 12-day South Island RV loop itinerary, covering campsite bookings, rental insurance comparison, and weather backup plans for stargazing at Lake Tekapo."
+        },
+        {
+          "id": 3,
+          "title": "Sichuan-Tibet G318 Cycling",
+          "description": "Design a 25-day cycling roadbook from Chengdu to Lhasa, highlighting daily elevation changes, supply points, and 3 emergency withdrawal points for altitude sickness."
+        },
+        {
+          "id": 4,
+          "title": "Chiang Mai Digital Nomad Residency",
+          "description": "Plan a one-month digital nomad lifestyle scheme, filtering coworking spaces with stable internet, short-term rental apartments, and compiling a map of local low-cost food spots."
+        },
+        {
+          "id": 5,
+          "title": "European Museum Art Pilgrimage",
+          "description": "Formulate a 14-day museum tour of France and Italy, planning the 'most efficient viewing routes' for the Louvre and Uffizi Gallery, and securing all skip-the-line tickets."
+        },
+        {
+          "id": 6,
+          "title": "Xinjiang Altay Ski Week",
+          "description": "Arrange a one-week ski itinerary in Altay, comparing snow quality across major resorts, and creating a detailed list including instructor bookings, gear rental, and inter-resort shuttle transport."
+        },
+        {
+          "id": 7,
+          "title": "Maldives Honeymoon Island Selection",
+          "description": "Select 3 'All-Inclusive + Seaplane Transfer' 5-star islands within a 50k budget, produce a pros/cons decision table, and monitor price fluctuations between low and peak seasons."
+        },
+        {
+          "id": 8,
+          "title": "Yunnan Ancient Village Photography Tour",
+          "description": "Plan a photography route through ancient villages like Shaxi and Nuodeng, precisely marking the best spots for sunrise/sunset and identifying unique local guesthouses."
+        },
+        {
+          "id": 9,
+          "title": "Shunde 48-Hour Foodie Special Ops",
+          "description": "Design a 48-hour intense gourmet route, optimizing the check-in path based on shop opening hours, aiming to visit 15 listed heritage restaurants."
+        },
+        {
+          "id": 10,
+          "title": "Beijing Family Slow Travel",
+          "description": "Create a 5-day 'low physical exertion' plan for visiting Beijing with the elderly and children, including wheelchair/stroller rental information and fixed-point chartered car arrangements."
+        }
+      ]
+    },
+    {
+      "topic_name": "Code Architecture Design",
+      "topic_id": "code_architecture",
+      "project_attributes": [
+        "Business Process Changes",
+        "Database Model Changes",
+        "Business Requirement Changes",
+        "Other Architecture Design Attributes"
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "[Marketing Center] Pluggable Architecture Design for Promotion Rule Engine",
+          "description": "Addressing the frequent changes in promotional requirements (flat discounts, group buying, tiered discounts), design a rule engine architecture based on the 'Pipes and Filters' pattern. The focus is on defining standardized Input/Output protocols, allowing new promotion rules to be developed as independent plugins and registered without modifying the core order calculation logic, achieving complete decoupling of business rules from the core system. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 2,
+          "title": "[Supply Chain] DDD Strategic Design and Boundary Partitioning for Complex Business Domains",
+          "description": "Perform strategic design for an entangled invoicing and inventory system. The focus is on identifying Bounded Contexts (such as 'Procurement', 'Inventory', 'Logistics'), defining Context Maps, and designing an Anti-Corruption Layer (ACL) to isolate external dependencies, ensuring that internal business process changes in one module do not trigger system-wide ripple effects. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 3,
+          "title": "[SaaS Platform] Design of Multi-tenant Custom Field Engine",
+          "description": "To handle the personalized data field requirements of different tenants, design a Metadata-Driven data architecture. The focus is on weighing the trade-offs between 'Reserved Fields', 'EAV Model', and 'JSONB Unstructured Storage', and designing a logical database model that supports dynamic field addition at runtime while maintaining index query performance. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 4,
+          "title": "[Legacy System] CQRS Read/Write Separation Refactoring for High-Performance Reporting",
+          "description": "Targeting an outdated system with complex write logic and poor report query performance, design a Command Query Responsibility Segregation (CQRS) architecture. The focus is on planning data heterogeneity strategies for the 'Write Model (Command)' and 'Read Model (Query)', as well as designing a data synchronization mechanism based on Domain Events, solving the performance interference of complex queries on core business operations from the architectural level. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 5,
+          "title": "[Transaction Chain] Full-Link Asynchronization and Event-Driven Architecture Design",
+          "description": "To solve synchronous blocking issues in long business flows (e.g., Order -> Pay -> Ship -> Points -> Notify), design an Event-Driven Architecture based on message middleware. The focus is on designing Event Schema standards, reliable message delivery mechanisms (At-least-once), and eventual consistency strategies for distributed transactions (Saga Pattern). Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 6,
+          "title": "[Smart Logistics] Dynamic Routing Architecture for Multi-level Transit Networks",
+          "description": "Background: The logistics business is upgrading from a 'Point-to-Point Direct' to a 'Multi-level Transit Center' model. Task: Design a new logistics routing model. The focus is on refactoring the database model to support the hierarchical relationship where 'one order corresponds to multiple shipment segments', and designing a routing calculation strategy layer that dynamically plans paths based on package attributes, rather than hardcoding scheduling logic into the order service. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 7,
+          "title": "[Aggregated Payment] Adapter Architecture for Global Cashier Gateway",
+          "description": "Background: The payment system needs to integrate with WeChat, Alipay, and overseas channels like PayPal and Stripe. Task: Design an Adapter Architecture for the payment gateway. The focus is on defining a universal 'Standard Transaction Model' and 'Payment State Machine' to shield underlying channel differences, ensuring that adding new payment channels only requires extending plugins without modifying core accounting logic. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 8,
+          "title": "[Content Platform] Headless Transformation of CMS Content Management System",
+          "description": "Background: The original CMS content was tightly coupled with templates and could not support multi-terminal calls. Task: Design a Headless Architecture. The focus is on thoroughly decoupling the Content Model (Schema) from the Presentation Layer and designing a GraphQL-based Content Distribution API, so that operational adjustments to content structure are no longer constrained by frontend page release cycles. Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 9,
+          "title": "[Online Education] Constraint Solver Engine Design for Complex Scheduling Systems",
+          "description": "Background: The academic system needs to support complex rules for large classes, 1-on-1 sessions, and mixed classes. Task: Design a scheduling domain model based on rule constraints. The focus is on identifying multi-dimensional conflict detection mechanisms between 'Resources (Classrooms/Teachers)', 'Time Slots', and 'Courses', and designing an Anti-Conflict Layer to avoid repeated modifications to the underlying database structure caused by changes in scheduling logic (e.g., adding a 'bi-weekly' rule). Please note that the focus is on architectural design, rather than specific code implementation."
+        },
+        {
+          "id": 10,
+          "title": "[Industrial Internet] Dynamic Process Modeling for Flexible Manufacturing MES",
+          "description": "Background: Factory production lines need to support dynamic combinations of production processes. Task: Design a process flow model based on a Directed Acyclic Graph (DAG). The focus is on designing a database model to store dynamic process nodes and connection relationships, and designing a Process Execution Engine to ensure business personnel can drag and drop to change production flows in the interface without development intervention. Please note that the focus is on architectural design, rather than specific code implementation."
+        }
+      ]
+    },
+    {
+      "topic_name": "Fitness",
+      "topic_id": "fitness",
+      "project_attributes": [
+        "Training Schedule",
+        "Diet/Nutrition Plan",
+        "Body Metrics Records",
+        "Other Fitness Attributes"
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Pre-Vacation Fat Loss Prep",
+          "description": "Set a goal to lose 15kg in 6 months, adjusting the calorie deficit in phases, and creating a specialized sculpting training plan for abdominal definition."
+        },
+        {
+          "id": 2,
+          "title": "Sub-4 Hour Marathon Training",
+          "description": "Develop a marathon preparation cycle, including pacing for LSD (Long Slow Distance) and interval runs, dynamically adjusting volume based on heart rate changes."
+        },
+        {
+          "id": 3,
+          "title": "Powerlifting Big Three Breakthrough",
+          "description": "Design a 5x5 linear progression plan aiming to increase the Squat/Bench/Deadlift total by 30kg within 12 weeks, recording RPE (Rate of Perceived Exertion) feedback for each session."
+        },
+        {
+          "id": 4,
+          "title": "Rounded Shoulders & Hunchback Correction",
+          "description": "Create a 30-day correction scheme for office workers with posture issues, scheduling daily chest stretches and rhomboid strengthening exercises."
+        },
+        {
+          "id": 5,
+          "title": "Street Workout Muscle-Up",
+          "description": "Plan a progression path from zero to unlocking the 'Muscle-Up' in 3 months, including specialized training tables for accessory muscle groups (Lats, Core)."
+        },
+        {
+          "id": 6,
+          "title": "Parkour Speed Run Specialist: Route Fluid Dynamics Optimization",
+          "description": "Designed for 'Point-to-Point' competitive parkour, this involves an iterative training regimen for route planning and execution. The focus is not on tricking, but on 'Conservation of Momentum': analyzing the optimal path ('The Line') from Point A to Point B, deconstructing key obstacle interactions (e.g., Kong Vault, Wall Run), and utilizing repetitive micro-adjustments to minimize Ground Contact Time, achieving zero-latency dynamic displacement."
+        },
+        {
+          "id": 11,
+          "title": "Triathlon Specialist: T2 Transition 'Context Switching' Drill",
+          "description": "Targeted at the grueling T2 phase (Bike-to-Run), executing high-intensity 'Brick' workouts. The focus is on resolving neuromuscular 'mode switching latency': immediately transitioning to target-pace running after high-threshold power cycling. This forces the body to reset biomechanical patterns under extreme 'Jelly Legs' conditions, minimizing the 'Switching Cost' when transferring load from cycling muscle groups to running muscle groups."
+        },
+        {
+          "id": 7,
+          "title": "Middle Split Flexibility Unlock",
+          "description": "Formulate an 8-week Middle Split unlock plan, arranging daily pre-sleep Yin Yoga stretch sequences and hip mobility tests."
+        },
+        {
+          "id": 8,
+          "title": "Cardio Endurance Enhancement",
+          "description": "Design a one-month Tabata HIIT schedule aiming to significantly lower resting heart rate and improve VO2 Max data."
+        },
+        {
+          "id": 9,
+          "title": "Postpartum Diastasis Recti Repair",
+          "description": "Plan a gentle core repair course for diastasis recti, focusing on designing action sequences that coordinate pelvic floor muscles with breathing."
+        },
+        {
+          "id": 10,
+          "title": "Scientific Muscle Gain Planning",
+          "description": "Develop a 'Clean Bulk' diet plan, precisely calculating the daily carb/protein ratio, and dynamically adjusting intake based on weekly weight gain magnitude."
+        }
+      ]
+    },
+    {
+      "topic_name": "Literary Creation",
+      "topic_id": "literary_creation",
+      "project_attributes": [
+        "Work Outline",
+        "Character Profiles",
+        "Foreshadowing/Clues Library",
+        "Other Writing Attributes"
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "Suspense Short Story: 'The Vanishing Colleague'",
+          "description": "Write a 15,000-word workplace suspense novel, designing an outline with a double plot twist and establishing a clue resolution table containing all doubtful points."
+        },
+        {
+          "id": 2,
+          "title": "Xianxia Novel: The Golden First Three Chapters",
+          "description": "Conceive the 'Golden First Three Chapters' of a long-form Xianxia (Cultivation) novel, designing the protagonist's 'Goldfinger' (Cheat System) and the core conflict hook for the early stage."
+        },
+        {
+          "id": 3,
+          "title": "Memoir: Hometown Transformations",
+          "description": "Write a non-fiction essay about 'Changes in Hometown', organizing a material library of childhood memory fragments and refining details of sensory descriptions."
+        },
+        {
+          "id": 4,
+          "title": "Suspense Micro-Film Script",
+          "description": "Create a script for a 10-minute suspense micro-film, designing a low-cost shooting plan limited to 2 scenes, and detailing the dialogue and actions in the storyboard."
+        },
+        {
+          "id": 5,
+          "title": "30-Day Free Writing Challenge",
+          "description": "Execute a 30-day challenge of writing 1,000 words daily, building an inspiration fragment library, and selecting one core idea at the end of the month to expand into a full story."
+        },
+        {
+          "id": 6,
+          "title": "Fantasy World Bible / Settings",
+          "description": "Compile a 'World Setting Bible' for an original fantasy novel, including magic system rules, continental maps/geography, and a chronology of racial history."
+        },
+        {
+          "id": 7,
+          "title": "Modern Poetry Suite Creation",
+          "description": "Compose a suite of poems (5 pieces) about 'Love and Pain' mimicking the style of Yu Xiuhua, repeatedly refining the uniqueness of image combinations."
+        },
+        {
+          "id": 8,
+          "title": "Viral Educational Video Scripts",
+          "description": "Write 5 scripts for short educational videos, optimizing the copy structure for the 'Golden First 3 Seconds' and designing accompanying visual suggestions."
+        },
+        {
+          "id": 9,
+          "title": "Deep Villain Character Biography",
+          "description": "Write a 3,000-word character biography for a complex villain, digging deep into their childhood trauma and psychological defense mechanisms to perfect the personality profile."
+        },
+        {
+          "id": 10,
+          "title": "Short Video Scriptwriting: \"The Corporate Drone's 'Ctrl+Z' Superpower\"",
+          "description": "Structure the script based on a 'High Concept' premise where the protagonist possesses the superpower to 'Undo Reality' three times a day. The task focuses on designing a 'Three-Act Structure' for a vertical short drama, planning the 5-second 'Golden Hook', and refining the cathartic rhythm of 'Repression-Explosion-Reversal' in a high-pressure workplace, externalizing the protagonist's psychological struggle through visual language."
+        }
+      ]
+    },
+    {
+      "topic_name": "Knowledge Learning",
+      "topic_id": "knowledge_learning",
+      "project_attributes": [
+        "Learning Path/Syllabus",
+        "Other Learning Attributes"
+      ],
+      "tasks": [
+        {
+          "id": 1,
+          "title": "AI Prompt Engineering",
+          "description": "Systematically learn Prompt Engineering, building a skill tree from Zero-shot to Chain-of-Thought, and compiling a library of highly reusable instructions."
+        },
+        {
+          "id": 2,
+          "title": "History of Western Philosophy",
+          "description": "Read through 'A History of Western Philosophy' in 3 months, mapping the lineage of thought from Socrates to Nietzsche and establishing notes on core philosophical concepts."
+        },
+        {
+          "id": 3,
+          "title": "Python Data Analysis Practice",
+          "description": "Learn Pandas and NumPy, design and complete the 'Titanic Survival Prediction' practical project, and produce a Jupyter Notebook analysis report."
+        },
+        {
+          "id": 4,
+          "title": "Family Asset Allocation Planning",
+          "description": "Study asset allocation theories, analyze current financial status, and formulate a 5-year family fixed-investment strategy and insurance configuration list."
+        },
+        {
+          "id": 5,
+          "title": "Spanish A1 Crash Course",
+          "description": "Crash course in Spanish A1 level over 2 months, organizing a list of 500 high-frequency words and verb conjugation rules to achieve basic conversational ability."
+        },
+        {
+          "id": 6,
+          "title": "CBT Self-Healing Psychology",
+          "description": "Learn the basics of CBT (Cognitive Behavioral Therapy), create a 'Cognitive Distortion' identification list, and apply it to daily mood logging."
+        },
+        {
+          "id": 7,
+          "title": "Video Editing Full Workflow",
+          "description": "Master core Premiere skills, design a learning path from keyframes to color grading, and edit a 1-minute Vlog containing special effects."
+        },
+        {
+          "id": 8,
+          "title": "WSET Wine Tasting Introduction",
+          "description": "Study the WSET Level 1 system, establish flavor profile cards for common grape varieties (Cabernet, Merlot, etc.), and verify through blind tasting exercises."
+        },
+        {
+          "id": 9,
+          "title": "First Aid Certification",
+          "description": "Plan the learning process for first aid skills, master CPR and AED operation steps, and prepare for the offline certification exam using a simulation question bank."
+        },
+        {
+          "id": 10,
+          "title": "Western Art Movement Identification",
+          "description": "Build a visual library of Western Art History, organizing identifying features of 8 major movements like Baroque and Impressionism, consolidating memory through painting classification exercises."
+        }
+      ]
+    }
+  ]
+}

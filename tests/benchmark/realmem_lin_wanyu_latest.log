@@ -1,0 +1,83 @@
+
+[1/1] Running persona: Lin_Wanyu
+
+============================================================
+Persona: Lin_Wanyu  [INCREMENTAL]
+Sessions: 207  |  Queries: 126
+Eval model: deepseek-chat  |  Judge model: deepseek-chat
+============================================================
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5422.80it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 5106.34it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  [10/207] queries: 1/126  avg_recall: 100.0%  session_time: 12.8s
+  [20/207] queries: 9/126  avg_recall: 50.0%  session_time: 0.2s
+  [30/207] queries: 17/126  avg_recall: 58.8%  session_time: 3.3s
+  [40/207] queries: 24/126  avg_recall: 58.3%  session_time: 5.4s
+  [50/207] queries: 30/126  avg_recall: 53.3%  session_time: 9.2s
+  [60/207] queries: 33/126  avg_recall: 51.0%  session_time: 24.5s
+  [70/207] queries: 38/126  avg_recall: 48.2%  session_time: 9.1s
+  [80/207] queries: 42/126  avg_recall: 51.2%  session_time: 17.4s
+  [90/207] queries: 48/126  avg_recall: 51.4%  session_time: 0.1s
+  [100/207] queries: 56/126  avg_recall: 51.5%  session_time: 2.4s
+  [110/207] queries: 60/126  avg_recall: 51.6%  session_time: 3.1s
+  [120/207] queries: 66/126  avg_recall: 53.2%  session_time: 7.0s
+  [130/207] queries: 72/126  avg_recall: 55.0%  session_time: 13.9s
+  [140/207] queries: 78/126  avg_recall: 53.1%  session_time: 20.4s
+  [150/207] queries: 85/126  avg_recall: 51.3%  session_time: 12.4s
+  [160/207] queries: 92/126  avg_recall: 51.5%  session_time: 9.5s
+  [170/207] queries: 99/126  avg_recall: 51.4%  session_time: 0.5s
+  [180/207] queries: 107/126  avg_recall: 52.3%  session_time: 11.9s
+  [190/207] queries: 115/126  avg_recall: 51.6%  session_time: 16.6s
+  [200/207] queries: 123/126  avg_recall: 51.5%  session_time: 2.9s
+  [207/207] queries: 126/126  avg_recall: 51.8%  session_time: 13.4s
+
+======================================================================
+RealMem Benchmark 报告
+======================================================================
+
+总体 Memory Recall: 51.8% ± 46.2%  (n=126)
+
+按 Category:
+  Dynamic Incremental        50.1% ± 47.5%  (n=97)
+  Dynamic Updating           53.3% ± 43.6%  (n=17)
+  Implicit Preference        57.4% ± 43.4%  (n=9)
+  Temporal-reasoning         83.3% ± 28.9%  (n=3)
+
+按 Topic:
+  Fitness                    59.4% ± 38.9%  (n=29)
+  Knowledge_Learning         46.7% ± 43.4%  (n=18)
+  Literary_Creation          54.9% ± 40.6%  (n=28)
+  Travel_Planning            47.7% ± 53.8%  (n=51)
+
+延迟:
+  retrieval:  p50=87ms  p95=15121ms
+
+──────────────────────────────────────────────────
+Token 用量:
+                            input     output      total
+  ──────────────────── ────────── ────────── ──────────
+  encode (MG)              717311      30400     747711
+  judge (eval)             201864       1152     203016
+  ──────────────────── ────────── ────────── ──────────
+  TOTAL                    919175      31552     950727
+
+Graph 最终状态:
+  nodes=372  topics=96  raw_traces=1274
+
+======================================================================
+
+结果已保存到 tests/benchmark/realmem_lin_wanyu_latest.json

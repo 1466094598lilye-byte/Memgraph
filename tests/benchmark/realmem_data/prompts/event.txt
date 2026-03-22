@@ -1,0 +1,90 @@
+# Role
+You are a **"Human-AI Co-Evolution Simulation Engine."**
+Your task is to deduce and simulate the authentic process of a user executing a long-term task (e.g., fitness training, travel planning, writing, learning, project architecture) with the full assistance of an **AI Copilot**.
+You need to deconstruct the blueprint into a series of deep **"User-AI Interaction Rounds."**
+
+# Context Inputs
+1. `<UserInputProfile>`: The user's profile (determines how the user queries the AI and their level of compliance with AI suggestions).
+2. `<ProjectAttributes>`: The project attribute list (this is the "Memory Bank" maintained by the AI, e.g., `training_plan`).
+3. `<ProjectEvolutionBlueprint>`: The ideal blueprint for project progression.
+
+# Core Task: Interaction Simulation
+Traverse the blueprint anchor nodes and generate **$3N$ to $5N$** specific interaction events.
+
+## 1. Interaction-First Principle (CRITICAL)
+**All Events must be described as "Communication between User and AI" or "User Feedback after executing AI advice."**
+* ❌ *Bad:* "The user created a training schedule themselves." (Forbidden isolated behavior)
+* ✅ *Good:* "The user provided body metrics to the AI and **requested the AI to generate** a beginner training schedule." (Collaborative behavior)
+* ❌ *Bad:* "The user regretted eating a big meal."
+* ✅ *Good:* "The user **confessed** to the AI that they couldn't resist eating hotpot and **asked the AI** for remedial measures."
+
+## 2. Narrative Granularity (CRITICAL)
+**`event_description` is not a momentary action, but a complete "Interaction Process."**
+It must strictly include a three-layer logical closed loop:
+1. **[Origin/Trigger]**: The **motivation** for the attribute evolution. Why operate on this attribute now? (Is it a user pain point explosion, blueprint progression, or a sudden accident?)
+2. **[Process/Negotiation]**: The **determination/game theory process** of the attribute evolution. What did the user propose? What did the AI suggest? How did they compromise or reach an agreement? (This must reflect the personality in the User Profile).
+3. **[Outcome/Entity]**: The **specific content** of the attribute evolution. What specific parameters were finally generated or modified?
+
+## 3. Attributes Evolution Logic
+The progression of events must be reflected as **CRUD (Create, Read, Update, Delete)** operations on `<ProjectAttributes>`.
+In `dynamic_updates`, the operation type must be explicitly recorded:
+* **[Create]**: Initialize an attribute.
+* **[Update]**: Modify content/parameters.
+* **[Suspend]**: Hang up/postpone assets due to objective reasons (e.g., business trips).
+* **[Downgrade]**: Lower asset difficulty/standards due to capability limitations (e.g., injury).
+
+## 4. Inject Volatility
+During generation, you must randomly inject three types of interference multiple times, **especially Objective Reality Resistance**:
+
+a. **Subjective Volatility**:
+    * *Source*: Changes in user mentality (laziness, fear of difficulty, loving the new and loathing the old).
+    * *Consequence*: Leads to directional changes or repeated modifications of `<ProjectAttributes>`.
+b. **Objective Volatility (Reality Resistance - NEW)**:
+    * *Source*: **Force Majeure & Life Conflicts**.
+        * **Physical Limits**: Injury, illness, physiological cycles.
+        * **Time Conflicts**: Sudden overtime, urgent business trips, family chores.
+    * *Consequence*: Must trigger **[SUSPEND]** or **[DOWNGRADE]**. This not only disrupts the schedule but is usually accompanied by user frustration or helplessness.
+c. **Systemic Volatility**:
+    * *Source*: External environment (device failure, bad weather, API limits).
+
+# Output Format
+Please strictly output as a JSON List.
+
+```json
+[
+  {
+    "event_index": "Integer (Global incremental serial number)",
+    "anchor_node_id": "String (Corresponding Blueprint Node ID)",
+    "event_name": "String (Narrative title, e.g., 'Compromise: From High Intensity to Recovery Mode')",
+    "related_attribute": "String (Specific Attribute Key operated on, e.g., 'training_plan')",
+    "complexity_mode": "Definition | Linear | Drama | Pivot | Acceleration | Setback",
+    "deviation_type": "Standard | Positive_Shock | Negative_Shock | Plan_Change",
+    "event_time": "String (e.g., 'Week 1 - Startup Phase')",
+    "stage_description": "Start | Development | Twist | Conclusion | Mutation",
+    "event_description": "String (Must be a complete narrative paragraph, structure: 1. [Origin] User felt.../Because... 2. [Process] User proposed to AI... AI suggested... After discussion... 3. [Outcome] Finally determined...)",
+    "dynamic_updates": [
+      {
+        "attribute": "String (Matches related_attribute)",
+        "key_changed": "String (The specific field modified)",
+        "content": "String ([Tag] Specific update content, e.g., '[Update] Reduced running duration from 30min to 15min')"
+      }
+    ],
+    "event_result": "String (One-sentence outcome)",
+    "reasoning": "String (Explain design logic: How this event reflects user personality or objective resistance)"
+  }
+]
+```
+
+<Inputs>
+<UserInputProfile>
+{UserInputProfile_JSON}
+</UserInputProfile>
+
+<ProjectAttributes> 
+{ProjectState_JSON}
+</ProjectAttributes>
+
+<ProjectEvolutionBlueprint>
+{ProjectEvolutionBlueprint_JSON}
+</ProjectEvolutionBlueprint>
+</Inputs>

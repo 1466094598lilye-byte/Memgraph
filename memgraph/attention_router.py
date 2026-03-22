@@ -1,0 +1,259 @@
+"""AttentionRouter: 注意力路由 + 备忘录 + unsatisfied 队列。
+
+核心思路（Lily 2026-03-21）：
+- 人类不怕灾难性遗忘，因为人类一直在遗忘
+- 人类 context window 只有 3-5 句，但能无缝切 200 个话题
+- 关键不是记住多少，是每一轮能多快跳到对的东西
+- 注意力路由：每次只取相关的几轮原文注入 context
+- 备忘录：精确事实（数字、日期、名字）单独存，全量注入
+- unsatisfied 队列：跟踪每个活跃任务的当前进度，全量注入
+
+三层架构：
+1. 注意力路由层：对话原文全量存储 + cosine top-k 选择性加载
+2. 备忘录层：LLM 提取精确事实 → key-value store → 全量注入
+3. 任务队列层：跟踪活跃任务的 unsatisfied 项 → 全量注入（提供时序信息）
+"""
+
+import json
+import logging
+from dataclasses import dataclass
+from typing import Callable
+
+import numpy as np
+
+from memgraph.embedder import Embedder
+from memgraph.models import ActivateResult
+
+logger = logging.getLogger(__name__)
+
+LLMFn = Callable[[str, int], tuple[str, dict]]
+
+_MEMO_EXTRACT_TEMPLATE = """Read this conversation turn. Extract ALL important facts into a flat JSON object.
+
+Include:
+- User's personal info (measurements, goals, preferences, schedule, constraints)
+- User's decisions and agreements
+- Specific details from any plan, proposal, or recommendation the user accepted (store the concrete details, not just "user accepted a plan")
+- Current status or progress of ongoing tasks
+
+Use descriptive key names. Reuse existing keys to update values when the same topic comes up again.
+
+User: __USER__
+Assistant: __ASSISTANT__
+
+Existing memo keys (reuse to update): __KEYS__
+
+JSON:"""
+
+
+def _cosine(a: np.ndarray, b: np.ndarray) -> float:
+    na, nb = np.linalg.norm(a), np.linalg.norm(b)
+    if na < 1e-8 or nb < 1e-8:
+        return 0.0
+    return float(np.dot(a, b) / (na * nb))
+
+
+@dataclass
+class MemoEntry:
+    """备忘录条目：一条精确事实 + embedding。"""
+    key: str
+    value: str
+    embedding: np.ndarray | None = None
+
+
+@dataclass
+class Turn:
+    """一轮对话：用户说了什么 + 助手回了什么。"""
+    turn_id: int
+    user_text: str
+    assistant_text: str
+    embedding: np.ndarray | None = None
+
+
+class AttentionRouter:
+    """注意力路由 + 备忘录。
+
+    encode: 存原文 + embedding + 提取精确事实到备忘录
+    activate: 备忘录全量注入 + cosine top-k 选最相关原文
+    """
+
+    def __init__(
+        self,
+        embedder: Embedder | None = None,
+        llm_fn: LLMFn | None = None,
+        llm_provider: str = "openai",
+        model: str = "gpt-4o-mini",
+    ) -> None:
+        self.embedder = embedder or Embedder()
+        self.turns: list[Turn] = []
+        self.memo: dict[str, MemoEntry] = {}  # 备忘录：key → MemoEntry
+
+        self._llm_fn = llm_fn
+        self._llm_provider = llm_provider
+        self._model = model
+        self._encode_usage: dict = {"input_tokens": 0, "output_tokens": 0}
+        self._client = None
+
+    def _call_llm(self, prompt: str, max_tokens: int = 300) -> tuple[str, dict]:
+        """调用 LLM。"""
+        if self._llm_fn is not None:
+            text, usage = self._llm_fn(prompt, max_tokens)
+            return text, usage or {"input_tokens": 0, "output_tokens": 0}
+
+        if self._client is None:
+            if self._llm_provider == "anthropic":
+                import anthropic
+                self._client = anthropic.Anthropic()
+            else:
+                import openai
+                self._client = openai.OpenAI()
+
+        if self._llm_provider == "anthropic":
+            resp = self._client.messages.create(
+                model=self._model,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = resp.content[0].text
+            usage = {
+                "input_tokens": resp.usage.input_tokens,
+                "output_tokens": resp.usage.output_tokens,
+            }
+        else:
+            resp = self._client.chat.completions.create(
+                model=self._model,
+                max_tokens=max_tokens,
+                messages=[{"role": "user", "content": prompt}],
+            )
+            text = resp.choices[0].message.content or ""
+            usage = {
+                "input_tokens": getattr(resp.usage, "prompt_tokens", 0) if resp.usage else 0,
+                "output_tokens": getattr(resp.usage, "completion_tokens", 0) if resp.usage else 0,
+            }
+        return text, usage
+
+    # ── 存储 ──
+
+    def encode(self, user_text: str, assistant_text: str) -> None:
+        """存一轮对话 + 提取精确事实到备忘录。"""
+        turn_id = len(self.turns)
+
+        # 1. 存原文 + embedding（只 embed user_text，assistant 太长会稀释语义）
+        vec = np.array(
+            self.embedder.embed_query(user_text),
+            dtype=np.float32,
+        )
+        self.turns.append(Turn(
+            turn_id=turn_id,
+            user_text=user_text,
+            assistant_text=assistant_text,
+            embedding=vec,
+        ))
+
+        # 2. 提取精确事实到备忘录
+        self._extract_memo(user_text, assistant_text)
+
+        logger.debug(
+            "[attention-router] stored turn %d, total=%d, memo_keys=%d",
+            turn_id, len(self.turns), len(self.memo),
+        )
+
+    def _extract_memo(self, user_text: str, assistant_text: str) -> None:
+        """LLM 提取精确事实，更新备忘录。每条 fact 带 embedding。"""
+        prompt = (_MEMO_EXTRACT_TEMPLATE
+            .replace("__USER__", user_text[:3000])
+            .replace("__ASSISTANT__", assistant_text[:3000])
+            .replace("__KEYS__", str(list(self.memo.keys())))
+        )
+        try:
+            text, usage = self._call_llm(prompt, max_tokens=500)
+            self._encode_usage["input_tokens"] += usage.get("input_tokens", 0)
+            self._encode_usage["output_tokens"] += usage.get("output_tokens", 0)
+
+            # 解析 JSON
+            text = text.strip()
+            if text.startswith("```"):
+                text = text.split("\n", 1)[-1].rsplit("```", 1)[0].strip()
+            parsed = json.loads(text)
+            # Flat dict: all keys are memo entries (facts + plans + progress)
+            if isinstance(parsed, dict):
+                # If LLM returned nested structure, flatten it
+                flat = {}
+                for k, v in parsed.items():
+                    if isinstance(v, dict):
+                        for sub_k, sub_v in v.items():
+                            flat[sub_k] = str(sub_v)
+                    else:
+                        flat[k] = str(v)
+                for k, v in flat.items():
+                    fact_text = f"{k}: {v}"
+                    vec = np.array(self.embedder.embed_query(fact_text), dtype=np.float32)
+                    self.memo[k] = MemoEntry(key=k, value=v, embedding=vec)
+                    logger.debug("[memo] %s = %s", k, v[:80])
+        except (json.JSONDecodeError, Exception) as e:
+            logger.debug("[memo-extract] failed to parse: %s", e)
+
+    # ── 检索 ──
+
+    @property
+    def encode_usage(self) -> dict:
+        return dict(self._encode_usage)
+
+    def activate(
+        self,
+        query: str,
+        top_k: int = 10,
+        memo_k: int = 10,
+        max_output_chars: int | None = None,
+        **kwargs,
+    ) -> ActivateResult:
+        """备忘录全量注入 + 原文 cosine top-k。"""
+        lines: list[str] = []
+
+        query_vec = np.array(
+            self.embedder.embed_query(query),
+            dtype=np.float32,
+        )
+
+        # 1. 备忘录：全量注入（条目精简，不需要路由）
+        if self.memo:
+            memo_lines = [f"  {e.key}: {e.value}" for e in self.memo.values()]
+            lines.append("[memo]\n" + "\n".join(memo_lines))
+
+        # 2. 注意力路由：cosine top-k
+        if self.turns:
+            scored: list[tuple[Turn, float]] = []
+            for turn in self.turns:
+                if turn.embedding is not None:
+                    sim = _cosine(query_vec, turn.embedding)
+                    scored.append((turn, sim))
+
+            scored.sort(key=lambda x: x[1], reverse=True)
+            top_turns = scored[:top_k]
+
+            # 按时序排列
+            top_turns.sort(key=lambda x: x[0].turn_id)
+
+            for turn, sim in top_turns:
+                if sim > 0.1:
+                    lines.append(f"[turn-{turn.turn_id}] User: {turn.user_text}")
+                    lines.append(f"[turn-{turn.turn_id}] Assistant: {turn.assistant_text}")
+
+        result = "\n".join(lines)
+
+        if max_output_chars and len(result) > max_output_chars:
+            result = result[:max_output_chars]
+            last_nl = result.rfind("\n")
+            if last_nl > 0:
+                result = result[:last_nl]
+
+        return ActivateResult(result)
+
+    def inspect(self) -> dict:
+        return {
+            "total_turns": len(self.turns),
+            "memo_keys": len(self.memo),
+            "memo": {k: e.value for k, e in self.memo.items()},
+
+            "type": "attention_router",
+        }

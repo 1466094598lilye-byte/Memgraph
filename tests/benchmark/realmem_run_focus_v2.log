@@ -1,0 +1,63 @@
+
+[1/1] Running persona: Lin_Wanyu
+
+============================================================
+Persona: Lin_Wanyu  [INCREMENTAL]
+Sessions: 25  |  Queries: 13
+Eval model: deepseek-chat  |  Judge model: deepseek-chat
+============================================================
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 2505.07it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 10756.15it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  [10/25] queries: 1/13  avg_recall: 100.0%  session_time: 9.9s
+  [20/25] queries: 9/13  avg_recall: 55.6%  session_time: 0.3s
+  [25/25] queries: 13/13  avg_recall: 57.7%  session_time: 11.7s
+
+======================================================================
+RealMem Benchmark 报告
+======================================================================
+
+总体 Memory Recall: 57.7% ± 49.4%  (n=13)
+
+按 Category:
+  Dynamic Incremental        38.9% ± 48.6%  (n=9)
+  Implicit Preference       100.0% ± 0.0%  (n=2)
+  Temporal-reasoning        100.0% ± 0.0%  (n=2)
+
+按 Topic:
+  Fitness                    64.3% ± 47.6%  (n=7)
+  Knowledge_Learning        100.0% ± 0.0%  (n=1)
+  Travel_Planning            40.0% ± 54.8%  (n=5)
+
+延迟:
+  retrieval:  p50=29ms  p95=17215ms
+
+──────────────────────────────────────────────────
+Token 用量:
+                            input     output      total
+  ──────────────────── ────────── ────────── ──────────
+  encode (MG)               26377       3020      29397
+  judge (eval)              22939        100      23039
+  ──────────────────── ────────── ────────── ──────────
+  TOTAL                     49316       3120      52436
+
+Graph 最终状态:
+  nodes=34  topics=12  raw_traces=148
+
+======================================================================
+
+结果已保存到 tests/benchmark/realmem_results_focus_v2.json

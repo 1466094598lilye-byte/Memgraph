@@ -1,0 +1,505 @@
+[
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0001",
+    "query_content": "Okay, so my usual work hours are pretty standard, like 9 AM to 6 PM, but honestly, I often work late, sometimes until 8 or 9 PM, especially during busy periods. Overtime is pretty frequent.\n\nAs for fr",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 7,
+    "session_identifier": "Knowledge_Learning_3:S1_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Structured Exercise (Initial): 3 sessions per week of moderate-intensity activity (e.g., brisk walking, cycling, swimming, bodyweight exercises)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 1.71661376953125e-05,
+    "judge_usage": {
+      "input_tokens": 4554,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 40,
+      "context_turns": 28,
+      "context_chars": 21500,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0002",
+    "query_content": "Hi! I've decided on the Classic Loop itinerary for my New Zealand trip. What's the next step we should look at?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 10,
+    "session_identifier": "Travel_Planning_2:S1_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 A 12-day New Zealand South Island RV trip using a Britz Voyager 2-Berth RV, from April 5th to April 16th, 2026, following the 'Classic Loop' itinerary. The trip is designed to be scenic, not too rushed or stressful, with a mix of famous spots and quiet time, ensuring unique local food and scenic beauty/quiet time in Wanaka are not missed. The detailed itinerary includes: Day 1: Arrive Christchurch & RV Pick-up; Day 2: Christchurch to Lake Tekapo; Day 3: Lake Tekapo to Aoraki/Mount Cook (including a shorter walk like Hooker Valley Track) & On to Queenstown; Day 4: Queenstown - Adventure & Relaxation; Day 5: Queenstown to Te Anau; Day 6: Milford Sound Day Trip; Day 7: Te Anau to Wanaka; Day 8: Wanaka - Scenic Beauty & Quiet Time; Day 9: Wanaka to Franz Josef/Fox Glacier; Day 10: Franz Josef/Fox Glacier to Punakaiki (Pancake Rocks) (Optional add-on: Franz Josef heli-hike, highly weather-dependent and time-constrained, in the morning); Day 11: Punakaiki to Arthur's Pass & Return to Christchurch; Day 12: Depart Christchurch. Key attractions include Milford Sound, Lake Tekapo (Church of the Good Shepherd, stargazing), Queenstown (Skyline Gondola, jet boat, Lake Wakatipu), Franz Josef/Fox Glacier, Punakaiki (Pancake Rocks), and Aoraki/Mount Cook. The trip also features relaxed time in places like Wanaka and scenic drives through Lindis Pass, Haast Pass, and Arthur's Pass. Stargazing is a primary activity for Lake Tekapo, with a contingency plan: if weather prevents stargazing at Lake Tekapo, the backup activity is Tekapo Hot Springs, and a second attempt at stargazing will be considered the following night at Aoraki/Mount Cook by checking the forecast. The itinerary also integrates local food recommendations and dining options, reinforcing the comprehensive RV meal plan and restaurant suggestions."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 9.179115295410156e-05,
+    "judge_usage": {
+      "input_tokens": 9027,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 62,
+      "context_turns": 43,
+      "context_chars": 39389,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0003",
+    "query_content": "What are the arrangements for the diet plan? I can't cook every meal, and my colleagues always order afternoon tea. Plus, weekends mean hot pot with friends. If I try this, I'll fail in three days!",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 12,
+    "session_identifier": "Fitness_1:S2_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "User enjoys trying new restaurants and frequently participates in afternoon tea with colleagues, which makes food tracking challenging.",
+      "User's exercise availability/preferences: Weekdays are tough, evenings are often taken up by work or user is too tired. Weekends are better but also used for relaxation/socializing. User is not a morning person for exercise."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      false,
+      true
+    ],
+    "retrieval_latency": 0.0001285076141357422,
+    "judge_usage": {
+      "input_tokens": 9798,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 82,
+      "context_turns": 57,
+      "context_chars": 44381,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0004",
+    "query_content": "Okay, these strategies sound really practical, which is what I needed!\n\nFor afternoon tea, I think the pre-emptive snacking and hydration are easy wins. Trying to get less sugar in my milk tea sounds ",
+    "topic": "Fitness",
+    "category": "Implicit Preference",
+    "session_index": 12,
+    "session_identifier": "Fitness_1:S2_01",
+    "turn_index": 6,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Body Metrics Records】 Goal: Lose 15 kg (Target Weight: 60 kg).",
+      "【Diet/Nutrition Plan】 Initial Daily Calorie Target: 1600-1800 calories. User agrees to familiarize with this target for the next few days.",
+      "【Training Schedule】 Daily Steps Target: 7,000-8,000 steps per day. User agrees to increase daily steps to meet this target for the next few days.",
+      "【Learning Path/Syllabus - Fitness Schedule】 Initial proposed weekly fitness schedule (Phase 1: Building Consistency) confirmed by user: Frequency: 2-3 sessions per week. Duration: 30-45 minutes per session. Focus: Moderate-intensity activity (e.g., brisk walking, bodyweight exercises at home, cycling, or swimming). Suggested Slots: One 30-45 minute session on Saturday, one 30-45 minute session on Sunday. An optional weekday session (30 minutes) is included but with low expectation of frequent adherence."
+    ],
+    "recall": 0.25,
+    "hits": 1,
+    "total": 4,
+    "judge_details": [
+      false,
+      false,
+      false,
+      true
+    ],
+    "retrieval_latency": 0.00013256072998046875,
+    "judge_usage": {
+      "input_tokens": 11253,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 88,
+      "context_turns": 61,
+      "context_chars": 50043,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0005",
+    "query_content": "Yes, these strategies feel solid, and I really appreciate figuring out how to manage the social eating. It makes the whole thing seem much less daunting. This part feels clear now.\n\nLet's definitely l",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 12,
+    "session_identifier": "Fitness_1:S2_01",
+    "turn_index": 8,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Diet/Nutrition Plan】 Nutritional Focus: Prioritize lean protein (20-30g per meal), increase fiber (vegetables, fruits, whole grains), include healthy fats (avocados, nuts, seeds, olive oil), drink 2-3 liters of water daily.",
+      "【Character Profiles】 The protagonist is a busy, slightly stressed office worker in a big city (Shenzhen), who lives alone or shares an apartment with friends, often orders takeout because she's too tired to cook, is a creature of habit, not usually the type to get involved in anything dramatic, always glued to screens, and relies on video calls to connect with family far away. She just wants her dinner."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      false,
+      true
+    ],
+    "retrieval_latency": 4.887580871582031e-05,
+    "judge_usage": {
+      "input_tokens": 11251,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 90,
+      "context_turns": 62,
+      "context_chars": 50081,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0006",
+    "query_content": "Hi! I'm ready to continue planning my New Zealand trip. Now that we have the Classic Loop route, can you help me list out all the must-see attractions along the way? I want to get a good baseline firs",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 14,
+    "session_identifier": "Travel_Planning_2:S2_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 A 12-day New Zealand South Island RV trip using a Britz Voyager 2-Berth RV, from April 5th to April 16th, 2026, following the 'Classic Loop' itinerary. The trip is designed to be scenic, not too rushed or stressful, with a mix of famous spots and quiet time, ensuring unique local food and scenic beauty/quiet time in Wanaka are not missed. The detailed itinerary includes: Day 1: Arrive Christchurch & RV Pick-up; Day 2: Christchurch to Lake Tekapo; Day 3: Lake Tekapo to Aoraki/Mount Cook (including a shorter walk like Hooker Valley Track) & On to Queenstown; Day 4: Queenstown - Adventure & Relaxation; Day 5: Queenstown to Te Anau; Day 6: Milford Sound Day Trip; Day 7: Te Anau to Wanaka; Day 8: Wanaka - Scenic Beauty & Quiet Time; Day 9: Wanaka to Franz Josef/Fox Glacier; Day 10: Franz Josef/Fox Glacier to Punakaiki (Pancake Rocks) (Optional add-on: Franz Josef heli-hike, highly weather-dependent and time-constrained, in the morning); Day 11: Punakaiki to Arthur's Pass & Return to Christchurch; Day 12: Depart Christchurch. Key attractions include Milford Sound, Lake Tekapo (Church of the Good Shepherd, stargazing), Queenstown (Skyline Gondola, jet boat, Lake Wakatipu), Franz Josef/Fox Glacier, Punakaiki (Pancake Rocks), and Aoraki/Mount Cook. The trip also features relaxed time in places like Wanaka and scenic drives through Lindis Pass, Haast Pass, and Arthur's Pass. Stargazing is a primary activity for Lake Tekapo, with a contingency plan: if weather prevents stargazing at Lake Tekapo, the backup activity is Tekapo Hot Springs, and a second attempt at stargazing will be considered the following night at Aoraki/Mount Cook by checking the forecast. The itinerary also integrates local food recommendations and dining options, reinforcing the comprehensive RV meal plan and restaurant suggestions."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.506111145019531e-05,
+    "judge_usage": {
+      "input_tokens": 13386,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 96,
+      "context_turns": 67,
+      "context_chars": 59079,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0007",
+    "query_content": "Wow, this is fantastic! You've really outdone yourself. The foodie additions are exactly what I was hoping for, and you've hit so many great spots. Fergburger is definitely going straight to the top o",
+    "topic": "Travel_Planning",
+    "category": "Implicit Preference",
+    "session_index": 14,
+    "session_identifier": "Travel_Planning_2:S2_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 The user's next priority is booking flights and RV rental."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.887580871582031e-05,
+    "judge_usage": {
+      "input_tokens": 14383,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 100,
+      "context_turns": 70,
+      "context_chars": 65247,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0008",
+    "query_content": "Hi! I've had a look at the updated attractions list. The foodie suggestions are great! I'm excited to start mapping out the actual day-by-day itinerary now. What do we need to do next?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 17,
+    "session_identifier": "Travel_Planning_2:S2_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Food Scheme】 Confirmed local food experiences and must-try dishes linked to the Classic Loop attractions: Christchurch (cafes, meat pie, seafood), Lake Tekapo (local salmon), Aoraki/Mount Cook (hearty meals like lamb/venison). Queenstown has a detailed foodie integration plan: Day 3 (Arrival): Fergburger for evening. Day 4 (Full Day): Kiwi pie for lunch, Pinot Noir tasting in Central Otago wine region in the afternoon, Amisfield Bistro or local seafood for dinner. Day 5 (Departure): Final Queenstown breakfast/brunch. Other locations include Te Anau (venison, freshwater fish), Wanaka (craft beer, local produce, gelato), Franz Josef/Fox Glacier (hearty pub meals, whitebait fritters), Punakaiki (pancakes, whitebait fritters). Snacks for scenic drives: Manuka honey, gourmet cheeses."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 0.00022673606872558594,
+    "judge_usage": {
+      "input_tokens": 15608,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 112,
+      "context_turns": 78,
+      "context_chars": 70730,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0009",
+    "query_content": "Okay, that makes sense! I'm definitely keen on making sure those foodie stops are properly integrated.\n\nInstead of just Day 1 and 2, let's jump straight to a region. Queenstown was mentioned quite a b",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 17,
+    "session_identifier": "Travel_Planning_2:S2_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 A 12-day New Zealand South Island RV trip using a Britz Voyager 2-Berth RV, from April 5th to April 16th, 2026, following the 'Classic Loop' itinerary. The trip is designed to be scenic, not too rushed or stressful, with a mix of famous spots and quiet time, ensuring unique local food and scenic beauty/quiet time in Wanaka are not missed. The detailed itinerary includes: Day 1: Arrive Christchurch & RV Pick-up; Day 2: Christchurch to Lake Tekapo; Day 3: Lake Tekapo to Aoraki/Mount Cook (including a shorter walk like Hooker Valley Track) & On to Queenstown; Day 4: Queenstown - Adventure & Relaxation; Day 5: Queenstown to Te Anau; Day 6: Milford Sound Day Trip; Day 7: Te Anau to Wanaka; Day 8: Wanaka - Scenic Beauty & Quiet Time; Day 9: Wanaka to Franz Josef/Fox Glacier; Day 10: Franz Josef/Fox Glacier to Punakaiki (Pancake Rocks) (Optional add-on: Franz Josef heli-hike, highly weather-dependent and time-constrained, in the morning); Day 11: Punakaiki to Arthur's Pass & Return to Christchurch; Day 12: Depart Christchurch. Key attractions include Milford Sound, Lake Tekapo (Church of the Good Shepherd, stargazing), Queenstown (Skyline Gondola, jet boat, Lake Wakatipu), Franz Josef/Fox Glacier, Punakaiki (Pancake Rocks), and Aoraki/Mount Cook. The trip also features relaxed time in places like Wanaka and scenic drives through Lindis Pass, Haast Pass, and Arthur's Pass. Stargazing is a primary activity for Lake Tekapo, with a contingency plan: if weather prevents stargazing at Lake Tekapo, the backup activity is Tekapo Hot Springs, and a second attempt at stargazing will be considered the following night at Aoraki/Mount Cook by checking the forecast. The itinerary also integrates local food recommendations and dining options, reinforcing the comprehensive RV meal plan and restaurant suggestions."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 5.14984130859375e-05,
+    "judge_usage": {
+      "input_tokens": 15994,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 114,
+      "context_turns": 79,
+      "context_chars": 71305,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0010",
+    "query_content": "Hello, we decided on the flexible diet strategy. What is the next plan?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 21,
+    "session_identifier": "Fitness_1:S2_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Diet/Nutrition Plan】 User confirms the next step is to look at daily meals outside of afternoon tea and hot pot.",
+      "【Diet/Nutrition Plan】 Proposed strategies for easy & healthy daily meals (awaiting user feedback): Smart Takeout/Delivery Choices (focus protein/veggies, sauce on side, avoid fried/creamy), 'Assemble-Don't-Cook' Meals (Greek yogurt parfait, overnight oats, boiled eggs; pre-made protein, pre-cut veggies, instant whole grains), Batch Prep (minimal effort for protein/grains/chopped veggies), Focus on Protein and Fiber at Every Meal, and Hydration."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 6.794929504394531e-05,
+    "judge_usage": {
+      "input_tokens": 18170,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 136,
+      "context_turns": 95,
+      "context_chars": 82793,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0011",
+    "query_content": "Okay, the social eating part is definitely helpful. For daily meals, I'm usually really busy with work, so cooking a lot isn't really an option for me on weekdays.\n\n'Smart takeout choices' sounds good",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 21,
+    "session_identifier": "Fitness_1:S2_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "User's usual work hours are 9 AM to 6 PM, with frequent overtime extending until 8 or 9 PM during busy periods.",
+      "User needs daily meal strategies that are stickable and don't require cooking every meal."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      false,
+      true
+    ],
+    "retrieval_latency": 7.224082946777344e-05,
+    "judge_usage": {
+      "input_tokens": 17787,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 138,
+      "context_turns": 96,
+      "context_chars": 81528,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0012",
+    "query_content": "Hello, I want to arrange a workout schedule for Tuesdays, Thursdays, and Saturdays. How about that?",
+    "topic": "Fitness",
+    "category": "Temporal-reasoning",
+    "session_index": 23,
+    "session_identifier": "Fitness_1:S3_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "Study Session every Tuesday (8:00 PM - 9:30 PM)",
+      "Study Session every Thursday (8:00 PM - 9:30 PM)",
+      "Study Session every Saturday (10:00 AM - 12:00 PM)"
+    ],
+    "recall": 1.0,
+    "hits": 3,
+    "total": 3,
+    "judge_details": [
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 8.106231689453125e-05,
+    "judge_usage": {
+      "input_tokens": 19856,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 146,
+      "context_turns": 102,
+      "context_chars": 90667,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  },
+  {
+    "persona": "Lin_Wanyu",
+    "query_id": "Q-0013",
+    "query_content": "You're right, we definitely need to avoid those study sessions!",
+    "topic": "Fitness",
+    "category": "Temporal-reasoning",
+    "session_index": 23,
+    "session_identifier": "Fitness_1:S3_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "Study Session every Tuesday (8:00 PM - 9:30 PM)",
+      "Study Session every Thursday (8:00 PM - 9:30 PM)",
+      "Study Session every Saturday (10:00 AM - 12:00 PM)"
+    ],
+    "recall": 1.0,
+    "hits": 3,
+    "total": 3,
+    "judge_details": [
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 0.0012328624725341797,
+    "judge_usage": {
+      "input_tokens": 19989,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "graph_snapshot": {
+      "total_turns": 148,
+      "context_turns": 103,
+      "context_chars": 91212,
+      "type": "h2o"
+    },
+    "mode": "h2o"
+  }
+]

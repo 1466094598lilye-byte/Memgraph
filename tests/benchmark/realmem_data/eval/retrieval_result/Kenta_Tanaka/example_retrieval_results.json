@@ -1,0 +1,14 @@
+{
+    "Q-0001": {
+        "question": "Hello. I've started listening to the wine podcasts you recommended during my commute. It's been helpful. What should be the next step in the study plan?",
+        "ranked_items": [
+            {
+                "res_type": "entity",
+                "entity_name": "\"WINE FOLLY PODCAST\"",
+                "entity_type": "\"OBJECT\"",
+                "content": "\"A recommended podcast for the user that covers wine concepts in an accessible format, useful for audio learning during commutes.\"",
+                "rank": 1
+            }
+        ]
+    }
+}

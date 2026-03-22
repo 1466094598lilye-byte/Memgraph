@@ -1,0 +1,17 @@
+{
+  "Hi! I've been thinking about writing recently. I plan to write a story about our family and town.": {
+    "question": "Hi! I've been thinking about writing recently. I plan to write a story about our family and town.",
+    "ranked_items": [
+      {
+        "res_type": "entity",
+        "entity_name": "\"COMMUNITY MEETING SCENARIO\"",
+        "entity_type": "\"OBJECT\"",
+        "content": "\"A scenario designed for participants to conduct a community meeting during a health emergency and engage with partners while addressing cultural considerations.\"",
+        "rank": 1
+      }
+    ],
+    "id": "Hi! I've been thinking about writing recently. I plan to write a story about our family and town.",
+    "generated_answer": "",
+    "evidence_used": "---- idx 1 ----\n\"COMMUNITY MEETING SCENARIO\": \"A scenario designed for participants to conduct a community meeting during a health emergency and engage with partners while addressing cultural considerations.\""
+  }
+}

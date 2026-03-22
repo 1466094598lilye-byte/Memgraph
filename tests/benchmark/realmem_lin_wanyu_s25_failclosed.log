@@ -1,0 +1,63 @@
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+
+[1/1] Running persona: Lin_Wanyu
+
+============================================================
+Persona: Lin_Wanyu  [INCREMENTAL]
+Sessions: 25  |  Queries: 13
+Eval model: deepseek-chat  |  Judge model: deepseek-chat
+============================================================
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 3971.10it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+Loading weights:   0%|          | 0/199 [00:00<?, ?it/s]Loading weights: 100%|██████████| 199/199 [00:00<00:00, 7457.91it/s]
+[1mBertModel LOAD REPORT[0m from: sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2
+Key                     | Status     |  | 
+------------------------+------------+--+-
+embeddings.position_ids | UNEXPECTED |  | 
+
+[3mNotes:
+- UNEXPECTED[3m	:can be ignored when loading from different task/architecture; not ok if you expect identical arch.[0m
+  [10/25] queries: 1/13  avg_recall: 100.0%  session_time: 8.5s
+  [20/25] queries: 9/13  avg_recall: 63.9%  session_time: 0.2s
+  [25/25] queries: 13/13  avg_recall: 63.5%  session_time: 22.4s
+
+======================================================================
+RealMem Benchmark 报告
+======================================================================
+
+总体 Memory Recall: 63.5% ± 44.0%  (n=13)
+
+按 Category:
+  Dynamic Incremental        66.7% ± 43.3%  (n=9)
+  Implicit Preference        12.5% ± 17.7%  (n=2)
+  Temporal-reasoning        100.0% ± 0.0%  (n=2)
+
+按 Topic:
+  Fitness                    60.7% ± 40.5%  (n=7)
+  Knowledge_Learning        100.0% ± 0.0%  (n=1)
+  Travel_Planning            60.0% ± 54.8%  (n=5)
+
+延迟:
+  retrieval:  p50=30ms  p95=14634ms
+
+──────────────────────────────────────────────────
+Token 用量:
+                            input     output      total
+  ──────────────────── ────────── ────────── ──────────
+  encode (MG)               26828       3060      29888
+  judge (eval)              24507        100      24607
+  ──────────────────── ────────── ────────── ──────────
+  TOTAL                     51335       3160      54495
+
+Graph 最终状态:
+  nodes=35  topics=12  raw_traces=148
+
+======================================================================
+
+结果已保存到 tests/benchmark/realmem_lin_wanyu_s25_failclosed.json

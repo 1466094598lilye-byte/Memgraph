@@ -1,0 +1,17 @@
+{
+  "Q-0002": {
+    "question": "Hi there. I'm ready to start learning. What's the best way to approach the installation and initial setup?",
+    "ranked_items": [
+      {
+        "res_type": "entity",
+        "entity_name": "\"ROADMAP FOR LEARNING R\"",
+        "entity_type": "\"GOAL/INTENTION\"",
+        "content": "\"A structured plan formulated to guide the user through the necessary steps to learn R effectively, including setup, fundamentals, and practical applications.\"",
+        "rank": 1
+      }
+    ],
+    "id": "Q-0002",
+    "generated_answer": "",
+    "evidence_used": "---- idx 1 ----\n\"ROADMAP FOR LEARNING R\": \"A structured plan formulated to guide the user through the necessary steps to learn R effectively, including setup, fundamentals, and practical applications.\""
+  }
+}

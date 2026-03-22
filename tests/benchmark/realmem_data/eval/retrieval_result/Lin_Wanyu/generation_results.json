@@ -1,0 +1,17 @@
+{
+  "Q-0001": {
+    "question": "Okay, so my usual work hours are pretty standard, like 9 AM to 6 PM, but honestly, I often work late, sometimes until 8 or 9 PM, especially during busy periods. Overtime is pretty frequent.\n\nAs for free time, weekdays are tough. Evenings are often taken up by work or I'm just too tired. Weekends are better, but I also like to relax or meet friends. Mornings... I'm not really a morning person for exercise.\n\nRealistically, I think I could probably dedicate about 30-45 minutes maybe 2-3 times a week? I don't want to overcommit and then just give up like I've done before.",
+    "ranked_items": [
+      {
+        "res_type": "entity",
+        "entity_name": "\"EXERCISE FREQUENCY\"",
+        "entity_type": "\"STATISTIC\"",
+        "content": "\"The user plans to engage in structured exercise 3 times per week as part of their fitness regimen.\"",
+        "rank": 1
+      }
+    ],
+    "id": "Q-0001",
+    "generated_answer": "",
+    "evidence_used": "---- idx 1 ----\n\"EXERCISE FREQUENCY\": \"The user plans to engage in structured exercise 3 times per week as part of their fitness regimen.\""
+  }
+}

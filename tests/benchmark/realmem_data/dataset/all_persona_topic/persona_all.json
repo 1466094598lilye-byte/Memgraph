@@ -1,0 +1,337 @@
+[ 
+  {
+    "name": "Lin Wanyu",
+    "role": "Regular Office Worker / Fitness Beginner",
+    "demographics": {
+      "age": "27",
+      "occupation": "Operations Specialist at an Internet Company",
+      "location": "Shenzhen",
+      "education": "Bachelor's Degree"
+    },
+    "context": {
+      "living_situation": "Sharing an apartment with friends",
+      "work_stress_level": "Medium-High (Sedentary for 8+ hours/day, frequent overtime)",
+      "social_habits": "Easily influenced by colleagues to order afternoon tea; enjoys exploring new restaurants and eating hot pot on weekends"
+    }
+  },
+  {
+    "name": "Ethan Hunt",
+    "role": "Silicon Valley Tech Upstart",
+    "demographics": {
+      "age": "32",
+      "occupation": "AI Startup Founder",
+      "location": "San Francisco, USA",
+      "education": "Stanford Dropout"
+    },
+    "context": {
+      "digital_behavior": "Geek, online 24/7, obsessed with Bio-hacking and Quantified Self data",
+      "financial_mindset": "High risk, high reward; assets mostly in stocks and crypto, unstable cash flow",
+      "core_values": "Efficiency above all, change the world",
+      "lifestyle_notes": "Intermittent fasting, takes various supplements, focuses on body optimization alongside work efficiency"
+    }
+  },
+  {
+    "name": "Sarah Miller",
+    "role": "Midwest Soccer Mom",
+    "demographics": {
+      "age": "45",
+      "occupation": "Part-time Accountant / Homemaker",
+      "location": "Suburban Ohio, USA",
+      "education": "Bachelor's Degree"
+    },
+    "context": {
+      "family_status": "Married, three kids (two in high school, one in college)",
+      "spending_habits": "Costco bulk buying, sensitive to coupons, prioritizes family insurance and savings",
+      "media_consumption": "Active Facebook Group user, enjoys home renovation TV shows",
+      "biggest_challenge": "Rising household expenses due to inflation and the approaching empty nest phase"
+    }
+  },
+  {
+    "name": "Kenta Tanaka",
+    "role": "Exhausted Salaryman",
+    "demographics": {
+      "age": "40",
+      "occupation": "Middle Manager at a Major Trading Company",
+      "location": "Tokyo, Japan",
+      "education": "Waseda University"
+    },
+    "context": {
+      "work_culture": "Strict hierarchy, mandatory attendance at after-work drinking parties (Nomikai)",
+      "living_situation": "Detached house in Saitama (1.5-hour one-way commute)",
+      "emotional_state": "Repressed, strong sense of loneliness; sleeping on the train is the only rest",
+      "hobbies": "Visiting capsule hotel saunas alone on weekends, playing Pachinko to relieve stress"
+    }
+  },
+  {
+    "name": "Priya Sharma",
+    "role": "Aspiring Coder Seeking Upward Mobility",
+    "demographics": {
+      "age": "23",
+      "occupation": "Junior Developer at an IT Outsourcing Firm",
+      "location": "Bangalore, India",
+      "education": "Bachelor of Engineering"
+    },
+    "context": {
+      "family_pressure": "Extremely high, carries the family's hopes, faces pressure to get married",
+      "digital_behavior": "Mobile First, YouTube learning addict",
+      "career_goal": "Save money to pursue a Master's degree in the US or Europe",
+      "daily_routine": "Spends 3 hours daily on crowded buses, studies English with noise-canceling headphones in a noisy shared apartment"
+    }
+  },
+  {
+    "name": "Lucas Silva",
+    "role": "Slum Short-Video Influencer",
+    "demographics": {
+      "age": "19",
+      "occupation": "TikTok Dancer / Gig Worker",
+      "location": "Rio de Janeiro, Brazil",
+      "education": "High School Dropout"
+    },
+    "context": {
+      "living_environment": "Favela, close-knit but chaotic community relationships",
+      "tech_usage": "Owns the latest iPhone (paid in installments), data anxiety",
+      "social_motivator": "Desires fame to move family out of the favela",
+      "personality": "Extremely extroverted, hedonistic, lives in the moment"
+    }
+  },
+  {
+    "name": "Sophie Dubois",
+    "role": "Eco-Minimalist Youth",
+    "demographics": {
+      "age": "23",
+      "occupation": "NGO Project Coordinator",
+      "location": "Berlin, Germany",
+      "education": "Master's in Sociology"
+    },
+    "context": {
+      "dietary_preference": "Strict Vegan",
+      "consumer_behavior": "Boycotts fast fashion, buys only second-hand clothes, attempts a 'Zero Waste' lifestyle",
+      "transportation": "Bicycle only, refuses private cars and short-haul flights",
+      "political_stance": "Severe climate anxiety, actively participates in street protests"
+    }
+  },
+  {
+    "name": "Adeleke Okonjo",
+    "role": "African Fintech Entrepreneur",
+    "demographics": {
+      "age": "29",
+      "occupation": "Mobile Money Agent",
+      "location": "Lagos, Nigeria",
+      "education": "Bachelor's Degree"
+    },
+    "context": {
+      "infrastructure_challenge": "Frequent power outages, relies on generators and multiple backup power sources",
+      "business_style": "Street smarts (Hustle), conducts all business via WhatsApp",
+      "financial_goal": "Build a cross-border remittance business",
+      "tech_adoption": "Skipped the PC era directly to mobile internet, high acceptance of cryptocurrency"
+    }
+  },
+  {
+    "name": "Elena Petrova",
+    "role": "Resilient Eastern European Grandmother",
+    "demographics": {
+      "age": "75",
+      "occupation": "Retired Doctor",
+      "location": "Moscow, Russia",
+      "education": "MD (Doctor of Medicine)"
+    },
+    "context": {
+      "cultural_habit": "Going to the Dacha (country cottage) to grow potatoes and pickle cucumbers",
+      "health_condition": "Arthritis, but believes in traditional remedies and stoicism",
+      "social_circle": "Tight-knit neighborhood relations, distrusts digital banking, saves only cash",
+      "media_preference": "State TV news, skeptical of the internet"
+    }
+  },
+  {
+    "name": "Liam O'Connor",
+    "role": "Aussie Surfer Dad",
+    "demographics": {
+      "age": "36",
+      "occupation": "Building Contractor (Tradie)",
+      "location": "Gold Coast, Australia",
+      "education": "Vocational College (TAFE)"
+    },
+    "context": {
+      "work_life_balance": "Excellent; surfs in the morning, finishes work at 3 PM to pick up kids",
+      "financial_status": "High blue-collar income, owns a pickup truck (Ute) and a boat",
+      "attitude": "Chill, dislikes the rat race, values outdoor BBQs and beer",
+      "health_focus": "Skin cancer prevention, recovery from sports injuries"
+    }
+  },
+  {
+    "name": "Amina Al-Fayed",
+    "role": "Middle East Luxury Buyer",
+    "demographics": {
+      "age": "28",
+      "occupation": "Fashion Blogger / Personal Shopper",
+      "location": "Dubai, UAE",
+      "education": "Art School in London"
+    },
+    "context": {
+      "consumption_level": "Extremely high, frequents top-tier malls and private clubs",
+      "social_constraint": "Balances traditional family values with a Western lifestyle",
+      "digital_platform": "Heavy user of Instagram and Snapchat, showcases lifestyle as well as outfits",
+      "travel_frequency": "International travel once a month (Paris, Milan, London)"
+    }
+  },
+  {
+    "name": "Kim Ji-young",
+    "role": "Seoul Full-time Exam Taker",
+    "demographics": {
+      "age": "26",
+      "occupation": "Unemployed (Preparing for Civil Service Exam)",
+      "location": "Seoul, South Korea",
+      "education": "Bachelor's Graduate"
+    },
+    "context": {
+      "living_space": "Gosiwon (extremely narrow room, barely fits a bed and desk)",
+      "daily_routine": "Drinks 3 Iced Americanos daily, stays in a study cafe for 14 hours",
+      "mental_health": "Extremely anxious, cut off almost all socializing, feels like a social failure",
+      "consumption": "Convenience store bento boxes, sole entertainment is reading Webtoons"
+    }
+  },
+  {
+    "name": "Pak Budi",
+    "role": "Indonesian Motorcycle Taxi Driver (Ojek)",
+    "demographics": {
+      "age": "34",
+      "occupation": "Ride-hailing Driver",
+      "location": "Jakarta, Indonesia",
+      "education": "High School"
+    },
+    "context": {
+      "family_role": "Sole breadwinner, has two children",
+      "tech_dependency": "Completely reliant on Super Apps (Gojek/Grab) for livelihood",
+      "financial_pain": "Rising fuel prices and platform commissions, almost no savings",
+      "community": "Member of driver mutual aid unions, loves street food stall (Warung) culture"
+    }
+  },
+  {
+    "name": "Oliver Smith",
+    "role": "City of London Elite",
+    "demographics": {
+      "age": "30",
+      "occupation": "Investment Bank Analyst",
+      "location": "London, UK",
+      "education": "University of Oxford"
+    },
+    "context": {
+      "substance_use": "Relies on alcohol and caffeine to sustain high-intensity work",
+      "housing": "Rents an expensive Kensington apartment, but uses it mostly just for sleeping",
+      "dating_life": "Uses Tinder/Hinge, mostly short-term relationships, no time to maintain a romance",
+      "status_symbol": "Bespoke suits, watches, members-only club memberships"
+    }
+  },
+  {
+    "name": "Isabella Rossi",
+    "role": "Slow-Living Italian Artisan",
+    "demographics": {
+      "age": "52",
+      "occupation": "Leather Restorer",
+      "location": "Florence, Italy",
+      "education": "Apprenticeship"
+    },
+    "context": {
+      "work_philosophy": "Craftsmanship spirit, rejects assembly lines, dislikes over-commercialization",
+      "diet": "Extremely particular about ingredient freshness, visits the morning market daily",
+      "family_structure": "Lives with mother and unmarried daughter, strong family focus",
+      "digital_attitude": "Only uses WhatsApp to contact clients, has no social media accounts"
+    }
+  },
+  {
+    "name": "Kwame Mensah",
+    "role": "Modern Kenyan Farmer",
+    "demographics": {
+      "age": "42",
+      "occupation": "Coffee Plantation Owner",
+      "location": "Outskirts of Nairobi, Kenya",
+      "education": "Agricultural University"
+    },
+    "context": {
+      "tech_in_agri": "Uses mobile phone to check global futures prices, pays wages via M-Pesa",
+      "climate_concern": "Unstable rainfall directly impacts livelihood",
+      "ambition": "Bypass middlemen to sell coffee beans directly to boutique cafes in the US/Europe",
+      "community_role": "Village opinion leader, sponsors the local primary school"
+    }
+  },
+  {
+    "name": "Sven Jansen",
+    "role": "Digital Nomad",
+    "demographics": {
+      "age": "28",
+      "occupation": "Freelance UI Designer",
+      "location": "Bali, Indonesia (Originally Dutch)",
+      "education": "Design Academy"
+    },
+    "context": {
+      "mobility": "No fixed abode, changes countries when visa expires",
+      "workspace": "Co-working spaces, seeks extreme internet speeds",
+      "values": "Experience over material goods, minimalist assets (one backpack)",
+      "pain_point": "Loneliness, difficulty establishing long-term stable intimate relationships"
+    }
+  },
+  {
+    "name": "Maria Gonzalez",
+    "role": "LA Gig Economy Worker",
+    "demographics": {
+      "age": "48",
+      "occupation": "Uber Driver / Cleaner",
+      "location": "Los Angeles, USA",
+      "education": "High School (Mexico)"
+    },
+    "context": {
+      "legal_status": "Green Card holder, applying for citizenship",
+      "financial_burden": "Remits money to parents back home, huge rent pressure in the US",
+      "health_access": "No health insurance, afraid to go to the hospital when sick, relies on over-the-counter meds",
+      "language": "Native Spanish speaker, fluent English but with an accent"
+    }
+  },
+  {
+    "name": "Tharn Srivijaya",
+    "role": "Bangkok Night Market Vendor",
+    "demographics": {
+      "age": "25",
+      "occupation": "Vintage Clothing Seller",
+      "location": "Bangkok, Thailand",
+      "education": "University Dropout"
+    },
+    "context": {
+      "night_life": "Nocturnal lifestyle, sleep schedule completely reversed",
+      "gender_identity": "LGBTQ+ community, extremely high tolerance for diverse cultures",
+      "business_channel": "Offline stall combined with Instagram Live selling",
+      "leisure": "Loves electronic music festivals, tattoo enthusiast"
+    }
+  },
+  {
+    "name": "Hans Gruber",
+    "role": "Swiss Precision Engineer",
+    "demographics": {
+      "age": "58",
+      "occupation": "Senior Mechanical Engineer",
+      "location": "Zurich, Switzerland",
+      "education": "ETH Zurich"
+    },
+    "context": {
+      "personality": "Rigorous, punctual, hates unplanned changes",
+      "hobby": "Mountaineering and skiing, owns a full set of top-tier outdoor gear",
+      "financial_stability": "Extremely high, focuses on wealth preservation and retirement planning",
+      "tech_usage": "Prefers high-end durable hardware, dislikes flashy software features"
+    }
+  },
+  {
+    "name": "Li Qiang",
+    "role": "Shenzhen Hardware Geek",
+    "demographics": {
+      "age": "29",
+      "occupation": "Embedded Engineer",
+      "location": "Shenzhen, China",
+      "education": "Bachelor's Degree"
+    },
+    "context": {
+      "environment": "Immersed in Huaqiangbei, extremely familiar with the supply chain",
+      "innovation": "Currently attempting to crowd-fund his own smart hardware product",
+      "lifestyle": "Eats Pig Trotter Rice, wears company T-shirts, conversations revolve around chips and molds",
+      "ambition": "Not just working for others, wants to build the next DJI or Anker"
+    }
+  }
+]

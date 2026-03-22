@@ -1,0 +1,20 @@
+# MemGraph - 对话历史编码插件
+# Python 3.10+
+
+pydantic>=2.0
+instructor>=1.0
+openai>=1.0
+anthropic>=0.18
+numpy>=1.24
+sentence-transformers>=2.0
+torch>=2.0
+
+# NonLLM 抽取器（零 API）
+spacy>=3.0
+yake>=0.4
+
+# Benchmark filler 池构建（WildChat）
+datasets>=2.14
+
+# 可选：graphiti-core 用于对话知识图谱（后续扩展）
+# graphiti-core>=0.28
