@@ -220,5 +220,16 @@ jobs:
 
             git add tests/benchmark/benchmark_*_${PERSONA}_*.json benchmark_reports/
             git commit -m "ci: ${PERSONA} benchmark results [skip ci]" || echo "Nothing to commit"
-            git push || echo "Push failed"
+            
+            # Retry push with rebase to handle concurrent runs
+            for i in 1 2 3 4 5; do
+              if git push; then
+                echo "✅ Push succeeded (attempt $i)"
+                break
+              else
+                echo "⚠️ Push failed (attempt $i), pulling with rebase..."
+                sleep $((i * 10))
+                git pull --rebase origin main
+              fi
+            done
           fi
