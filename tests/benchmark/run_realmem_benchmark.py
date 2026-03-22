@@ -1219,6 +1219,10 @@ def main():
                 activator_mode=args.activator,
             )
             all_results.extend(results)
+            # Incremental save: write after each persona so data is not lost on timeout
+            if args.output:
+                save_realmem_results(all_results, args.output)
+                print(f"  → Incremental save: {len(all_results)} results to {args.output}")
         except Exception as e:
             print(f"  → ERROR: {e}")
         # 释放内存，避免多 persona 累积 OOM

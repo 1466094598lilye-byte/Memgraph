@@ -4,13 +4,13 @@ on:
   workflow_dispatch:
     inputs:
       mode:
-        description: 'Run mode: compare (all activators) or single'
+        description: 'Run mode: compare (attention+mem0+summary) or single'
         required: false
         default: 'compare'
       persona:
-        description: 'Persona name (default: Lin_Wanyu, use ALL for all personas)'
+        description: 'Persona (default: ALL = run each persona one by one with incremental save)'
         required: false
-        default: 'Lin_Wanyu'
+        default: 'ALL'
       activator:
         description: 'Activator (only for single mode): attention/mem0/summary/h2o/full_context/layered'
         required: false
@@ -23,7 +23,7 @@ on:
 jobs:
   benchmark:
     runs-on: ubuntu-latest
-    timeout-minutes: 360
+    timeout-minutes: 350
 
     steps:
       - name: Checkout repository
@@ -35,24 +35,21 @@ jobs:
           python-version: '3.12'
 
       - name: Install dependencies
-        working-directory: .
         run: |
           pip install --upgrade pip
           pip install -r requirements.txt
 
       - name: Verify import
-        working-directory: .
         run: |
           python -c "from memgraph import MemGraph; print('✅ import OK')"
 
-      - name: Run benchmark
-        working-directory: .
+      - name: Run benchmark (per-persona incremental save)
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: |
           MODE="${{ github.event.inputs.mode || 'compare' }}"
-          PERSONA="${{ github.event.inputs.persona }}"
+          PERSONA_INPUT="${{ github.event.inputs.persona || 'ALL' }}"
           SESSIONS="${{ github.event.inputs.sessions }}"
           TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
@@ -60,48 +57,74 @@ jobs:
           echo "MemGraph RealMemBench"
           echo "=================================="
           echo "Mode:      ${MODE}"
-          echo "Persona:   ${PERSONA:-ALL}"
+          echo "Persona:   ${PERSONA_INPUT}"
           echo "Sessions:  ${SESSIONS:-all}"
           echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
           echo "Python:    $(python --version)"
           echo "=================================="
 
+          # Determine activators
           if [ "$MODE" = "compare" ]; then
             ACTIVATORS="attention mem0 summary"
           else
             ACTIVATORS="${{ github.event.inputs.activator || 'attention' }}"
           fi
 
+          # Determine personas
+          if [ "$PERSONA_INPUT" = "ALL" ]; then
+            PERSONAS=$(python -c "
+          from tests.benchmark.realmem_loader import list_personas
+          for p in list_personas():
+              print(p['person_name'])
+          ")
+          else
+            PERSONAS="$PERSONA_INPUT"
+          fi
+
+          echo "Activators: $ACTIVATORS"
+          echo "Personas: $PERSONAS"
+          echo ""
+
+          # Run each activator × persona combination, save after EACH persona
           for ACT in $ACTIVATORS; do
             echo ""
             echo "========================================="
-            echo "  Running activator: ${ACT}"
+            echo "  Activator: ${ACT}"
             echo "========================================="
-            echo ""
 
             OUTPUT="tests/benchmark/benchmark_${ACT}_${TIMESTAMP}.json"
 
-            CMD="python -m tests.benchmark.run_realmem_benchmark"
-            CMD="$CMD --activator ${ACT}"
-            CMD="$CMD --static"
-            CMD="$CMD --output ${OUTPUT}"
+            for PNAME in $PERSONAS; do
+              echo ""
+              echo "  ── Persona: ${PNAME} ──"
 
-            if [ "$PERSONA" != "ALL" ] && [ -n "$PERSONA" ]; then
-              CMD="$CMD --persona ${PERSONA}"
-            fi
+              CMD="python -m tests.benchmark.run_realmem_benchmark"
+              CMD="$CMD --activator ${ACT}"
+              CMD="$CMD --static"
+              CMD="$CMD --persona ${PNAME}"
+              CMD="$CMD --output ${OUTPUT}"
 
-            if [ -n "$SESSIONS" ]; then
-              CMD="$CMD --limit-sessions ${SESSIONS}"
-            fi
+              if [ -n "$SESSIONS" ]; then
+                CMD="$CMD --limit-sessions ${SESSIONS}"
+              fi
 
-            echo "Running: $CMD"
-            $CMD || echo "⚠️ ${ACT} failed with exit code $?"
-            echo ""
+              echo "  Running: $CMD"
+              $CMD || echo "  ⚠️ ${ACT}/${PNAME} failed with exit code $?"
+
+              # Check if file was written
+              if [ -f "$OUTPUT" ]; then
+                echo "  ✅ Results saved to ${OUTPUT} ($(wc -c < "$OUTPUT") bytes)"
+              fi
+              echo ""
+            done
+
+            echo "========================================="
+            echo "  ${ACT} complete"
+            echo "========================================="
           done
 
       - name: Generate comparison summary
         if: always()
-        working-directory: .
         run: |
           echo "## MemGraph RealMemBench Results" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -114,26 +137,33 @@ jobs:
           files = sorted(glob.glob('tests/benchmark/benchmark_*.json'))
           for f in files:
               name = os.path.basename(f)
-              # Extract activator name from filename
               parts = name.replace('benchmark_', '').split('_')
-              # activator is everything before the timestamp (last 2 parts: date_time.json)
               activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
 
               try:
                   with open(f) as fp:
                       data = json.load(fp)
-                  recall = data.get('overall_recall', 'N/A')
-                  if isinstance(recall, float):
-                      recall = f'{recall:.1%}'
-                  queries = data.get('total_queries', 'N/A')
-                  gt = data.get('total_gt_memories', 'N/A')
-                  print(f'| {activator} | {recall} | {queries} | {gt} |')
+                  if isinstance(data, list):
+                      results = data
+                  elif isinstance(data, dict):
+                      results = data.get('results', [])
+                  else:
+                      results = []
+                  
+                  if results:
+                      recall = sum(r.get('recall', 0) for r in results) / len(results)
+                      recall_str = f'{recall:.1%}'
+                  else:
+                      recall_str = 'N/A'
+                  queries = len(results)
+                  gt = sum(r.get('gt_memory_count', 0) for r in results)
+                  print(f'| {activator} | {recall_str} | {queries} | {gt} |')
               except Exception as e:
-                  print(f'| {activator} | ERROR | - | - |')
+                  print(f'| {activator} | ERROR: {e} | - | - |')
           " >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
-          
+
           # Token usage comparison
           echo "### Token Usage" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
@@ -149,7 +179,7 @@ jobs:
               try:
                   with open(f) as fp:
                       data = json.load(fp)
-                  results = data.get('results', [])
+                  results = data if isinstance(data, list) else data.get('results', [])
                   enc_in = sum(r.get('encode_usage_snapshot', {}).get('input_tokens', 0) for r in results)
                   enc_out = sum(r.get('encode_usage_snapshot', {}).get('output_tokens', 0) for r in results)
                   jdg_in = sum(r.get('judge_usage', {}).get('input_tokens', 0) for r in results)
@@ -163,23 +193,38 @@ jobs:
           echo "---" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
 
-          # Detailed per-activator breakdown
-          for f in tests/benchmark/benchmark_*.json; do
-            if [ -f "$f" ]; then
-              echo "### $(basename $f)" >> $GITHUB_STEP_SUMMARY
-              echo '```json' >> $GITHUB_STEP_SUMMARY
-              python3 -c "
-          import json, sys
-          with open('$f') as fp:
-              data = json.load(fp)
-          summary = {k: data[k] for k in ['overall_recall','total_queries','total_gt_memories','by_category','by_topic'] if k in data}
-          json.dump(summary, sys.stdout, indent=2, ensure_ascii=False)
-          " 2>/dev/null || echo "Failed to parse"
-              echo '' >> $GITHUB_STEP_SUMMARY
-              echo '```' >> $GITHUB_STEP_SUMMARY
-              echo '' >> $GITHUB_STEP_SUMMARY
-            fi
-          done
+          # Per-persona breakdown
+          echo "### Per-Persona Breakdown" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+
+          python3 -c "
+          import json, glob, os
+          from collections import defaultdict
+
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
+              name = os.path.basename(f)
+              parts = name.replace('benchmark_', '').split('_')
+              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
+
+              try:
+                  with open(f) as fp:
+                      data = json.load(fp)
+                  results = data if isinstance(data, list) else data.get('results', [])
+
+                  by_persona = defaultdict(list)
+                  for r in results:
+                      by_persona[r.get('persona', '?')].append(r)
+
+                  print(f'#### {activator}')
+                  print(f'| Persona | Recall | Queries |')
+                  print(f'|---------|--------|---------|')
+                  for p in sorted(by_persona):
+                      pr = by_persona[p]
+                      avg = sum(r.get('recall', 0) for r in pr) / len(pr)
+                      print(f'| {p} | {avg:.1%} | {len(pr)} |')
+                  print()
+              except: pass
+          " >> $GITHUB_STEP_SUMMARY
 
       - name: Upload results as artifact
         if: always()
@@ -190,19 +235,17 @@ jobs:
           retention-days: 90
 
       - name: Commit results to main
-        if: success()
+        if: always()
         run: |
-          # Check if there are new result files to commit
           if ls tests/benchmark/benchmark_*.json 1>/dev/null 2>&1; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
-            
+
             TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-            
-            # Generate a run report
+
             mkdir -p benchmark_reports
             REPORT="benchmark_reports/run_${GITHUB_RUN_NUMBER}_$(date +%Y%m%d_%H%M%S).md"
-            
+
             echo "# Benchmark Run #${GITHUB_RUN_NUMBER}" > "$REPORT"
             echo "" >> "$REPORT"
             echo "- **Date:** ${TIMESTAMP}" >> "$REPORT"
@@ -212,12 +255,13 @@ jobs:
             echo "- **Mode:** ${{ github.event.inputs.mode || 'compare' }}" >> "$REPORT"
             echo "- **Persona:** ${{ github.event.inputs.persona || 'ALL' }}" >> "$REPORT"
             echo "- **Sessions:** ${{ github.event.inputs.sessions || 'all' }}" >> "$REPORT"
+            echo "- **Status:** $([ ${{ job.status }} = 'success' ] && echo '✅ Complete' || echo '⚠️ Partial (timeout or error)')" >> "$REPORT"
             echo "" >> "$REPORT"
             echo "## Results" >> "$REPORT"
             echo "" >> "$REPORT"
-            echo "| Activator | Overall Recall | Queries | GT Memories |" >> "$REPORT"
-            echo "|-----------|---------------|---------|-------------|" >> "$REPORT"
-            
+            echo "| Activator | Overall Recall | Queries |" >> "$REPORT"
+            echo "|-----------|---------------|---------|" >> "$REPORT"
+
             python3 -c "
           import json, glob, os
           for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
@@ -227,34 +271,18 @@ jobs:
               try:
                   with open(f) as fp:
                       data = json.load(fp)
-                  recall = data.get('overall_recall', 'N/A')
-                  if isinstance(recall, float): recall = f'{recall:.1%}'
-                  queries = data.get('total_queries', 'N/A')
-                  gt = data.get('total_gt_memories', 'N/A')
-                  print(f'| {activator} | {recall} | {queries} | {gt} |')
-              except: print(f'| {activator} | ERROR | - | - |')
+                  results = data if isinstance(data, list) else data.get('results', [])
+                  if results:
+                      recall = sum(r.get('recall', 0) for r in results) / len(results)
+                      print(f'| {activator} | {recall:.1%} | {len(results)} |')
+                  else:
+                      print(f'| {activator} | N/A | 0 |')
+              except: print(f'| {activator} | ERROR | - |')
           " >> "$REPORT"
-            
-            echo "" >> "$REPORT"
-            echo "## Detail" >> "$REPORT"
-            echo "" >> "$REPORT"
-            for f in tests/benchmark/benchmark_*.json; do
-              echo "### $(basename $f)" >> "$REPORT"
-              echo '```json' >> "$REPORT"
-              python3 -c "
-          import json, sys
-          with open('$f') as fp: data = json.load(fp)
-          summary = {k: data[k] for k in ['overall_recall','total_queries','total_gt_memories','by_category','by_topic'] if k in data}
-          json.dump(summary, sys.stdout, indent=2, ensure_ascii=False)
-          " >> "$REPORT" 2>/dev/null
-              echo '' >> "$REPORT"
-              echo '```' >> "$REPORT"
-              echo '' >> "$REPORT"
-            done
-            
+
             git add tests/benchmark/benchmark_*.json benchmark_reports/
-            git commit -m "ci: benchmark run #${GITHUB_RUN_NUMBER} results [skip ci]"
-            git push
+            git commit -m "ci: benchmark run #${GITHUB_RUN_NUMBER} results [skip ci]" || echo "Nothing to commit"
+            git push || echo "Push failed"
           else
             echo "No benchmark result files found, skipping commit"
           fi
