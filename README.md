@@ -11,19 +11,19 @@ MemGraph v7 uses an **Attention-Routed Memory** architecture inspired by how hum
 │                     Query Input                        │
 │                         ↓                              │
 │              ┌──────────────────┐                      │
-│              │  1. Memo Store    │  ← 全量注入          │
-│              │  (precise facts)  │    (small, always)   │
+│              │  1. Memo Store    │  ← inject all        │
+│              │  (precise facts)  │    (small, critical) │
 │              └────────┬─────────┘                      │
 │                       ↓                                │
 │              ┌──────────────────┐                      │
 │              │  2. Turn Store    │  ← cosine top-k     │
-│              │  (all turns +     │    选择性加载         │
+│              │  (all turns +     │    selective recall   │
 │              │   embeddings)     │                      │
 │              └────────┬─────────┘                      │
 │                       ↓                                │
 │              ┌──────────────────┐                      │
-│              │  3. Focus Decay   │  ← 焦点外衰减        │
-│              │  (active thread   │    焦点内加权         │
+│              │  3. Focus Decay   │  ← boost in-focus    │
+│              │  (active thread   │    decay out-of-focus │
 │              │   weighting)      │                      │
 │              └────────┬─────────┘                      │
 │                       ↓                                │
