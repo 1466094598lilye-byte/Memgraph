@@ -3,27 +3,53 @@ name: MemGraph RealMemBench
 on:
   workflow_dispatch:
     inputs:
-      mode:
-        description: 'Run mode: compare (attention+mem0+summary) or single'
-        required: false
-        default: 'compare'
       persona:
-        description: 'Persona (default: ALL = run each persona one by one with incremental save)'
-        required: false
-        default: 'ALL'
+        description: 'Select persona to benchmark'
+        required: true
+        type: choice
+        options:
+          - Lin_Wanyu
+          - Adeleke_Okonjo
+          - Ethan_Hunt
+          - Kenta_Tanaka
+          - Kim_Ji_young
+          - Liam_O_Connor
+          - Oliver_Smith
+          - Pak_Budi
+          - Sarah_Miller
+          - Sophie_Dubois
+        default: 'Lin_Wanyu'
+      mode:
+        description: 'Run mode'
+        required: true
+        type: choice
+        options:
+          - compare
+          - single
+        default: 'compare'
       activator:
-        description: 'Activator (only for single mode): attention/mem0/summary/h2o/full_context/layered'
+        description: 'Activator (only for single mode)'
         required: false
+        type: choice
+        options:
+          - attention
+          - mem0
+          - summary
+          - h2o
+          - full_context
+          - layered
         default: 'attention'
       sessions:
-        description: 'Limit sessions per persona (empty = all)'
+        description: 'Limit sessions (empty = all)'
         required: false
         default: ''
 
 jobs:
   benchmark:
     runs-on: ubuntu-latest
-    timeout-minutes: 350
+    timeout-minutes: 180
+    
+    name: "${{ github.event.inputs.persona }} × ${{ github.event.inputs.mode }}"
 
     steps:
       - name: Checkout repository
@@ -43,139 +69,96 @@ jobs:
         run: |
           python -c "from memgraph import MemGraph; print('✅ import OK')"
 
-      - name: Run benchmark (per-persona incremental save)
+      - name: Run benchmark
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: |
-          MODE="${{ github.event.inputs.mode || 'compare' }}"
-          PERSONA_INPUT="${{ github.event.inputs.persona || 'ALL' }}"
+          PERSONA="${{ github.event.inputs.persona }}"
+          MODE="${{ github.event.inputs.mode }}"
           SESSIONS="${{ github.event.inputs.sessions }}"
           TIMESTAMP=$(date +%Y%m%d_%H%M%S)
 
           echo "=================================="
           echo "MemGraph RealMemBench"
           echo "=================================="
+          echo "Persona:   ${PERSONA}"
           echo "Mode:      ${MODE}"
-          echo "Persona:   ${PERSONA_INPUT}"
           echo "Sessions:  ${SESSIONS:-all}"
           echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "Python:    $(python --version)"
           echo "=================================="
 
-          # Determine activators
           if [ "$MODE" = "compare" ]; then
             ACTIVATORS="attention mem0 summary"
           else
-            ACTIVATORS="${{ github.event.inputs.activator || 'attention' }}"
+            ACTIVATORS="${{ github.event.inputs.activator }}"
           fi
 
-          # Determine personas
-          if [ "$PERSONA_INPUT" = "ALL" ]; then
-            PERSONAS=$(python -c "
-          from tests.benchmark.realmem_loader import list_personas
-          for p in list_personas():
-              print(p['person_name'])
-          ")
-          else
-            PERSONAS="$PERSONA_INPUT"
-          fi
-
-          echo "Activators: $ACTIVATORS"
-          echo "Personas: $PERSONAS"
-          echo ""
-
-          # Run each activator × persona combination, save after EACH persona
           for ACT in $ACTIVATORS; do
             echo ""
             echo "========================================="
-            echo "  Activator: ${ACT}"
+            echo "  Activator: ${ACT} | Persona: ${PERSONA}"
             echo "========================================="
 
-            OUTPUT="tests/benchmark/benchmark_${ACT}_${TIMESTAMP}.json"
+            OUTPUT="tests/benchmark/benchmark_${ACT}_${PERSONA}_${TIMESTAMP}.json"
 
-            for PNAME in $PERSONAS; do
-              echo ""
-              echo "  ── Persona: ${PNAME} ──"
+            CMD="python -m tests.benchmark.run_realmem_benchmark"
+            CMD="$CMD --activator ${ACT}"
+            CMD="$CMD --static"
+            CMD="$CMD --persona ${PERSONA}"
+            CMD="$CMD --output ${OUTPUT}"
 
-              CMD="python -m tests.benchmark.run_realmem_benchmark"
-              CMD="$CMD --activator ${ACT}"
-              CMD="$CMD --static"
-              CMD="$CMD --persona ${PNAME}"
-              CMD="$CMD --output ${OUTPUT}"
+            if [ -n "$SESSIONS" ]; then
+              CMD="$CMD --limit-sessions ${SESSIONS}"
+            fi
 
-              if [ -n "$SESSIONS" ]; then
-                CMD="$CMD --limit-sessions ${SESSIONS}"
-              fi
+            echo "Running: $CMD"
+            $CMD || echo "⚠️ ${ACT} failed with exit code $?"
 
-              echo "  Running: $CMD"
-              $CMD || echo "  ⚠️ ${ACT}/${PNAME} failed with exit code $?"
-
-              # Check if file was written
-              if [ -f "$OUTPUT" ]; then
-                echo "  ✅ Results saved to ${OUTPUT} ($(wc -c < "$OUTPUT") bytes)"
-              fi
-              echo ""
-            done
-
-            echo "========================================="
-            echo "  ${ACT} complete"
-            echo "========================================="
+            if [ -f "$OUTPUT" ]; then
+              QUERIES=$(python3 -c "import json; d=json.load(open('$OUTPUT')); print(len(d) if isinstance(d,list) else len(d.get('results',[])))")
+              echo "✅ Saved: ${OUTPUT} (${QUERIES} queries)"
+            fi
+            echo ""
           done
 
-      - name: Generate comparison summary
+      - name: Generate summary
         if: always()
         run: |
-          echo "## MemGraph RealMemBench Results" >> $GITHUB_STEP_SUMMARY
+          echo "## RealMemBench: ${{ github.event.inputs.persona }}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Activator | Overall Recall | Total Queries | Total GT Memories |" >> $GITHUB_STEP_SUMMARY
-          echo "|-----------|---------------|---------------|-------------------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Activator | Recall | Queries |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
 
           python3 -c "
           import json, glob, os
-
-          files = sorted(glob.glob('tests/benchmark/benchmark_*.json'))
-          for f in files:
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json')):
               name = os.path.basename(f)
               parts = name.replace('benchmark_', '').split('_')
-              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
-
+              activator = parts[0]
               try:
                   with open(f) as fp:
                       data = json.load(fp)
-                  if isinstance(data, list):
-                      results = data
-                  elif isinstance(data, dict):
-                      results = data.get('results', [])
-                  else:
-                      results = []
-                  
+                  results = data if isinstance(data, list) else data.get('results', [])
                   if results:
                       recall = sum(r.get('recall', 0) for r in results) / len(results)
-                      recall_str = f'{recall:.1%}'
-                  else:
-                      recall_str = 'N/A'
-                  queries = len(results)
-                  gt = sum(r.get('gt_memory_count', 0) for r in results)
-                  print(f'| {activator} | {recall_str} | {queries} | {gt} |')
+                      print(f'| {activator} | {recall:.1%} | {len(results)} |')
               except Exception as e:
-                  print(f'| {activator} | ERROR: {e} | - | - |')
+                  print(f'| {activator} | ERROR | - |')
           " >> $GITHUB_STEP_SUMMARY
 
           echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Token usage comparison
           echo "### Token Usage" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
-          echo "| Activator | Encode Input | Encode Output | Judge Input | Judge Output | Total |" >> $GITHUB_STEP_SUMMARY
-          echo "|-----------|-------------|--------------|------------|-------------|-------|" >> $GITHUB_STEP_SUMMARY
+          echo "| Activator | Encode In | Encode Out | Judge In | Judge Out | Total |" >> $GITHUB_STEP_SUMMARY
+          echo "|-----------|----------|-----------|---------|----------|-------|" >> $GITHUB_STEP_SUMMARY
 
           python3 -c "
           import json, glob, os
-          for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json')):
               name = os.path.basename(f)
               parts = name.replace('benchmark_', '').split('_')
-              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
+              activator = parts[0]
               try:
                   with open(f) as fp:
                       data = json.load(fp)
@@ -189,85 +172,42 @@ jobs:
               except: print(f'| {activator} | - | - | - | - | - |')
           " >> $GITHUB_STEP_SUMMARY
 
-          echo "" >> $GITHUB_STEP_SUMMARY
-          echo "---" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          # Per-persona breakdown
-          echo "### Per-Persona Breakdown" >> $GITHUB_STEP_SUMMARY
-          echo "" >> $GITHUB_STEP_SUMMARY
-
-          python3 -c "
-          import json, glob, os
-          from collections import defaultdict
-
-          for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
-              name = os.path.basename(f)
-              parts = name.replace('benchmark_', '').split('_')
-              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
-
-              try:
-                  with open(f) as fp:
-                      data = json.load(fp)
-                  results = data if isinstance(data, list) else data.get('results', [])
-
-                  by_persona = defaultdict(list)
-                  for r in results:
-                      by_persona[r.get('persona', '?')].append(r)
-
-                  print(f'#### {activator}')
-                  print(f'| Persona | Recall | Queries |')
-                  print(f'|---------|--------|---------|')
-                  for p in sorted(by_persona):
-                      pr = by_persona[p]
-                      avg = sum(r.get('recall', 0) for r in pr) / len(pr)
-                      print(f'| {p} | {avg:.1%} | {len(pr)} |')
-                  print()
-              except: pass
-          " >> $GITHUB_STEP_SUMMARY
-
-      - name: Upload results as artifact
+      - name: Upload results
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: benchmark-results
-          path: tests/benchmark/benchmark_*.json
+          name: "benchmark-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json
           retention-days: 90
 
       - name: Commit results to main
         if: always()
         run: |
-          if ls tests/benchmark/benchmark_*.json 1>/dev/null 2>&1; then
+          PERSONA="${{ github.event.inputs.persona }}"
+          if ls tests/benchmark/benchmark_*_${PERSONA}_*.json 1>/dev/null 2>&1; then
             git config user.name "github-actions[bot]"
             git config user.email "github-actions[bot]@users.noreply.github.com"
 
             TIMESTAMP=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-
             mkdir -p benchmark_reports
-            REPORT="benchmark_reports/run_${GITHUB_RUN_NUMBER}_$(date +%Y%m%d_%H%M%S).md"
 
-            echo "# Benchmark Run #${GITHUB_RUN_NUMBER}" > "$REPORT"
+            REPORT="benchmark_reports/${PERSONA}_$(date +%Y%m%d_%H%M%S).md"
+
+            echo "# ${PERSONA} — Run #${GITHUB_RUN_NUMBER}" > "$REPORT"
             echo "" >> "$REPORT"
             echo "- **Date:** ${TIMESTAMP}" >> "$REPORT"
-            echo "- **Commit:** ${GITHUB_SHA}" >> "$REPORT"
             echo "- **Run URL:** https://github.com/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}" >> "$REPORT"
-            echo "- **Triggered by:** ${GITHUB_ACTOR}" >> "$REPORT"
-            echo "- **Mode:** ${{ github.event.inputs.mode || 'compare' }}" >> "$REPORT"
-            echo "- **Persona:** ${{ github.event.inputs.persona || 'ALL' }}" >> "$REPORT"
-            echo "- **Sessions:** ${{ github.event.inputs.sessions || 'all' }}" >> "$REPORT"
-            echo "- **Status:** $([ ${{ job.status }} = 'success' ] && echo '✅ Complete' || echo '⚠️ Partial (timeout or error)')" >> "$REPORT"
+            echo "- **Commit:** ${GITHUB_SHA}" >> "$REPORT"
             echo "" >> "$REPORT"
-            echo "## Results" >> "$REPORT"
-            echo "" >> "$REPORT"
-            echo "| Activator | Overall Recall | Queries |" >> "$REPORT"
-            echo "|-----------|---------------|---------|" >> "$REPORT"
+            echo "| Activator | Recall | Queries |" >> "$REPORT"
+            echo "|-----------|--------|---------|" >> "$REPORT"
 
             python3 -c "
           import json, glob, os
-          for f in sorted(glob.glob('tests/benchmark/benchmark_*.json')):
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${PERSONA}_*.json')):
               name = os.path.basename(f)
               parts = name.replace('benchmark_', '').split('_')
-              activator = '_'.join(parts[:-2]) if len(parts) > 2 else parts[0]
+              activator = parts[0]
               try:
                   with open(f) as fp:
                       data = json.load(fp)
@@ -275,14 +215,10 @@ jobs:
                   if results:
                       recall = sum(r.get('recall', 0) for r in results) / len(results)
                       print(f'| {activator} | {recall:.1%} | {len(results)} |')
-                  else:
-                      print(f'| {activator} | N/A | 0 |')
               except: print(f'| {activator} | ERROR | - |')
           " >> "$REPORT"
 
-            git add tests/benchmark/benchmark_*.json benchmark_reports/
-            git commit -m "ci: benchmark run #${GITHUB_RUN_NUMBER} results [skip ci]" || echo "Nothing to commit"
+            git add tests/benchmark/benchmark_*_${PERSONA}_*.json benchmark_reports/
+            git commit -m "ci: ${PERSONA} benchmark results [skip ci]" || echo "Nothing to commit"
             git push || echo "Push failed"
-          else
-            echo "No benchmark result files found, skipping commit"
           fi
