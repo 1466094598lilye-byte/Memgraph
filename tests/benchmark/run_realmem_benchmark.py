@@ -575,7 +575,15 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
         print(f"  ⚠️ Token tracking setup failed: {e}")
 
     # DeepSeek doesn't support embeddings API, always use huggingface embedder
+    # MiniLM-L12-v2 outputs 384-dim vectors; must tell Qdrant to match
     config = MemoryConfig(
+        vector_store={
+            "provider": "qdrant",
+            "config": {
+                "embedding_model_dims": 384,
+                "collection_name": f"mem0_bench_{persona_name}",
+            }
+        },
         llm={
             "provider": "openai",
             "config": {
