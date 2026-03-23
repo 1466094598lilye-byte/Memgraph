@@ -35,9 +35,6 @@ on:
           - attention
           - mem0
           - summary
-          - h2o
-          - full_context
-          - layered
         default: 'attention'
       sessions:
         description: 'Limit sessions (empty = all)'
@@ -48,94 +45,174 @@ permissions:
   contents: write
 
 jobs:
-  benchmark:
+  # ---------- Single mode: one job ----------
+  single:
+    if: github.event.inputs.mode == 'single'
     runs-on: ubuntu-latest
     timeout-minutes: 300
-    
-    name: "${{ github.event.inputs.persona }} × ${{ github.event.inputs.mode }}"
-
+    name: "${{ github.event.inputs.persona }} × ${{ github.event.inputs.activator }}"
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up Python 3.12
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-
       - name: Install dependencies
-        run: |
-          pip install --upgrade pip
-          pip install -r requirements.txt
-
-      - name: Verify import
-        run: |
-          python -c "from memgraph import MemGraph; print('✅ import OK')"
-
+        run: pip install --upgrade pip && pip install -r requirements.txt
       - name: Run benchmark
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
         run: |
           PERSONA="${{ github.event.inputs.persona }}"
-          MODE="${{ github.event.inputs.mode }}"
+          ACT="${{ github.event.inputs.activator }}"
           SESSIONS="${{ github.event.inputs.sessions }}"
           TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          OUTPUT="tests/benchmark/benchmark_${ACT}_${PERSONA}_${TIMESTAMP}.json"
 
-          echo "=================================="
-          echo "MemGraph RealMemBench"
-          echo "=================================="
-          echo "Persona:   ${PERSONA}"
-          echo "Mode:      ${MODE}"
-          echo "Sessions:  ${SESSIONS:-all}"
-          echo "Timestamp: $(date -u +%Y-%m-%dT%H:%M:%SZ)"
-          echo "=================================="
+          CMD="python -m tests.benchmark.run_realmem_benchmark --activator ${ACT} --static --persona ${PERSONA} --output ${OUTPUT}"
+          [ -n "$SESSIONS" ] && CMD="$CMD --limit-sessions ${SESSIONS}"
 
-          if [ "$MODE" = "compare" ]; then
-            ACTIVATORS="attention mem0 summary"
-          else
-            ACTIVATORS="${{ github.event.inputs.activator }}"
-          fi
+          echo "Running: $CMD"
+          $CMD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: "benchmark-${{ github.event.inputs.activator }}-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json
+          retention-days: 90
 
-          for ACT in $ACTIVATORS; do
-            echo ""
-            echo "========================================="
-            echo "  Activator: ${ACT} | Persona: ${PERSONA}"
-            echo "========================================="
+  # ---------- Compare mode: parallel jobs ----------
+  bench-attention:
+    if: github.event.inputs.mode == 'compare'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    name: "${{ github.event.inputs.persona }} × attention"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install -r requirements.txt
+      - name: Run attention benchmark
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+        run: |
+          PERSONA="${{ github.event.inputs.persona }}"
+          SESSIONS="${{ github.event.inputs.sessions }}"
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          OUTPUT="tests/benchmark/benchmark_attention_${PERSONA}_${TIMESTAMP}.json"
 
-            OUTPUT="tests/benchmark/benchmark_${ACT}_${PERSONA}_${TIMESTAMP}.json"
+          CMD="python -m tests.benchmark.run_realmem_benchmark --activator attention --static --persona ${PERSONA} --output ${OUTPUT}"
+          [ -n "$SESSIONS" ] && CMD="$CMD --limit-sessions ${SESSIONS}"
 
-            CMD="python -m tests.benchmark.run_realmem_benchmark"
-            CMD="$CMD --activator ${ACT}"
-            CMD="$CMD --static"
-            CMD="$CMD --persona ${PERSONA}"
-            CMD="$CMD --output ${OUTPUT}"
+          echo "Running: $CMD"
+          $CMD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: "benchmark-attention-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/benchmark_attention_${{ github.event.inputs.persona }}_*.json
+          retention-days: 90
 
-            if [ -n "$SESSIONS" ]; then
-              CMD="$CMD --limit-sessions ${SESSIONS}"
-            fi
+  bench-mem0:
+    if: github.event.inputs.mode == 'compare'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    name: "${{ github.event.inputs.persona }} × mem0"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install -r requirements.txt
+      - name: Run mem0 benchmark
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+        run: |
+          PERSONA="${{ github.event.inputs.persona }}"
+          SESSIONS="${{ github.event.inputs.sessions }}"
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          OUTPUT="tests/benchmark/benchmark_mem0_${PERSONA}_${TIMESTAMP}.json"
 
-            echo "Running: $CMD"
-            $CMD || echo "⚠️ ${ACT} failed with exit code $?"
+          CMD="python -m tests.benchmark.run_realmem_benchmark --activator mem0 --static --persona ${PERSONA} --output ${OUTPUT}"
+          [ -n "$SESSIONS" ] && CMD="$CMD --limit-sessions ${SESSIONS}"
 
-            if [ -f "$OUTPUT" ]; then
-              QUERIES=$(python3 -c "import json; d=json.load(open('$OUTPUT')); print(len(d) if isinstance(d,list) else len(d.get('results',[])))")
-              echo "✅ Saved: ${OUTPUT} (${QUERIES} queries)"
-            fi
-            echo ""
-          done
+          echo "Running: $CMD"
+          $CMD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: "benchmark-mem0-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/benchmark_mem0_${{ github.event.inputs.persona }}_*.json
+          retention-days: 90
+
+  bench-summary:
+    if: github.event.inputs.mode == 'compare'
+    runs-on: ubuntu-latest
+    timeout-minutes: 300
+    name: "${{ github.event.inputs.persona }} × summary"
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install dependencies
+        run: pip install --upgrade pip && pip install -r requirements.txt
+      - name: Run summary benchmark
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_BASE_URL: ${{ secrets.OPENAI_BASE_URL }}
+        run: |
+          PERSONA="${{ github.event.inputs.persona }}"
+          SESSIONS="${{ github.event.inputs.sessions }}"
+          TIMESTAMP=$(date +%Y%m%d_%H%M%S)
+          OUTPUT="tests/benchmark/benchmark_summary_${PERSONA}_${TIMESTAMP}.json"
+
+          CMD="python -m tests.benchmark.run_realmem_benchmark --activator summary --static --persona ${PERSONA} --output ${OUTPUT}"
+          [ -n "$SESSIONS" ] && CMD="$CMD --limit-sessions ${SESSIONS}"
+
+          echo "Running: $CMD"
+          $CMD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: "benchmark-summary-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/benchmark_summary_${{ github.event.inputs.persona }}_*.json
+          retention-days: 90
+
+  # ---------- Collect results after all parallel jobs ----------
+  collect:
+    if: github.event.inputs.mode == 'compare' && always()
+    needs: [bench-attention, bench-mem0, bench-summary]
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    name: "Collect & commit results"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - uses: actions/download-artifact@v4
+        with:
+          pattern: "benchmark-*-${{ github.event.inputs.persona }}"
+          path: tests/benchmark/
+          merge-multiple: true
 
       - name: Generate summary
-        if: always()
         run: |
-          echo "## RealMemBench: ${{ github.event.inputs.persona }}" >> $GITHUB_STEP_SUMMARY
+          PERSONA="${{ github.event.inputs.persona }}"
+          echo "## RealMemBench: ${PERSONA}" >> $GITHUB_STEP_SUMMARY
           echo "" >> $GITHUB_STEP_SUMMARY
           echo "| Activator | Recall | Queries |" >> $GITHUB_STEP_SUMMARY
           echo "|-----------|--------|---------|" >> $GITHUB_STEP_SUMMARY
 
           python3 -c "
           import json, glob, os
-          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json')):
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${PERSONA}_*.json')):
               name = os.path.basename(f)
               parts = name.replace('benchmark_', '').split('_')
               activator = parts[0]
@@ -158,7 +235,7 @@ jobs:
 
           python3 -c "
           import json, glob, os
-          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json')):
+          for f in sorted(glob.glob('tests/benchmark/benchmark_*_${PERSONA}_*.json')):
               name = os.path.basename(f)
               parts = name.replace('benchmark_', '').split('_')
               activator = parts[0]
@@ -166,7 +243,6 @@ jobs:
                   with open(f) as fp:
                       data = json.load(fp)
                   results = data if isinstance(data, list) else data.get('results', [])
-                  # encode usage: take max per persona (snapshot is cumulative, same value repeated per query)
                   enc_in = max((r.get('encode_usage_snapshot', {}).get('input_tokens', 0) for r in results), default=0)
                   enc_out = max((r.get('encode_usage_snapshot', {}).get('output_tokens', 0) for r in results), default=0)
                   jdg_in = sum(r.get('judge_usage', {}).get('input_tokens', 0) for r in results)
@@ -176,16 +252,7 @@ jobs:
               except: print(f'| {activator} | - | - | - | - | - |')
           " >> $GITHUB_STEP_SUMMARY
 
-      - name: Upload results
-        if: always()
-        uses: actions/upload-artifact@v4
-        with:
-          name: "benchmark-${{ github.event.inputs.persona }}"
-          path: tests/benchmark/benchmark_*_${{ github.event.inputs.persona }}_*.json
-          retention-days: 90
-
       - name: Commit results to main
-        if: always()
         run: |
           PERSONA="${{ github.event.inputs.persona }}"
           if ls tests/benchmark/benchmark_*_${PERSONA}_*.json 1>/dev/null 2>&1; then
@@ -224,8 +291,7 @@ jobs:
 
             git add tests/benchmark/benchmark_*_${PERSONA}_*.json benchmark_reports/
             git commit -m "ci: ${PERSONA} benchmark results [skip ci]" || echo "Nothing to commit"
-            
-            # Retry push with rebase to handle concurrent runs
+
             for i in 1 2 3 4 5; do
               if git push; then
                 echo "✅ Push succeeded (attempt $i)"
