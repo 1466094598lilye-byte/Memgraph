@@ -44,6 +44,9 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: write
+
 jobs:
   benchmark:
     runs-on: ubuntu-latest
