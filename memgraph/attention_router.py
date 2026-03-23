@@ -29,6 +29,13 @@ logger = logging.getLogger(__name__)
 
 LLMFn = Callable[[str, int], tuple[str, dict]]
 
+
+def _cosine(a: np.ndarray, b: np.ndarray) -> float:
+    na, nb = np.linalg.norm(a), np.linalg.norm(b)
+    if na < 1e-8 or nb < 1e-8:
+        return 0.0
+    return float(np.dot(a, b) / (na * nb))
+
 _MEMO_EXTRACT_TEMPLATE = """Read this conversation turn. Extract ALL important facts into a flat JSON object.
 
 Include:
