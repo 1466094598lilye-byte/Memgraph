@@ -2,6 +2,7 @@
 
 import hashlib
 import logging
+import re
 from typing import Callable
 
 import numpy as np
@@ -23,6 +24,41 @@ LLMFn = Callable[[str, int], tuple[str, dict]]
 _UNSET_THREAD = object()
 
 L1_UPDATE_THRESHOLD = 5  # 每累积 N 条 L2 结论触发一次 L1 重压缩
+
+
+def _strip_code_and_tools(text: str) -> str:
+    """过滤代码块和 tool call，只保留自然语言部分。"""
+    import json as _json
+
+    stripped = text.strip()
+    if stripped.startswith("[") or stripped.startswith("{"):
+        try:
+            parsed = _json.loads(stripped)
+            if isinstance(parsed, list):
+                text_parts = []
+                for block in parsed:
+                    if isinstance(block, dict) and block.get("type") == "text":
+                        text_parts.append(block.get("text", ""))
+                if text_parts:
+                    text = "\n".join(text_parts)
+                else:
+                    return ""
+            elif isinstance(parsed, dict):
+                if parsed.get("type") == "text":
+                    text = parsed.get("text", "")
+                elif parsed.get("type") in ("tool_use", "tool_result", "tool_call"):
+                    return ""
+        except (_json.JSONDecodeError, TypeError):
+            pass
+
+    text = re.sub(r"```[\s\S]*?```", "", text)
+    for tag in ("tool_call", "tool_use", "function_calls", "antml:function_calls",
+                "antml:invoke", "tool_result", "function_results"):
+        pattern = rf"<{re.escape(tag)}[\s\S]*?</{re.escape(tag)}>"
+        text = re.sub(pattern, "", text)
+    text = re.sub(r'\{"name"\s*:\s*"[^"]+"\s*,\s*"arguments"\s*:[\s\S]*?\}\s*\}', "", text)
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+    return text
 
 
 def _cosine(a: np.ndarray, b: np.ndarray) -> float:
@@ -171,6 +207,9 @@ class MemGraph:
     def add_turn(self, message: dict) -> None:
         """增量编码：embedding 话题聚类，话题切换时关闭聚类并压缩。"""
         content = message.get("content", "")
+        # 过滤代码块和 tool call
+        content = _strip_code_and_tools(content)
+        message = {**message, "content": content}
         msg_vec = np.array(
             self._embedder.embed_query(content),
             dtype=np.float32,

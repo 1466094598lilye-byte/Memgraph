@@ -16,6 +16,7 @@
 
 import json
 import logging
+import re
 from dataclasses import dataclass
 from typing import Callable
 
@@ -46,7 +47,49 @@ Existing memo keys (reuse to update): __KEYS__
 JSON:"""
 
 
-def _cosine(a: np.ndarray, b: np.ndarray) -> float:
+def _strip_code_and_tools(text: str) -> str:
+    """过滤代码块和 tool call，只保留自然语言部分。"""
+
+    # 0. 如果输入像是 JSON array（序列化的 content blocks），提取纯文本部分
+    stripped = text.strip()
+    if stripped.startswith("[") or stripped.startswith("{"):
+        try:
+            parsed = json.loads(stripped)
+            if isinstance(parsed, list):
+                # content block array: 只保留 type=text 的 block
+                text_parts = []
+                for block in parsed:
+                    if isinstance(block, dict) and block.get("type") == "text":
+                        text_parts.append(block.get("text", ""))
+                if text_parts:
+                    text = "\n".join(text_parts)
+                else:
+                    # 整个 array 没有 text block，返回空
+                    return ""
+            elif isinstance(parsed, dict):
+                if parsed.get("type") == "text":
+                    text = parsed.get("text", "")
+                elif parsed.get("type") in ("tool_use", "tool_result", "tool_call"):
+                    return ""
+        except (json.JSONDecodeError, TypeError):
+            pass  # 不是 JSON，走后续正则过滤
+
+    # 1. 去掉 fenced code blocks: ```...```
+    text = re.sub(r"```[\s\S]*?```", "", text)
+
+    # 2. 去掉常见 tool call XML 标签块
+    for tag in ("tool_call", "tool_use", "function_calls", "antml:function_calls",
+                "antml:invoke", "tool_result", "function_results"):
+        pattern = rf"<{re.escape(tag)}[\s\S]*?</{re.escape(tag)}>"
+        text = re.sub(pattern, "", text)
+
+    # 3. 去掉 JSON tool call 块 ({"name":..., "arguments":...} 格式)
+    text = re.sub(r'\{"name"\s*:\s*"[^"]+"\s*,\s*"arguments"\s*:[\s\S]*?\}\s*\}', "", text)
+
+    # 4. 清理多余空行
+    text = re.sub(r"\n{3,}", "\n\n", text).strip()
+
+    return text
     na, nb = np.linalg.norm(a), np.linalg.norm(b)
     if na < 1e-8 or nb < 1e-8:
         return 0.0
@@ -138,20 +181,24 @@ class AttentionRouter:
         """存一轮对话 + 提取精确事实到备忘录。"""
         turn_id = len(self.turns)
 
+        # 0. 过滤代码块和 tool call，只保留自然语言
+        user_clean = _strip_code_and_tools(user_text)
+        assistant_clean = _strip_code_and_tools(assistant_text)
+
         # 1. 存原文 + embedding（只 embed user_text，assistant 太长会稀释语义）
         vec = np.array(
-            self.embedder.embed_query(user_text),
+            self.embedder.embed_query(user_clean),
             dtype=np.float32,
         )
         self.turns.append(Turn(
             turn_id=turn_id,
-            user_text=user_text,
-            assistant_text=assistant_text,
+            user_text=user_clean,
+            assistant_text=assistant_clean,
             embedding=vec,
         ))
 
         # 2. 提取精确事实到备忘录
-        self._extract_memo(user_text, assistant_text)
+        self._extract_memo(user_clean, assistant_clean)
 
         logger.debug(
             "[attention-router] stored turn %d, total=%d, memo_keys=%d",
