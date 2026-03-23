@@ -566,6 +566,8 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
     mem = Memory(config)
 
     user_id = f"bench_{persona_name}"
+    mem0_add_count = 0
+    mem0_add_errors = 0
 
     # Phase 1: Ingest all sessions
     print("  [mem0] Phase 1: Ingesting all sessions...")
@@ -581,12 +583,16 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
 
         if session_text.strip():
             try:
-                mem.add(
+                add_result = mem.add(
                     session_text,
                     user_id=user_id,
                     metadata={"session_id": session_id},
                 )
+                mem0_add_count += 1
+                if add_result:
+                    print(f"  [mem0] Session {si}: added {len(add_result.get('results', [])) if isinstance(add_result, dict) else '?'} memories")
             except Exception as e:
+                mem0_add_errors += 1
                 print(f"  ⚠️ mem0 add failed for session {si}: {e}")
 
         if (si + 1) % 10 == 0 or si == total_sessions - 1:
@@ -635,7 +641,7 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
             "judge_details": judge_result.get("details"),
             "retrieval_latency": retrieval_latency,
             "judge_usage": judge_usage,
-            "encode_usage_snapshot": {},
+            "encode_usage_snapshot": {"note": "mem0 internal LLM calls not tracked", "sessions_ingested": mem0_add_count, "ingest_errors": mem0_add_errors},
             "graph_snapshot": {"type": "mem0", "retrieved_count": len(retrieved)},
             "mode": "mem0",
         })
@@ -669,6 +675,9 @@ New session content:
 
 Updated summary:"""
 
+    summary_input_tokens = 0
+    summary_output_tokens = 0
+
     # Phase 1: Build rolling summary
     print("  [summary] Phase 1: Building rolling summary...")
     for si, session in iter_sessions(persona_data):
@@ -699,6 +708,9 @@ Updated summary:"""
                 messages=[{"role": "user", "content": prompt}],
             )
             summary = resp.choices[0].message.content or summary
+            if resp.usage:
+                summary_input_tokens += getattr(resp.usage, 'prompt_tokens', 0) or getattr(resp.usage, 'input_tokens', 0) or 0
+                summary_output_tokens += getattr(resp.usage, 'completion_tokens', 0) or getattr(resp.usage, 'output_tokens', 0) or 0
         except Exception as e:
             print(f"  ⚠️ summary update failed for session {si}: {e}")
 
@@ -739,7 +751,7 @@ Updated summary:"""
             "judge_details": judge_result.get("details"),
             "retrieval_latency": retrieval_latency,
             "judge_usage": judge_usage,
-            "encode_usage_snapshot": {},
+            "encode_usage_snapshot": {"input_tokens": summary_input_tokens, "output_tokens": summary_output_tokens},
             "graph_snapshot": {"type": "summary", "summary_length": len(summary)},
             "mode": "summary",
         })
