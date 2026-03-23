@@ -545,6 +545,35 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
     api_key = os.environ.get("OPENAI_API_KEY", "")
     base_url = os.environ.get("OPENAI_BASE_URL", "")
 
+    # Track mem0's LLM token usage by wrapping the OpenAI client
+    mem0_token_usage = {"input_tokens": 0, "output_tokens": 0}
+    _orig_client_class = None
+
+    try:
+        from openai import OpenAI as _OpenAI
+        import openai
+
+        class _TokenTrackingClient(_OpenAI):
+            """Wrapper that intercepts chat completions to track token usage."""
+            def __init__(self, *args, **kwargs):
+                super().__init__(*args, **kwargs)
+                self._orig_create = self.chat.completions.create
+
+                def _tracked_create(*a, **kw):
+                    resp = self._orig_create(*a, **kw)
+                    if hasattr(resp, 'usage') and resp.usage:
+                        mem0_token_usage["input_tokens"] += getattr(resp.usage, 'prompt_tokens', 0) or getattr(resp.usage, 'input_tokens', 0) or 0
+                        mem0_token_usage["output_tokens"] += getattr(resp.usage, 'completion_tokens', 0) or getattr(resp.usage, 'output_tokens', 0) or 0
+                    return resp
+
+                self.chat.completions.create = _tracked_create
+
+        # Monkey-patch OpenAI so mem0 uses our tracking client
+        _orig_client_class = openai.OpenAI
+        openai.OpenAI = _TokenTrackingClient
+    except Exception as e:
+        print(f"  ⚠️ Token tracking setup failed: {e}")
+
     # DeepSeek doesn't support embeddings API, always use huggingface embedder
     config = MemoryConfig(
         llm={
@@ -598,6 +627,17 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
         if (si + 1) % 10 == 0 or si == total_sessions - 1:
             print(f"  [mem0] Ingested {si + 1}/{total_sessions} sessions")
 
+    # Restore original OpenAI client
+    try:
+        if _orig_client_class is not None:
+            import openai
+            openai.OpenAI = _orig_client_class
+    except Exception:
+        pass
+
+    print(f"  [mem0] Ingest complete: {mem0_add_count} sessions ingested, {mem0_add_errors} errors")
+    print(f"  [mem0] LLM token usage (ingest): input={mem0_token_usage['input_tokens']:,} output={mem0_token_usage['output_tokens']:,}")
+
     # Phase 2: Run queries
     print("  [mem0] Phase 2: Running queries...")
     results = []
@@ -641,7 +681,7 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
             "judge_details": judge_result.get("details"),
             "retrieval_latency": retrieval_latency,
             "judge_usage": judge_usage,
-            "encode_usage_snapshot": {"note": "mem0 internal LLM calls not tracked", "sessions_ingested": mem0_add_count, "ingest_errors": mem0_add_errors},
+            "encode_usage_snapshot": {"input_tokens": mem0_token_usage["input_tokens"], "output_tokens": mem0_token_usage["output_tokens"], "sessions_ingested": mem0_add_count, "ingest_errors": mem0_add_errors},
             "graph_snapshot": {"type": "mem0", "retrieved_count": len(retrieved)},
             "mode": "mem0",
         })
