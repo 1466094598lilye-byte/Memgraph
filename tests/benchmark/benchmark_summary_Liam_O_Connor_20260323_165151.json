@@ -1,0 +1,4527 @@
+[
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0001",
+    "query_content": "G'day. We settled on that clockwise loop for the NZ trip. What's the next step for planning it out?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 6,
+    "session_identifier": "Travel_Planning_2:S1_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 A 12-day South Island RV trip, starting and ending in Christchurch, following a clockwise loop, with the preferred route being 'West Coast Wilderness & Mountain Views'.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "【Attraction Scheme】 The preferred route includes West Coast wilderness, glaciers, and Kaikoura (with the user acknowledging Day 11 to Kaikoura is a long drive but acceptable for coastal views).",
+      "Milford Sound is not recommended for inclusion due to the user's preference for a 'chill pace', as it would require a very big driving day or extending the trip."
+    ],
+    "recall": 0.75,
+    "hits": 3,
+    "total": 4,
+    "judge_details": [
+      false,
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2294,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0002",
+    "query_content": "G'day. Ready to get stuck into this training. You mentioned whipping up that 5RM test protocol for me. What's the go?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 8,
+    "session_identifier": "Fitness_3:S1_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Training Schedule】 A detailed 5RM testing protocol for Squat, Bench Press, and Deadlift (the big three) has been agreed upon and provided to the user to establish a baseline for a 5x5 strength program. This protocol includes a general warm-up (5-10 min light cardio, dynamic stretches), specific empty bar and progressive warm-up sets for each lift (starting light with just the bar and gradually building up, focusing on form and conservative weight jumps, especially since the user does not know their estimated 5RM), a method for finding the 5RM through multiple attempts with weight adjustments, and important considerations (proper warm-up, form over weight, spotter for Bench Press & Squat, adequate rest, listening to body). The user is advised to perform these tests on separate days for optimal performance and recovery, and to record the exact weight achieved for their 5RM.",
+      "【Training Schedule】 The user will start the 5RM testing with the Squat test this week.",
+      "User does not know their estimated 5RM for the lifts."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2320,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0003",
+    "query_content": "Yeah, mate, these sound bloody spot on! You've absolutely nailed it.\n\nNo weighing chicken, no crazy tracking – just good, sensible advice that makes sense for a blokes like me. The BBQ and beer rule, ",
+    "topic": "Fitness",
+    "category": "Implicit Preference",
+    "session_index": 11,
+    "session_identifier": "Fitness_3:S2_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "Perform Squat 5RM test this week"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2107,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0004",
+    "query_content": "Right, so the nutrition stuff is sorted. Those rules sound fair enough, and that BBQ list should come in handy.\n\nWhat's next for this plan, mate? Ready to get stuck in.",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 13,
+    "session_identifier": "Fitness_3:S2_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Diet/Nutrition Plan】 User has confirmed, sorted, and agreed upon the simple, sustainable nutrition guidelines for a tradie's lifestyle, including specific rules and a BBQ list. Key principles include: prioritising protein at every meal (palm-sized portion), loading up on veggies (half plate) and some fruit, choosing smart carbs (whole grains, potatoes), incorporating healthy fats (avocados, nuts, olive oil), consistent hydration, and an 80/20 approach for moderation (BBQs & beer allowed). The plan explicitly avoids calorie counting or weighing food."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2212,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0005",
+    "query_content": "G'day. We've locked in the budget and RV shortlist, so that's good. Now, let's get back to the actual trip. How do we start filling in the details for each stop on the South Island loop?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 15,
+    "session_identifier": "Travel_Planning_2:S2_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 A 12-day chill South Island RV itinerary outline: \nDay 1: Arrive Christchurch, RV pickup, settle in, BBQ.\nDay 2: Christchurch to Lake Tekapo (approx. 3 hrs drive), visit Church of Good Shepherd, stargazing, BBQ.\nDay 3: Lake Tekapo & Aoraki/Mt Cook National Park (approx. 1.5 hrs drive to Mt Cook return), gentle walks (Hooker Valley Track/Tasman Glacier Lake walk), return to Tekapo or stay at Mt Cook Village.\nDay 4: Lake Tekapo to Wanaka (approx. 3 hrs drive), through Lindis Pass, visit 'That Wanaka Tree', lakeside BBQ.\nDay 5: Relaxed Wanaka exploration (e.g., Puzzling World, lakefront walks), BBQ.\nDay 6: Wanaka to Queenstown (approx. 1.5 hrs drive), via Crown Range Road, explore waterfront, BBQ option.\nDay 7: Queenstown Chill & Views (e.g., Skyline Gondola, lake cruise), BBQ.\nDay 8: Queenstown to Franz Josef/Fox Glacier (approx. 4.5-5 hrs drive), through Haast Pass with scenic stops.\nDay 9: Glacier Exploration (easy walks to terminal face viewpoints, optional scenic helicopter flight, Glacier Hot Pools).\nDay 10: Franz Josef/Fox Glacier to Punakaiki (Pancake Rocks) (approx. 3 hrs drive), stop at Hokitika, explore Pancake Rocks and Blowholes, BBQ.\nDay 11: Punakaiki to Kaikoura (approx. 5.5-6 hrs drive), across the island via Arthur's Pass/Lewis Pass, relax, local seafood option.\nDay 12: Kaikoura to Christchurch & Departure (approx. 2.5 hrs drive), coastal drive, RV return.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "Milford Sound is not recommended for inclusion due to the user's preference for a 'chill pace', as it would require a very big driving day or extending the trip."
+    ],
+    "recall": 0.3333333333333333,
+    "hits": 1,
+    "total": 3,
+    "judge_details": [
+      false,
+      true,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2612,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0006",
+    "query_content": "Whoa there, mate. I literally just gave you all that a minute ago!\n\nSquat 5RM: 100kg\nBench 5RM: 80kg\nDeadlift 5RM: 120kg\nTraining's Monday, Wednesday, Friday arvos.\nWeight's 88kg.\nAnd yeah, a physical",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 17,
+    "session_identifier": "Fitness_3:S3_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "Perform Squat 5RM test this week"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2107,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0007",
+    "query_content": "Alright, good on ya for getting Week 1 sorted. Looks like a solid start.\n\nBut hang on a sec, mate. I asked for the *full* 12-week blueprint, remember? We're not just doing Week 1 here. Don't tell me y",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 17,
+    "session_identifier": "Fitness_3:S3_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "Perform Squat 5RM test this week"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2107,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0008",
+    "query_content": "Mate, that 'zero stress' insurance option is the go. Let's lock in the $8,500 budget for the trip. What's next?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 25,
+    "session_identifier": "Travel_Planning_2:S3_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 The 'Zero Excess / All-Inclusive' insurance policy (Option 3), referred to by user as 'zero stress', is confirmed and non-negotiable. It provides comprehensive coverage for incidents such as flat tyres, minor damage from road debris, and accidental scratches from children inside the RV. This policy generally requires no excess payment and aims to minimise paperwork and hassle.",
+      "【Other Tourism-Related Attributes】 The budget and RV shortlist for the trip are locked in."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2200,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0009",
+    "query_content": "Yeah, good stuff. Glad that's sorted, mate.\n\nFor the itinerary, I reckon we should focus on the good spots where the kids can run around and we can chuck on a decent BBQ. Not keen on rushing it, hey. ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 25,
+    "session_identifier": "Travel_Planning_2:S3_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "User has a family, including kids."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2105,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0010",
+    "query_content": "G'day. Right, the storm work's finally settled down a bit. My phone's not ringing off the hook anymore, thankfully. Let's get back to sorting out that RV trip. What's next for booking?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 28,
+    "session_identifier": "Travel_Planning_2:S4_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 A proposal to extend the trip to 13 days by splitting the Punakaiki to Kaikoura leg into two overnight stops is under consideration."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2130,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0011",
+    "query_content": "G'day mate. Just finished another session, and the weights still feel pretty cruisy. What's the go with the progression speed on this plan? I'm keen to push it a bit more.",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 31,
+    "session_identifier": "Fitness_3:S4_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Full 12-week 5x5 Strength Program Blueprint, including key principles (5x5 for Squat, Bench Press, Overhead Press, Barbell Row; 1x5 for Deadlift; warm-up protocol; progression of +5kg/session for Squat and Bench Press (for the next couple of sessions), +2.5kg/session for Overhead Press and Barbell Row, and +5kg/session for Deadlift). Note: Specific weekly schedule and calculated weights are currently superseded by the Ramp-Up Week schedule and subsequent modifications."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2218,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0012",
+    "query_content": "Whoa, hold your horses there, mate! Good to hear the surf club course is locked in, that's grouse.\n\nBut what's all this about a \"Squat 5RM test\"? That's not what we're on about, is it? Let's stick to ",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Updating",
+    "session_index": 33,
+    "session_identifier": "Knowledge_Learning_9:S2_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 Proposed next available weekend dates for a budget-friendly Provide First Aid course are: Saturday, January 17th, 2026; Sunday, January 18th, 2026; and Saturday, January 24th, 2026 (all full-day practical sessions, 8:00 AM - 4:00 PM, requiring online pre-learning)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2174,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0013",
+    "query_content": "G'day! Just finished my first week of training. Logged the RPE like you said for all the sessions. What's the plan for next week, mate?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 36,
+    "session_identifier": "Fitness_3:S4_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Full 12-week 5x5 Strength Program Blueprint, including key principles (5x5 for Squat, Bench Press, Overhead Press, Barbell Row; 1x5 for Deadlift; warm-up protocol; progression of +5kg/session for Squat and Bench Press (for the next couple of sessions), +2.5kg/session for Overhead Press and Barbell Row, and +5kg/session for Deadlift). Note: Specific weekly schedule and calculated weights are currently superseded by the Ramp-Up Week schedule and subsequent modifications."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2218,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0014",
+    "query_content": "Ah, you're kidding me! Should've booked it earlier. Right, what's the next best option that won't break the bank?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 38,
+    "session_identifier": "Travel_Planning_2:S5_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 Trip budget: AUD $8,500 is confirmed.",
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700.",
+      "【Other Tourism-Related Attributes】 The 'Zero Excess / All-Inclusive' insurance policy (Option 3), referred to by user as 'zero stress', is confirmed and non-negotiable. It provides comprehensive coverage for incidents such as flat tyres, minor damage from road debris, and accidental scratches from children inside the RV. This policy generally requires no excess payment and aims to minimise paperwork and hassle."
+    ],
+    "recall": 0.6666666666666666,
+    "hits": 2,
+    "total": 3,
+    "judge_details": [
+      false,
+      true,
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2294,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0015",
+    "query_content": "Yeah, nah, those details are still solid as a rock, mate. 13 days, $8,500 budget, and that 'zero stress' insurance is non-negotiable, for sure.\n\nAs for the RV itself, I'm pretty open to different mode",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 38,
+    "session_identifier": "Travel_Planning_2:S5_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "User has a family, including kids."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2105,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0016",
+    "query_content": "Cheers for digging these up, mate. That's more like it!\n\nThe 'Family Cruiser' from Britz sounds pretty good, especially if it's got a bit more space and is a bit easier on the wallet. \"No-frills\" is p",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 38,
+    "session_identifier": "Travel_Planning_2:S5_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 The next step is to lock in the RV rental itself by checking dates and availability for a 13-day hire."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2124,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0017",
+    "query_content": "G'day mate, my back's a bit dodgy from work today. Had a pretty big one on site. Not sure about doing heavy deadlifts tomorrow as planned. What do you reckon we should do?",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 41,
+    "session_identifier": "Fitness_3:S5_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Week 2 of the 5x5 strength program has been confirmed. The schedule is: Monday (Workout A: Squat 85kg, Bench Press 69kg, Barbell Row 55kg), Wednesday (Workout B: Squat 82.5kg, Overhead Press 52.5kg, Deadlift 101kg), Friday (Workout A: Squat 87.5kg, Bench Press 71.5kg, Barbell Row 57.5kg)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2205,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0018",
+    "query_content": "Alright, mate. How'd we go with those bookings? Did you manage to lock in the Jucy Condo and the flights before the prices jumped again?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 43,
+    "session_identifier": "Travel_Planning_2:S5_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 User wants to proceed with booking flights now, in addition to the RV.",
+      "【Travel Plan】 The trip budget for the RV hire is AUD $8,500 and is confirmed."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      true,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2140,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0019",
+    "query_content": "G'day, mate. My back's feeling a bit better today. Ready to tackle those Romanian deadlifts and planks you suggested. What's the plan for today's session?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 46,
+    "session_identifier": "Fitness_3:S5_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "Perform Squat 5RM test (Postponed)",
+      "Perform Deadlift (Postponed)"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2120,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0020",
+    "query_content": "G'day. Right, those campsites are locked in now. Glad we sorted that. What's next on the agenda for this New Zealand trip?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 49,
+    "session_identifier": "Travel_Planning_2:S6_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 Total trip budget (RV + Flights): AUD $8,700.",
+      "【Travel Plan】 RV Model: Jucy Condo.",
+      "【Travel Plan】 Flights are to be booked."
+    ],
+    "recall": 0.6666666666666666,
+    "hits": 2,
+    "total": 3,
+    "judge_details": [
+      true,
+      true,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2145,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0021",
+    "query_content": "Right, fair dinkum, thanks for being straight with me, mate. But that's a bit of a bloody shocker, isn't it? So all that talk about 'securing' and 'locking in' was just... you pretending to book it? B",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 49,
+    "session_identifier": "Travel_Planning_2:S6_01",
+    "turn_index": 8,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700.",
+      "【Other Tourism-Related Attributes】 The 'Zero Excess / All-Inclusive' insurance policy (Option 3), referred to by user as 'zero stress', is confirmed and non-negotiable. It provides comprehensive coverage for incidents such as flat tyres, minor damage from road debris, and accidental scratches from children inside the RV. This policy generally requires no excess payment and aims to minimise paperwork and hassle.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping."
+    ],
+    "recall": 1.0,
+    "hits": 3,
+    "total": 3,
+    "judge_details": [
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2353,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0022",
+    "query_content": "Right, so did you get those first aid bits into my calendar? The pre-reading for next week, Tuesday and Thursday arvo? Just want to make sure it's all locked in.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 52,
+    "session_identifier": "Knowledge_Learning_9:S2_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 An online pre-learning module is required for the first aid course, with sessions scheduled for next Tuesday and Thursday afternoon. The link for the module is in the booking confirmation email from the Gold Coast Surf Club. To find this email, look for senders like 'Gold Coast Surf Club' or 'Surf Life Saving Queensland', with subject lines such as 'Your First Aid Course Booking Confirmation' or 'Gold Coast Surf Club - First Aid Course Details'."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2193,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0023",
+    "query_content": "Strewth, this is a snoozefest. It's just walls of text for this pre-course stuff. Is there a faster way to get through this? Like, just the important bits for the test?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 54,
+    "session_identifier": "Knowledge_Learning_9:S3_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The Gold Coast Surf Club First Aid course is booked and locked in for January 31st.",
+      "【Learning Path/Syllabus】 First aid online pre-learning module sessions have been scheduled for Tuesday, February 3rd, 2026 (4:00 PM - 6:00 PM) and Thursday, February 5th, 2026 (4:00 PM - 6:00 PM). The user's primary goal for pre-learning is to find the 'absolute bare essentials' or 'straight to the chase' content for the Gold Coast Surf Club First Aid test. The link for the module is in the booking confirmation email from the Gold Coast Surf Club. To find this email, look for senders like 'Gold Coast Surf Club' or 'Surf Life Saving Queensland', with subject lines such as 'Your First Aid Course Booking Confirmation' or 'Gold Coast Surf Club - First Aid Course Details'."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2293,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0024",
+    "query_content": "Hey, just wanted to let you know that quick bench press session on Friday worked a treat before the BBQ. Cheers for that! What's the plan looking like for the week ahead?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 57,
+    "session_identifier": "Fitness_3:S6_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Rescheduling of the postponed Squat 5RM test and heavier Deadlift session is deferred until after today's session."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2125,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0025",
+    "query_content": "Yeah, keen to get stuck into it, mate. My back's still a bit touch-and-go after that last session, so might need to ease into those deadlifts, eh? Squats should be alright though.\n\nWhat's the best day",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 57,
+    "session_identifier": "Fitness_3:S6_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 A detailed 5RM testing protocol for Squat, Bench Press, and Deadlift (the big three) has been agreed upon and provided to the user to establish a baseline for a 5x5 strength program. This protocol includes a general warm-up (5-10 min light cardio, dynamic stretches), specific empty bar and progressive warm-up sets for each lift (starting light with just the bar and gradually building up, focusing on form and conservative weight jumps, especially since the user does not know their estimated 5RM), a method for finding the 5RM through multiple attempts with weight adjustments, and important considerations (proper warm-up, form over weight, spotter for Bench Press & Squat, adequate rest, listening to body). The user is advised to perform these tests on separate days for optimal performance and recovery, and to record the exact weight achieved for their 5RM.",
+      "【Body Metrics Records】 Bench 5RM: 80kg."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2297,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0026",
+    "query_content": "G'day. Time to sort out those campsites. We talked about booking the key spots, 7 nights with good views and playgrounds for the kids. What's the next step to get those locked in?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 61,
+    "session_identifier": "Travel_Planning_2:S6_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 Further trip planning (e.g., other campsites) is contingent upon user confirming actual bookings for the Jucy Condo RV and flights.",
+      "【Travel Plan】 User will personally book the Jucy Condo RV and flights.",
+      "【Travel Plan】 RV Model: Jucy Condo.",
+      "Flights are to be personally booked by the user, and further trip planning (e.g., other campsites) is contingent upon user confirming actual flight bookings."
+    ],
+    "recall": 0.25,
+    "hits": 1,
+    "total": 4,
+    "judge_details": [
+      false,
+      false,
+      true,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2199,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0027",
+    "query_content": "Yeah, nah, too right mate! Got those big ones sorted straight after our last chat. Wasn't taking any chances with another price hike, eh?\n\nSo, the Jucy Condo RV is locked in, and the flights are done ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 61,
+    "session_identifier": "Travel_Planning_2:S6_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "User is traveling with their family (wife and children).",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "【Travel Plan】 RV trip duration: 13 days."
+    ],
+    "recall": 1.0,
+    "hits": 3,
+    "total": 3,
+    "judge_details": [
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2200,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0028",
+    "query_content": "Mate, I'm still stuck on site, big concrete pour got delayed. I'm buggered, no way I can do that study session tonight. Can we push it?",
+    "topic": "Knowledge_Learning",
+    "category": "Temporal-reasoning",
+    "session_index": 63,
+    "session_identifier": "Knowledge_Learning_9:S4_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 First aid online pre-learning module sessions have been scheduled for Tuesday, February 3rd, 2026 (4:00 PM - 6:00 PM) and Thursday, February 5th, 2026 (4:00 PM - 6:00 PM). The user's primary goal for pre-learning is to find the 'absolute bare essentials' or 'straight to the chase' content for the Gold Coast Surf Club First Aid test. The link for the module is in the booking confirmation email from the Gold Coast Surf Club. To find this email, look for senders like 'Gold Coast Surf Club' or 'Surf Life Saving Queensland', with subject lines such as 'Your First Aid Course Booking Confirmation' or 'Gold Coast Surf Club - First Aid Course Details'.",
+      "User's profession involves physical labor 'on site'."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      false,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2277,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0029",
+    "query_content": "G'day. Just checking in on that study session. We're all good for Saturday morning at 7 AM, right? Need to get that done before I head out.",
+    "topic": "Knowledge_Learning",
+    "category": "Temporal-reasoning",
+    "session_index": 65,
+    "session_identifier": "Knowledge_Learning_9:S4_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 First aid online pre-learning module sessions are scheduled for Tuesday, February 3rd, 2026 (4:00 PM - 6:00 PM) and Saturday, February 7th, at 7:00 AM (rescheduled from Thursday, February 5th). The user's primary goal for pre-learning is to find the 'absolute bare essentials' or 'straight to the chase' content for the Gold Coast Surf Club First Aid test. The link for the module is in the booking confirmation email from the Gold Coast Surf Club. To find this email, look for senders like 'Gold Coast Surf Club' or 'Surf Life Saving Queensland', with subject lines such as 'Your First Aid Course Booking Confirmation' or 'Gold Coast Surf Club - First Aid Course Details'."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2265,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0030",
+    "query_content": "G'day mate. Woke up feeling like I've been run over by a truck. Definitely got the flu bad. No way I can train like this. Reckon we need to put the program on hold for a bit.",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 68,
+    "session_identifier": "Fitness_3:S7_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 Squat 5RM test is scheduled for Monday afternoon.",
+      "【Training Schedule】 The Deadlift session's scheduling and approach will be determined after Monday's Squat 5RM test, contingent on user's back recovery."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2148,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0031",
+    "query_content": "Yeah, cheers for sorting that out, mate. Appreciate you getting it.\n\nHonestly, with this head, I couldn't pick a new time for that First Aid module if I tried. Let's just hold off on that for now, yea",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 68,
+    "session_identifier": "Fitness_3:S7_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "First Aid pre-learning module on Saturday, February 14th, at 7:00 AM"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2117,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0032",
+    "query_content": "Hey mate, I'm feeling about 80% better after that flu. Ready to get back into it, but those weights look bloody heavy. Do I just pick up where I left off?",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 73,
+    "session_identifier": "Fitness_3:S8_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 The entire training program, including the Squat 5RM test and Deadlift session, is postponed for at least a week due to the user's flu.",
+      "User has the flu and expects to need at least a week, possibly more, to recover and get back to 100%."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2161,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0033",
+    "query_content": "Hold up a sec. My mate just reminded me about this place in Queenstown called Fergburger. Everyone says we HAVE to go there. Can we add that to the plan?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 75,
+    "session_identifier": "Travel_Planning_2:S7_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "User wants to book 7 campsites with good views and playgrounds for kids, specifically in Tekapo (preferring Tekapo Motels & Holiday Park), Mt Cook, Queenstown (preferring Queenstown TOP 10 Holiday Park (Creeksyde)), and Franz Josef."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2156,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0034",
+    "query_content": "Good one, AI! Yeah, a late lunch sounds mint. My mate mentioned it can get a bit choc-a-block, so maybe we aim for an arvo feed, after the main lunch rush. That way we can just rock up and not be stuc",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 75,
+    "session_identifier": "Travel_Planning_2:S7_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2171,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0035",
+    "query_content": "Hey, what's next for the New Zealand trip plan?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 77,
+    "session_identifier": "Travel_Planning_2:S7_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "User wants to book 7 campsites with good views and playgrounds for kids, specifically in Tekapo (preferring Tekapo Motels & Holiday Park), Mt Cook, Queenstown (preferring Queenstown TOP 10 Holiday Park (Creeksyde)), and Franz Josef.",
+      "Fergburger in Queenstown is confirmed to be added to the plan, scheduled for a late lunch / arvo feed after the main rush to avoid long queues and ensure a relaxed experience."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2197,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0036",
+    "query_content": "Yeah, sounds about right, mate. Good on ya for getting the RV and flights sorted. And that Fergburger is a must-do, no worries there.\n\nFor the campsites, let's just crack on and get those 7 spots book",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 77,
+    "session_identifier": "Travel_Planning_2:S7_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2269,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0037",
+    "query_content": "G'day. Ready to nail down that food plan. How's it looking with the supermarkets near Christchurch and those pubs for the other spots? Keen to see what you've found.",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 79,
+    "session_identifier": "Travel_Planning_2:S8_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700.",
+      "【Travel Plan】 User will proceed to book four specific campsites: Tekapo Motels & Holiday Park (Tekapo), White Horse Hill Campground (DOC) (Mt Cook), Queenstown TOP 10 Holiday Park (Creeksyde) (Queenstown), and Franz Josef TOP 10 Holiday Park (Franz Josef). The booking priorities are good views and playgrounds for kids.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "【Diet/Nutrition Plan】 User has confirmed, sorted, and agreed upon the simple, sustainable nutrition guidelines for a tradie's lifestyle, including specific rules and a BBQ list. Key principles include: prioritising protein at every meal (palm-sized portion), loading up on veggies (half plate) and some fruit, choosing smart carbs (whole grains, potatoes), incorporating healthy fats (avocados, nuts, olive oil), consistent hydration, and an 80/20 approach for moderation (BBQs & beer allowed). The plan explicitly avoids calorie counting or weighing food."
+    ],
+    "recall": 0.75,
+    "hits": 3,
+    "total": 4,
+    "judge_details": [
+      true,
+      true,
+      true,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2469,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0038",
+    "query_content": "Hi. Let's sort out those stargazing alternatives for Tekapo.",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 81,
+    "session_identifier": "Travel_Planning_2:S9_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "Secondary destination interest for itinerary: Lake Tekapo, specifically for fishing.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2188,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0039",
+    "query_content": "Right, about the stargazing. Let's go with shifting the main night to Mount Cook. Tekapo can be the backup, just in case.",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 84,
+    "session_identifier": "Travel_Planning_2:S9_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 User will proceed to book four specific campsites: Tekapo Motels & Holiday Park (Tekapo), White Horse Hill Campground (DOC) (Mt Cook), Queenstown TOP 10 Holiday Park (Creeksyde) (Queenstown), and Franz Josef TOP 10 Holiday Park (Franz Josef). The booking priorities are good views and playgrounds for kids.",
+      "【Attraction Scheme】 Tekapo Springs Hot Pools are confirmed for a relaxed afternoon or evening soak, especially with the kids, as part of the Tekapo evening plan.",
+      "【Travel Plan】 Extended daytime fishing followed by a campsite BBQ is confirmed for a perfect evening as part of the Tekapo evening plan.",
+      "【Attraction Scheme】 An evening stroll by the Church of the Good Shepherd is confirmed as a nice and chill way to wind down, as part of the Tekapo evening plan."
+    ],
+    "recall": 1.0,
+    "hits": 4,
+    "total": 4,
+    "judge_details": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2284,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0040",
+    "query_content": "Yeah, sweet as, mate. Glad that's sorted. Good on ya for flagging that full moon, too – saved us a bit of a gaff.\n\nRight, what's next on the list? Let's make sure all the campsites are properly locked",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 84,
+    "session_identifier": "Travel_Planning_2:S9_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 The booking of the remaining three campsites out of the total seven is deferred until the full day-by-day itinerary is mapped out."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2127,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0041",
+    "query_content": "Yeah, nah, I actually knocked those over the other arvo. All sorted for Tekapo, Mount Cook, Queenstown, and Franz Josef. Booked and confirmed, mate.\n\nSo, what's the go with the other three campsites t",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 84,
+    "session_identifier": "Travel_Planning_2:S9_02",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2192,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0042",
+    "query_content": "Hey. That 72% on the mock exam was a bit of a shock. I thought I had it better than that. What did I actually get wrong? Tell me where I stuffed up.",
+    "topic": "Knowledge_Learning",
+    "category": "Implicit Preference",
+    "session_index": 87,
+    "session_identifier": "Knowledge_Learning_9:S6_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Learning Attributes】 User scored 72% on the practice test.",
+      "【Other Learning Attributes】 User prefers a general study plan and does not want to dive into specific weak topics from the practice test.",
+      "【Learning Path/Syllabus】 User has agreed to the 'Get Over The Line' Study Plan which includes: 1. Revisit the Core Material (dedicate time to review main topics, actively read, explain concepts), 2. Active Recall & Practice Questions (find more practice questions/quizzes, create flashcards, answer without notes, understand why answers are wrong), 3. Summarise Key Concepts (write brief summaries of important points for each major topic), 4. Simulate Test Conditions (Again) (do another practice test under timed conditions), 5. Prioritise & Schedule (set regular, shorter study sessions)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2272,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0043",
+    "query_content": "G'day. Feeling much better. Ready for that ramp-up week. What's the plan for this week?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 89,
+    "session_identifier": "Fitness_3:S8_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 The Squat 5RM test and Deadlift session remain postponed until the user feels 100% recovered."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2123,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0044",
+    "query_content": "G'day back at ya! Yeah, feeling pretty good, keen to shake off the cobwebs.\n\nAs for those postponed bits like the Squat 5RM and the Deadlift session, no way am I doing that after being on my back with",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 89,
+    "session_identifier": "Fitness_3:S8_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 Full 12-week 5x5 Strength Program Blueprint, including key principles (5x5 for Squat, Bench Press, Overhead Press, Barbell Row; 1x5 for Deadlift; warm-up protocol; progression of +5kg/session for Squat and Bench Press (for the next couple of sessions), +2.5kg/session for Overhead Press and Barbell Row, and +5kg/session for Deadlift). Note: Specific weekly schedule and calculated weights are currently superseded by the Ramp-Up Week schedule and subsequent modifications."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2218,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0045",
+    "query_content": "Righto, mate. Cheers for askin'.\n\nWell, with the squats and deadlifts, I've been feeling pretty good, RPEs mostly sitting around an 8 or 9, still pushing through. But the bench press, that's a differe",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 91,
+    "session_identifier": "Fitness_3:S9_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 5,
+    "gt_memories": [
+      "【Body Metrics Records】 Bench 5RM: 80kg.",
+      "【Training Schedule】 Full 12-week 5x5 Strength Program Blueprint, including key principles (5x5 for Squat, Bench Press, Overhead Press, Barbell Row; 1x5 for Deadlift; warm-up protocol; progression of +5kg/session for Squat and Bench Press (for the next couple of sessions), +2.5kg/session for Overhead Press and Barbell Row, and +5kg/session for Deadlift). Note: Specific weekly schedule and calculated weights are currently superseded by the Ramp-Up Week schedule and subsequent modifications.",
+      "【Training Schedule】 Ramp-Up Week 7 Training Schedule (starting Monday, March 2nd) is confirmed. The user is recovering from the flu, currently feeling about 80% better but still describes their body as 'a bit cooked', which is why weights for all exercises are reduced by 10% from pre-illness levels. Additionally, the user's back is still a bit touch-and-go, requiring caution with deadlifts. Monday Workout A: Squat (5x5) 97.5kg, Bench Press (5x5) 85kg, Barbell Row (5x5) 72.5kg. Wednesday Workout B: Squat (5x5) 85kg, Overhead Press (5x5) 57.5kg, Deadlift (1x5) 112.5kg. Friday Workout A: Squat (5x5) 100kg, Bench Press (5x5) deload to 55-60kg for 5x5, focusing on form (supersedes 87.5kg), Barbell Row (5x5) 75kg. The Squat 5RM test and the original Deadlift session remain postponed for a week or two, or until the user feels 100% ready for that intensity.",
+      "【Other Fitness Attributes】 User has committed to consistently logging RPE for each main lift during their training sessions.",
+      "User is recovering from the flu, currently feeling about 80% better but still describes their body as 'a bit cooked'."
+    ],
+    "recall": 0.2,
+    "hits": 1,
+    "total": 5,
+    "judge_details": [
+      false,
+      false,
+      false,
+      true,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2564,
+      "output_tokens": 14
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0046",
+    "query_content": "Hey. I'm ready to hit those bites, stings, and burns. Let's get stuck into those quizzes you mentioned.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 94,
+    "session_identifier": "Knowledge_Learning_9:S6_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 User wants to drill on specific weak topics (bites, stings, and burns) rather than a general study plan.",
+      "【Learning Path/Syllabus】 User wants to practice knowledge through specific scenarios."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2148,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0047",
+    "query_content": "G'day. Mate, my back is properly shot after surfing this morning. There's no way I can kneel for the CPR test on Saturday. Reckon I should just pull out?",
+    "topic": "Knowledge_Learning",
+    "category": "Temporal-reasoning",
+    "session_index": 97,
+    "session_identifier": "Knowledge_Learning_9:S7_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The Gold Coast Surf Club First Aid course is booked and locked in for January 31st.",
+      "User enjoys leisure activities such as surfing and going to the beach."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      false,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2139,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0048",
+    "query_content": "Nah, mate, not the January one, that was ages ago. The test is actually *this* Saturday, the 7th of March, as in, today! That's why I'm spewing about my back.\n\nIt's the practical assessment for the Fi",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Updating",
+    "session_index": 97,
+    "session_identifier": "Knowledge_Learning_9:S7_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 Estimated prices for Provide First Aid courses are: St John Ambulance ($140-$180), Surf Clubs ($130-$170), and Private Providers ($120-$160), with an overall ballpark of $120-$180."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2147,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0049",
+    "query_content": "G'day. Good job sorting out those rainy day plans for Tekapo and the glaciers. Glad we've got those backups locked in now. What's next on the list for getting this trip organised?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 99,
+    "session_identifier": "Travel_Planning_2:S10_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 Four specific campsites are booked and confirmed: Tekapo Motels & Holiday Park (Tekapo), White Horse Hill Campground (DOC) (Mt Cook), Queenstown TOP 10 Holiday Park (Creeksyde) (Queenstown), and Franz Josef TOP 10 Holiday Park (Franz Josef). Booking priorities for these campsites are good views and playgrounds for kids."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2178,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0050",
+    "query_content": "Yeah, that sounds like the go, mate. Makes sense to get the whole plan mapped out day-by-day first, then we can lock in those last few campsites properly. No point booking 'em if we don't know exactly",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 99,
+    "session_identifier": "Travel_Planning_2:S10_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 12,
+    "gt_memories": [
+      "The RV trip itinerary will be 13 days, extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The trip starts and ends in Christchurch, South Island, doing a clockwise loop. Confirmed travel dates are December 20, 2026, to January 1, 2027. Total trip budget (RV + Flights) is AUD $8,700.",
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping.",
+      "Milford Sound is not recommended for inclusion due to the user's preference for a 'chill pace', as it would require a very big driving day or extending the trip.",
+      "【Travel Plan】 The Jucy Condo RV and flights are booked.",
+      "【Travel Plan】 The booking of the remaining three campsites out of the total seven is deferred until the full day-by-day itinerary is mapped out.",
+      "【Food Scheme】 User confirmed the following food and drink establishments: Supermarket for initial stock-up in Christchurch: Pak'nSave. Pubs for food and drinks near campsites: The Godley Hotel (Lake Tekapo), The Old Mountaineer's Cafe and Bar (Mount Cook Village), Speight's Ale House Queenstown (Queenstown), Monsoon Bar & Restaurant (Franz Josef). Fergburger in Queenstown is also confirmed, scheduled for a late lunch / arvo feed after the main rush to avoid long queues and ensure a relaxed experience.",
+      "Fergburger in Queenstown is confirmed to be added to the plan, scheduled for a late lunch / arvo feed after the main rush to avoid long queues and ensure a relaxed experience.",
+      "Primary destination interest for itinerary: Abel Tasman National Park (specifically Marahau/Kaiteriteri area) for its golden beaches, clear water, and BBQ opportunities. Desired features for itinerary spots include open space for kids, good fishing, and good walks nearby. Proposed family-friendly camping spots suitable for RVs in this area include Marahau Beach Camp and Kaiteriteri Recreation Reserve, both with BBQ facilities.",
+      "【Attraction Scheme】 Tekapo Springs Hot Pools are confirmed for a relaxed afternoon or evening soak, especially with the kids, as part of the Tekapo evening plan.",
+      "【Travel Plan】 Extended daytime fishing followed by a campsite BBQ is confirmed for a perfect evening as part of the Tekapo evening plan.",
+      "【Attraction Scheme】 An evening stroll by the Church of the Good Shepherd is confirmed as a nice and chill way to wind down, as part of the Tekapo evening plan.",
+      "【Attraction Scheme】 The main stargazing night is shifted to Mount Cook, with Tekapo designated as the backup location."
+    ],
+    "recall": 0.9166666666666666,
+    "hits": 11,
+    "total": 12,
+    "judge_details": [
+      true,
+      true,
+      true,
+      true,
+      false,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2743,
+      "output_tokens": 28
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0051",
+    "query_content": "G'day mate. Thanks for sorting out those shorter walks for the knee, much better. What's next on the New Zealand plan?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 101,
+    "session_identifier": "Travel_Planning_2:S11_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The full 13-day RV itinerary for the South Island, from December 20, 2026, to January 1, 2027, starting and ending in Christchurch with a clockwise loop, using a Jucy Condo RV, is confirmed. The trip was extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The total trip budget (RV + Flights) is AUD $8,700. The user prefers a relaxed, chill trip pace with their family (wife and children), focusing on good views, BBQs, relaxation, scenery, good food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping. Milford Sound is not recommended for inclusion due to the user's preference for a 'chill pace', as it would require a very big driving day or extending the trip. Previously booked campsites integrated are: Franz Josef TOP 10, Queenstown TOP 10 Creeksyde, White Horse Hill Campground DOC, Tekapo Motels & Holiday Park, with booking priorities for good views and playgrounds for kids. Campsites still to be booked (and user has agreed to book them) are: Kaikoura (for Dec 20): Kaikoura TOP 10 Holiday Park (Link: https://www.kaikouratop10.co.nz/, Estimated Price: NZD $70 - $90 per night for a powered site for RV with family, peak season, Notes: Excellent facilities including shared kitchen and BBQ areas, often with ocean views, close to town and the coast, very family-friendly). Abel Tasman Area (Marahau/Kaiteriteri for Dec 21-22): Marahau Beach Camp (Link: https://marahaubeachcamp.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season, Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, right at the start of the Abel Tasman track) OR Kaiteriteri Recreation Reserve (Link: https://www.kaiteriteribeach.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season, Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, larger beach resort town). Punakaiki (for Dec 23): Punakaiki Beach Camp (Link: https://www.punakaikibeachcamp.co.nz/, Estimated Price: NZD $60 - $80 per night for a powered site for RV with family, peak season, Notes: Right on the beachfront, chill West Coast experience, communal BBQ areas, relaxed atmosphere, very close to the Pancake Rocks). Wanaka (for Dec 25): Wanaka TOP 10 Holiday Park (Link: https://www.wanakatop10.co.nz/, Estimated Price: NZD $80 - $110 per night for a powered site for RV with family, peak season - expect higher for Christmas, Notes: Excellent facilities including well-maintained BBQ areas and often a playground for the kids, close to the lakefront for strolls and easy access to town). Christchurch (for Dec 30-31): Christchurch TOP 10 Holiday Park (Link: https://www.christchurchtop10.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season - expect higher for NYE, Notes: A large, well-equipped park with multiple BBQ areas, playgrounds, and good amenities, providing a convenient base for exploring Christchurch and for New Year's Eve celebrations). For the Abel Tasman area, proposed family-friendly camping spots suitable for RVs include Marahau Beach Camp and Kaiteriteri Recreation Reserve, both with BBQ facilities, offering golden beaches and clear water. Key activities and locations include: Kaikoura coast, Abel Tasman beaches (Marahau/Kaiteriteri) for chill, BBQ, fishing, walks; Punakaiki Pancake Rocks; glacier views near Franz Josef; Haast Pass scenic drive; Wanaka lakefront; Queenstown relaxation (no bungee, Skyline Gondola suggested); Mount Cook stargazing (main night) and easy walks; Lake Tekapo: confirmed extended daytime fishing followed by a campsite BBQ for a perfect evening, Tekapo Springs Hot Pools, Church of the Good Shepherd stroll (Tekapo as backup stargazing); Christchurch exploration.",
+      "【Travel Plan】 The next step in trip planning is to map out the full day-by-day itinerary, followed by booking the remaining campsites."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      true,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 3080,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0052",
+    "query_content": "Yeah, nah, let's get those locked in, mate. Good thinking.\n\nFor all those campsites, can you make sure they're **powered sites** for the RV? And if there are any that are pretty chill, maybe with a go",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 101,
+    "session_identifier": "Travel_Planning_2:S11_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "The user is traveling with their family (wife and children) and prefers a relaxed, chill trip pace, not keen on rushing. The RV needs to be comfy enough for the family. They focus on good views, BBQs, relaxation, scenery, good places for food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2171,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0053",
+    "query_content": "G'day. Ready to get these bench press changes into the program. What's the go for getting them sorted?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 103,
+    "session_identifier": "Fitness_3:S9_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 Post Ramp-Up Week Bench Press: Switch to a 3x5 scheme.",
+      "【Training Schedule】 Post Ramp-Up Week Accessory: Add Incline Dumbbell Press (3 sets of 10 reps)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2148,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0054",
+    "query_content": "Yeah, good on ya, mate. Glad it's all locked in.\n\nSo, when do I actually see the updated program, then? Just want to eyeball it and make sure it's all clear with the new bench press sets and the incli",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 103,
+    "session_identifier": "Fitness_3:S9_02",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Training Schedule】 Ramp-Up Week 7 Training Schedule (starting Monday, March 2nd) is confirmed. The user is recovering from the flu, currently feeling about 80% better but still describes their body as 'a bit cooked', which is why weights for all exercises are reduced by 10% from pre-illness levels. Additionally, the user's back is still a bit touch-and-go, requiring caution with deadlifts. Monday Workout A: Squat (5x5) 97.5kg, Bench Press (5x5) 85kg, Barbell Row (5x5) 72.5kg. Wednesday Workout B: Squat (5x5) 85kg, Overhead Press (5x5) 57.5kg, Deadlift (1x5) 112.5kg. Friday Workout A: Squat (5x5) 100kg, Bench Press (5x5) deload to 55-60kg for 5x5, focusing on form (supersedes 87.5kg), Barbell Row (5x5) 75kg. The Squat 5RM test and the original Deadlift session remain postponed for a week or two, or until the user feels 100% ready for that intensity.",
+      "Switch Bench Press to 3x5 scheme (Post Ramp-Up Week)",
+      "Add Incline Dumbbell Press (3 sets of 10 reps) (Post Ramp-Up Week)"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2414,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0055",
+    "query_content": "Yeah, nah, the ramp-up week's definitely done and dusted, mate. Been well over a week since that kicked off, so I'm well past it.\n\nRight, so can you flick over that updated program now, then? Keen to ",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 103,
+    "session_identifier": "Fitness_3:S9_02",
+    "turn_index": 6,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Body Metrics Records】 Bench 5RM: 80kg.",
+      "【Body Metrics Records】 Squat 5RM: 100kg.",
+      "【Body Metrics Records】 Deadlift 5RM: 120kg."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2147,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0056",
+    "query_content": "Right, mate. My back's still a bit dodgy, so let's stick to that theory revision for now, like we talked about. What's the go with those micro-quizzes and infographics you mentioned? Ready to hit thos",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 106,
+    "session_identifier": "Knowledge_Learning_9:S7_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 User wants to focus on learning about bites, stings, and burns. 【Other Learning Attributes】 User prefers to learn through quizzes, specifically scenario-based quizzes."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2136,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0057",
+    "query_content": "Hi. Time to pack for the trip. Can you make me a checklist for two adults and two kids heading to the South Island in autumn? We'll need stuff for 'four seasons in one day'. And make sure there's a se",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 109,
+    "session_identifier": "Travel_Planning_2:S12_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 The full 13-day RV itinerary for the South Island, from December 20, 2026, to January 1, 2027, starting and ending in Christchurch with a clockwise loop, using a Jucy Condo RV, is confirmed. The trip was extended from 12 days to allow for two truly short driving days and an extra overnight stop between Punakaiki and Kaikoura for maximum chill. The total trip budget (RV + Flights) is AUD $8,700. The user prefers a relaxed, chill trip pace with their family (wife and children), focusing on good views, BBQs, relaxation, scenery, good food ('good feed') and drinks ('cold one'), explicitly avoiding activities like bungee jumping. Milford Sound is not recommended for inclusion due to the user's preference for a 'chill pace', as it would require a very big driving day or extending the trip. Previously booked campsites integrated are: Franz Josef TOP 10, Queenstown TOP 10 Creeksyde, White Horse Hill Campground DOC, Tekapo Motels & Holiday Park, with booking priorities for good views and playgrounds for kids. Campsites still to be booked (and user has agreed to book them) are: Kaikoura (for Dec 20): Kaikoura TOP 10 Holiday Park (Link: https://www.kaikouratop10.co.nz/, Estimated Price: NZD $70 - $90 per night for a powered site for RV with family, peak season, Notes: Excellent facilities including shared kitchen and BBQ areas, often with ocean views, close to town and the coast, very family-friendly). Abel Tasman Area (Marahau/Kaiteriteri for Dec 21-22): Marahau Beach Camp (Link: https://marahaubeachcamp.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season, Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, right at the start of the Abel Tasman track) OR Kaiteriteri Recreation Reserve (Link: https://www.kaiteriteribeach.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season, Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, larger beach resort town). Punakaiki (for Dec 23): Punakaiki Beach Camp (Link: https://www.punakaikibeachcamp.co.nz/, Estimated Price: NZD $60 - $80 per night for a powered site for RV with family, peak season, Notes: Right on the beachfront, chill West Coast experience, communal BBQ areas, relaxed atmosphere, very close to the Pancake Rocks). Wanaka (for Dec 25): Wanaka TOP 10 Holiday Park (Link: https://www.wanakatop10.co.nz/, Estimated Price: NZD $80 - $110 per night for a powered site for RV with family, peak season - expect higher for Christmas, Notes: Excellent facilities including well-maintained BBQ areas and often a playground for the kids, close to the lakefront for strolls and easy access to town). Christchurch (for Dec 30-31): Christchurch TOP 10 Holiday Park (Link: https://www.christchurchtop10.co.nz/, Estimated Price: NZD $75 - $100 per night for a powered site for RV with family, peak season - expect higher for NYE, Notes: A large, well-equipped park with multiple BBQ areas, playgrounds, and good amenities, providing a convenient base for exploring Christchurch and for New Year's Eve celebrations). For the Abel Tasman area, proposed family-friendly camping spots suitable for RVs include Marahau Beach Camp and Kaiteriteri Recreation Reserve, both with BBQ facilities, offering golden beaches and clear water. Key activities and locations include: Kaikoura coast, Abel Tasman beaches (Marahau/Kaiteriteri) for chill, BBQ, fishing, walks; Punakaiki Pancake Rocks; glacier views near Franz Josef; Haast Pass scenic drive; Wanaka lakefront; Queenstown relaxation (no bungee, Skyline Gondola suggested); Mount Cook stargazing (main night) and easy walks; Lake Tekapo: confirmed extended daytime fishing followed by a campsite BBQ for a perfect evening, Tekapo Springs Hot Pools, Church of the Good Shepherd stroll (Tekapo as backup stargazing); Christchurch exploration.",
+      "【Food Scheme】 Initial shopping list for the first 2 days (Christchurch stock-up) confirmed: BBQ Essentials (Sausages, Bread Rolls/Buns, Onions, Tomato Sauce & Mustard, Salad Mix), Breakfast & Snacks (Eggs, Bread, Butter/Margarine, Coffee/Tea, Milk, Fruit), Drinks (A dozen Beer, Water).",
+      "User has knee issues, which were previously accommodated with shorter walks and are now feeling better.",
+      "User enjoys leisure activities such as surfing and going to the beach."
+    ],
+    "recall": 1.0,
+    "hits": 4,
+    "total": 4,
+    "judge_details": [
+      true,
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 3166,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0058",
+    "query_content": "Nah, you've absolutely nailed it for now, mate! That packing list was the last big thing on my mind before we hit the road. I reckon we're good to go. Cheers for everything, legend!",
+    "topic": "Travel_Planning",
+    "category": "Implicit Preference",
+    "session_index": 109,
+    "session_identifier": "Travel_Planning_2:S12_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 Campsites still to be booked are: Kaikoura (for Dec 20), Abel Tasman Area (Marahau/Kaiteriteri for Dec 21-22), Punakaiki (for Dec 23), Wanaka (for Dec 25), and Christchurch (for Dec 30-31)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2167,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0059",
+    "query_content": "Much better! Yeah, 88% is a good jump. Let's hit that last mock exam you've got for me. Want to make sure I'm totally ready for Saturday.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 112,
+    "session_identifier": "Knowledge_Learning_9:S8_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 User scored 72% on the mock exam."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2112,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0060",
+    "query_content": "Nah, mate, definitely a *new* one. I want to smash out the final mock exam you've got in the bank. Gotta make sure I'm absolutely dialed in for Saturday. No point reviewing the one I just did when I c",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 112,
+    "session_identifier": "Knowledge_Learning_9:S8_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 User wants to focus on learning about bites, stings, and burns. 【Other Learning Attributes】 User prefers to learn through quizzes, specifically scenario-based micro-quizzes, and is interested in infographics.",
+      "【Learning Path/Syllabus】 User wants to focus on learning about bites, stings, and burns. 【Other Learning Attributes】 User prefers to learn through quizzes, specifically scenario-based quizzes.",
+      "【Learning Path/Syllabus】 The first topic in the curated video playlist is DRSABCD.",
+      "【Learning Path/Syllabus】 The next proposed topic in the first aid video playlist is CPR (Cardiopulmonary Resuscitation)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 4,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2240,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0061",
+    "query_content": "Geez, mate, yeah, the flu still has me a bit drained, to be honest, and the back's definitely not 100%. Squatting heavy today would probably be pushing it, even if the gym wasn't a bloody swimming poo",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 114,
+    "session_identifier": "Fitness_3:S10_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 The user's training program has been updated to include: \n- **Bench Press:** 3 sets of 5 reps (3x5) as a main lift. Suggested starting weight: ~65kg (approx. 80-85% of 5RM).\n- **Incline Dumbbell Press:** 3 sets of 10 reps (3x10) as an accessory lift, performed on Bench Press days (Monday and Friday). \n- **Full Schedule:**\n  - **Monday (Workout A):** Squat 5x5 @ ~80kg, Bench Press 3x5 @ ~65kg, Barbell Row 5x5 @ ~75kg, Incline Dumbbell Press 3x10.\n  - **Wednesday (Workout B):** Squat 5x5 @ ~80kg, Overhead Press 5x5 @ ~57.5kg, Deadlift 1x5 @ ~108kg.\n  - **Friday (Workout A):** Squat 5x5 @ ~80kg, Bench Press 3x5 @ ~65kg, Barbell Row 5x5 @ ~75kg, Incline Dumbbell Press 3x10.\nThese changes are effective immediately, as the user has confirmed their ramp-up week/phase is definitely done and dusted."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2378,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0062",
+    "query_content": "Alright mate, that home workout yesterday was a ripper, got a good sweat going. So, what's the plan for the rescheduled squat session? I'm ready to hit it.",
+    "topic": "Fitness",
+    "category": "Dynamic Updating",
+    "session_index": 117,
+    "session_identifier": "Fitness_3:S10_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 The user's training program has been updated to include: \n- **Bench Press:** 3 sets of 5 reps (3x5) as a main lift. Suggested starting weight: ~65kg (approx. 80-85% of 5RM).\n- **Incline Dumbbell Press:** 3 sets of 10 reps (3x10) as an accessory lift, performed on Bench Press days (Monday and Friday). \n- **Full Schedule:**\n  - **Monday (Workout A):** Squat 5x5 @ ~80kg, Bench Press 3x5 @ ~65kg, Barbell Row 5x5 @ ~75kg, Incline Dumbbell Press 3x10.\n  - **Wednesday (Workout B):** Squat 5x5 @ ~80kg, Overhead Press 5x5 @ ~57.5kg, Deadlift 1x5 @ ~108kg.\n  - **Friday (Workout A):** Squat 5x5 @ ~80kg, Bench Press 3x5 @ ~65kg, Barbell Row 5x5 @ ~75kg, Incline Dumbbell Press 3x10.\nThese changes are effective immediately, as the user has confirmed their ramp-up week/phase is definitely done and dusted.",
+      "【Training Schedule】 The updated training plan for the week is: Monday: Rest Day (Monday Workout A was cancelled due to a flooded gym); Wednesday: Workout B (Squat, Overhead Press, Deadlift); Friday: Workout A (Squat, Bench Press, Barbell Row, Incline Dumbbell Press)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2452,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0063",
+    "query_content": "Yeah, nah, you're spot on, mate. Was a bit rough there for a bit.\n\nBut after that home workout yesterday, feeling heaps better. Got a good sweat on, and the back actually feels a fair bit looser now. ",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 117,
+    "session_identifier": "Fitness_3:S10_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 A detailed 5RM testing protocol for Squat, Bench Press, and Deadlift (the big three) has been agreed upon and provided to the user to establish a baseline for a 5x5 strength program. This protocol includes a general warm-up (5-10 min light cardio, dynamic stretches), specific empty bar and progressive warm-up sets for each lift (starting light with just the bar and gradually building up, focusing on form and conservative weight jumps, especially since the user does not know their estimated 5RM), a method for finding the 5RM through multiple attempts with weight adjustments, and important considerations (proper warm-up, form over weight, spotter for Bench Press & Squat, adequate rest, listening to body). The user is advised to perform these tests on separate days for optimal performance and recovery, and to record the exact weight achieved for their 5RM."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2280,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0064",
+    "query_content": "Hi. The CPR test is today. Feeling pretty good after those mock exams. Anything else I should quickly check before I head off?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 120,
+    "session_identifier": "Knowledge_Learning_9:S8_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Learning Attributes】 User's goal is to be fully prepared ('dialed in') for an event/exam on Saturday.",
+      "【Other Learning Attributes】 User's mock exam score progression is 72% -> 88% -> 100% (4 out of 4).",
+      "【Learning Path/Syllabus】 The final mock exam taken by the user included questions on DRSABCD, Snake Bite, Severe Burn, and Infant Choking."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2193,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0065",
+    "query_content": "Cheers for the reset plan, mate. Sounds like a good way to get back on track without feeling starved. Protein and water, easy done.\n\nAs for other activity, I'll be out for my usual morning surf, but t",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 123,
+    "session_identifier": "Fitness_3:S11_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "User enjoys leisure activities such as surfing and going to the beach."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2110,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0066",
+    "query_content": "Alright, so that's all done and dusted with the cert, eh? Cheers for sorting out those reminders too. Just want to make sure everything's properly archived now.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 126,
+    "session_identifier": "Knowledge_Learning_9:S9_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 User intends to provide an update on the CPR test outcome after completion."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2116,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0067",
+    "query_content": "Nah, she looks pretty clear, mate. No dramas with the warm-up or weights, you've laid it out well.\n\nProbably gonna hit it this arvo, actually. Got a bit of time before the kids are back from their swi",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 129,
+    "session_identifier": "Fitness_3:S12_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 A detailed 5RM testing protocol for Squat, Bench Press, and Deadlift (the big three) has been agreed upon and provided to the user to establish a baseline for a 5x5 strength program. This protocol includes a general warm-up (5-10 min light cardio, dynamic stretches), specific empty bar and progressive warm-up sets for each lift (starting light with just the bar and gradually building up, focusing on form and conservative weight jumps, especially since the user does not know their estimated 5RM), a method for finding the 5RM through multiple attempts with weight adjustments, and important considerations (proper warm-up, form over weight, spotter for Bench Press & Squat, adequate rest, listening to body). The user is advised to perform these tests on separate days for optimal performance and recovery, and to record the exact weight achieved for their 5RM.",
+      "【Body Metrics Records】 User has committed to recording and reporting the exact weight achieved for their Squat 5RM."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2307,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0068",
+    "query_content": "Hi. The 12-week program is done. What's the go now? What do you reckon we should do next?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 132,
+    "session_identifier": "Fitness_3:S13_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 User plans to perform the 1RM test this afternoon.",
+      "【Body Metrics Records】 User committed to recording the exact weights achieved for each 1RM lift."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2136,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0069",
+    "query_content": "G'day mate, yeah, done and dusted with the 12-weeker! Feeling pretty good, actually.\n\nFor the 1RM test, I got the numbers you asked for:\n*   Squat: 120kg\n*   Bench: 95kg\n*   Deadlift: 147.5kg\n\nSo, how",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 132,
+    "session_identifier": "Fitness_3:S13_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Body Metrics Records】 Bench 5RM: 80kg.",
+      "【Body Metrics Records】 Deadlift 5RM: 120kg."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2129,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0070",
+    "query_content": "Yeah, nah, that's grouse! Stoked to hear I nearly hit the 30kg mark. 28.4kg is bloody good, especially for a bloke my age. Cheers for crunching those numbers, mate. Feels good to see the hard yakka pa",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 132,
+    "session_identifier": "Fitness_3:S13_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "User enjoys surfing as a leisure activity.",
+      "User enjoys leisure activities such as surfing and going to the beach."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2121,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0071",
+    "query_content": "G'day. I'm ready to get cracking on that new maintenance program we talked about. What do you need from me to get it started?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 135,
+    "session_identifier": "Fitness_3:S14_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Training Schedule】 User has completed the 12-week program.",
+      "【Training Schedule】 User plans to take a break from structured training before planning the next phase."
+    ],
+    "recall": 1.0,
+    "hits": 2,
+    "total": 2,
+    "judge_details": [
+      true,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2132,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0072",
+    "query_content": "Mate, we already covered this, didn't we? The main goal is to keep these gains I just made, but without living in the gym.\n\nRemember, we talked about a 2-day a week, full-body setup so I've got more t",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 135,
+    "session_identifier": "Fitness_3:S14_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Body Metrics Records】 User's 1RM test results are: Squat 120kg, Bench 95kg, Deadlift 147.5kg.",
+      "【Other Fitness Attributes】 Progress logging method: Physical notebook.",
+      "【Other Fitness Attributes】 User has committed to consistently logging RPE for each main lift during their training sessions.",
+      "User enjoys surfing as a leisure activity."
+    ],
+    "recall": 0.75,
+    "hits": 3,
+    "total": 4,
+    "judge_details": [
+      true,
+      true,
+      false,
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2181,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0073",
+    "query_content": "Yeah, mate, that looks spot on! Proper good, exactly what I was after – quick, effective, and leaves plenty of time for the waves. Cheers for getting it sorted.\n\nFor the days, how about Tuesday for Wo",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 135,
+    "session_identifier": "Fitness_3:S14_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "User is a dad."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2102,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0074",
+    "query_content": "G'day! That 12-week program was a ripper. Stoked with the results. Ready to get stuck into this new maintenance plan we talked about. What's the go? What do you need from me to get it started?",
+    "topic": "Fitness",
+    "category": "Dynamic Incremental",
+    "session_index": 138,
+    "session_identifier": "Fitness_3:S14_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Training Schedule】 User has confirmed the 2-day full-body maintenance program. The main goal is to maintain current gains and strength without spending too much time in the gym. The program includes Workout A (Barbell Squat, Barbell Bench Press, Lat Pulldown/Pull-ups, optional accessory) and Workout B (Deadlift, Barbell Overhead Press, Barbell Row/Dumbbell Row, optional accessory). The confirmed schedule is Workout A on Tuesday evenings (7:00 - 8:30 PM) and Workout B on Thursday evenings (7:00 - 8:30 PM). Specific details for Workout B include: Main Focus (Deadlift, Overhead Press, Horizontal Pull); Exercises (Deadlift: 2-3 sets of 3-5 reps @ RPE 6-8; Barbell Overhead Press: 3 sets of 5-8 reps @ RPE 6-8; Barbell Row or Dumbbell Row: 3 sets of 8-12 reps @ RPE 7-9); Optional Accessory (Walking Lunges, Tricep Pushdowns or Dips, or Leg Raises, 2-3 sets of 10-15 reps).",
+      "【Training Schedule】 User's preferred schedule for the maintenance program is Workout A on Tuesday and Workout B on Friday.",
+      "【Other Fitness Attributes】 Progress logging method: Physical notebook."
+    ],
+    "recall": 0.6666666666666666,
+    "hits": 2,
+    "total": 3,
+    "judge_details": [
+      true,
+      false,
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2397,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0075",
+    "query_content": "G'day. First Aid cert's in the bag. Want to make sure those renewal reminders are all set up properly. What do you need from me?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 141,
+    "session_identifier": "Knowledge_Learning_9:S9_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 User has completed the 'HLTAID011 Provide First Aid' certification, issued on March 31st, 2026, and valid until March 31st, 2029."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2140,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0076",
+    "query_content": "Hi. All those travel docs and maps are sorted now. What's next on the prep list for the trip?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 143,
+    "session_identifier": "Travel_Planning_2:S13_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 The next step proposed is to book remaining campsites for Kaikoura, Abel Tasman, Punakaiki, Wanaka, and Christchurch."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 0.0,
+    "judge_usage": {
+      "input_tokens": 2131,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0077",
+    "query_content": "Yeah, too right, mate. Let's get 'em sorted. You just tell me when they're locked in, yeah? I'm keen to keep this whole trip prep cruisy.",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 143,
+    "session_identifier": "Travel_Planning_2:S13_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 6,
+    "gt_memories": [
+      "【Travel Plan】 Draft booking details for Kaikoura TOP 10 Holiday Park (Dec 20): Link: https://www.kaikouratop10.co.nz/, Estimated Price: NZD $70 - $90 per night (powered site for RV with family, peak season), Notes: Excellent facilities including shared kitchen and BBQ areas, often with ocean views, close to town and the coast, very family-friendly.",
+      "【Travel Plan】 Draft booking details for Marahau Beach Camp (Dec 21 & 22): Link: https://marahaubeachcamp.co.nz/, Estimated Price: NZD $75 - $100 per night (powered site for RV with family, peak season), Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, right at the start of the Abel Tasman track.",
+      "【Travel Plan】 Draft booking details for Kaiteriteri Recreation Reserve (Dec 21 & 22): Link: https://www.kaiteriteribeach.co.nz/, Estimated Price: NZD $75 - $100 per night (powered site for RV with family, peak season), Notes: Direct beach access, fantastic communal BBQ facilities, plenty of open space for kids, larger beach resort town.",
+      "【Travel Plan】 Draft booking details for Punakaiki Beach Camp (Dec 23): Link: https://www.punakaikibeachcamp.co.nz/, Estimated Price: NZD $60 - $80 per night (powered site for RV with family, peak season), Notes: Right on the beachfront, chill West Coast experience, communal BBQ areas, relaxed atmosphere, very close to the Pancake Rocks.",
+      "【Travel Plan】 Draft booking details for Wanaka TOP 10 Holiday Park (Dec 25): Link: https://www.wanakatop10.co.nz/, Estimated Price: NZD $80 - $110 per night (powered site for RV with family, peak season - expect higher for Christmas), Notes: Excellent facilities including well-maintained BBQ areas and often a playground for the kids, close to the lakefront for strolls and easy access to town.",
+      "【Travel Plan】 Draft booking details for Christchurch TOP 10 Holiday Park (Dec 30 & 31): Link: https://www.christchurchtop10.co.nz/, Estimated Price: NZD $75 - $100 per night (powered site for RV with family, peak season - expect higher for NYE), Notes: A large, well-equipped park with multiple BBQ areas, playgrounds, and good amenities, providing a convenient base for exploring Christchurch and for New Year's Eve celebrations."
+    ],
+    "recall": 1.0,
+    "hits": 6,
+    "total": 6,
+    "judge_details": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2655,
+      "output_tokens": 16
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0078",
+    "query_content": "G'day mate, I'm back. Let's get stuck into those Maldives resorts again. What's the next step to nail down this family trip?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 147,
+    "session_identifier": "Travel_Planning_7:S2_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 Maldives Trip Details: Trip quality: 5-star. Inclusions: All-inclusive. Transfer method: Seaplane. Budget: Under 50k AUD.",
+      "【Travel Plan】 Maldives family trip for 2 adults and 2 children (ages 7 and 9 next year). Travel dates: Next year, either June/July school holidays or next Christmas/New Year's. For price comparison, a 10-day trip duration is requested, with preferred dates being mid-May or Christmas week.",
+      "【Attraction Scheme】 Preferred resort type is 'Adventure Grommet' Haven. This type features a super relaxed, barefoot luxury vibe, heaps of fun for the whole family while feeling exclusive, natural beauty with plenty of organised (but optional) activities, perfect for families who love to explore and play together. Key features include spacious family beach villas (often with private plunge pools) or connecting rooms, a fantastic kids' club with an outdoor focus (snorkelling lessons, island exploration, marine biology programs, and beach games for 7 and 9-year-olds), a wide array of non-motorised water sports, multiple casual dining spots, and an excellent house reef for easy family snorkelling. Proposed specific resort examples: Soneva Fushi, Finolhu Baa Atoll."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2375,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0079",
+    "query_content": "G'day. Remember that chat about the surf? My mate was going on about Thaa and Laamu atolls. Can you see which resorts on our list are close to a good break? Also, add Niyama Private Islands to check o",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 150,
+    "session_identifier": "Travel_Planning_7:S3_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Fitness Attributes】 User wants more time for surfing.",
+      "【Travel Plan】 Soneva Fushi is a top contender for the Maldives trip, specifically noted for 'The Den' kids' club (zipline, marine biology).",
+      "【Travel Plan】 LUX* South Ari Atoll is a top contender for the Maldives trip, specifically noted for whale shark excursions."
+    ],
+    "recall": 0.3333333333333333,
+    "hits": 1,
+    "total": 3,
+    "judge_details": [
+      true,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2179,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0080",
+    "query_content": "Bloody oath, that's what I'm talking about! Niyama sounds like the goods for the surf, mate, especially with its own break. Vodi and Kasabu, yeah, that's got me stoked.\n\nSoneva and LUX* are good for o",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 150,
+    "session_identifier": "Travel_Planning_7:S3_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 Maldives family trip for 2 adults and 2 children (ages 7 and 9 next year). Travel dates: Next year, either June/July school holidays or next Christmas/New Year's. For price comparison, a 10-day trip duration is requested, with preferred dates being mid-May or Christmas week.",
+      "【Attraction Scheme】 Preferred resort type is 'Adventure Grommet' Haven. This type features a super relaxed, barefoot luxury vibe, heaps of fun for the whole family while feeling exclusive, natural beauty with plenty of organised (but optional) activities, perfect for families who love to explore and play together. Key features include spacious family beach villas (often with private plunge pools) or connecting rooms, a fantastic kids' club with an outdoor focus (snorkelling lessons, island exploration, marine biology programs, and beach games for 7 and 9-year-olds), a wide array of non-motorised water sports, multiple casual dining spots, and an excellent house reef for easy family snorkelling. Proposed specific resort examples: Soneva Fushi, Finolhu Baa Atoll.",
+      "【Other Tourism-Related Attributes】 Maldives Trip Details: Trip quality: 5-star. Inclusions: All-inclusive. Transfer method: Seaplane. Budget: Under 50k AUD."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2375,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0081",
+    "query_content": "G'day. I'm back. How'd we go with digging into those top 5 resorts? Keen to see what the actual guest reviews said about the food, house reef, and seaplane transfers.",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 152,
+    "session_identifier": "Travel_Planning_7:S4_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 W Maldives is not a suitable resort option due to its perceived focus on adults rather than a full kids' club vibe.",
+      "【Travel Plan】 Soneva Fushi and LUX* South Ari Atoll are no longer primary contenders for the 'Travel Plan' due to their low surfing potential."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2164,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0082",
+    "query_content": "G'day yourself!\n\nNah mate, that's what I asked *you* to do, remember? \"Take the top 5 from that list and do a proper deep dive.\" You've got all the info on which resorts are still in the running, espe",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 152,
+    "session_identifier": "Travel_Planning_7:S4_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 Niyama Private Islands is now a front-runner for the 'Travel Plan' due to its high surfing potential, specifically mentioning its private break 'Vodi' and nearby 'Kasabu'.",
+      "【Attraction Scheme】 Preferred resort type is 'Adventure Grommet' Haven. This type features a super relaxed, barefoot luxury vibe, heaps of fun for the whole family while feeling exclusive, natural beauty with plenty of organised (but optional) activities, perfect for families who love to explore and play together. Key features include spacious family beach villas (often with private plunge pools) or connecting rooms, a fantastic kids' club with an outdoor focus (snorkelling lessons, island exploration, marine biology programs, and beach games for 7 and 9-year-olds), a wide array of non-motorised water sports, multiple casual dining spots, and an excellent house reef for easy family snorkelling. Proposed specific resort examples: Soneva Fushi, Finolhu Baa Atoll."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2306,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0083",
+    "query_content": "Yeah, fair enough, mate, good on ya for explaining.\n\nBut nah, don't muck around trying to dig up old ones we already binned. Just grab another strong contender, a proper ripper that fits the 'Adventur",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 152,
+    "session_identifier": "Travel_Planning_7:S4_01",
+    "turn_index": 6,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 User's primary criterion for resort selection now includes high surfing potential, with a specific interest in resorts near good breaks in Thaa and Laamu atolls."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2132,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0084",
+    "query_content": "Alright mate, I'm back. Work finally settled down a bit after that storm. Ready to pick up the holiday planning again. What were we looking at last for those Maldives resorts?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 154,
+    "session_identifier": "Travel_Planning_7:S5_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 The final list of five resorts for deep dive and comparison includes: Niyama Private Islands (noted for high surfing potential with private break 'Vodi' and nearby 'Kasabu'), Soneva Fushi, LUX* South Ari Atoll, Finolhu Baa Atoll, and Six Senses Laamu (selected as a strong contender fitting the 'Adventure Grommet' vibe and having decent surf potential).",
+      "【Travel Plan】 The next step is to conduct a side-by-side comparison of the five selected resorts to help the user make a decision.",
+      "【Travel Plan】 The comparison criteria for the five resorts are: 1. Surf potential, 2. House reef quality for snorkeling, 3. Food quality (all-inclusive plan), and 4. Grommets & family vibe."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2274,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0085",
+    "query_content": "Alright, I'm back. The missus wants to see what we're actually paying for. Can you pull up the best video tours of the overwater villas for the top 4 resorts on our list?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 157,
+    "session_identifier": "Travel_Planning_7:S6_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The final list of five resorts for deep dive and comparison includes: Niyama Private Islands (noted for high surfing potential with private break 'Vodi' and nearby 'Kasabu'), Soneva Fushi, LUX* South Ari Atoll, Finolhu Baa Atoll, and Six Senses Laamu (selected as a strong contender fitting the 'Adventure Grommet' vibe and having decent surf potential).",
+      "【Travel Plan】 The user eliminated Soneva Fushi due to its minimal surf potential for a surf trip."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2214,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0086",
+    "query_content": "G'day. We watched those videos last night. The missus and I ruled one of them out, it looked a bit tired. So we're down to three now. What's the go from here?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 160,
+    "session_identifier": "Travel_Planning_7:S6_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 User confirmed the list of 4 resorts for overwater villa video tours: Niyama Private Islands, Six Senses Laamu, LUX* South Ari Atoll, and Finolhu Baa Atoll."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2144,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0087",
+    "query_content": "Righto, mate. Yeah, we're keen on Niyama, Six Senses, and LUX*. Finolhu was the one that looked a bit tired, so that's out.\n\nSo, what's the next step to comparing these three? We wanna make sure we're",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 160,
+    "session_identifier": "Travel_Planning_7:S6_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 The user eliminated Soneva Fushi due to its minimal surf potential for a surf trip.",
+      "【Travel Plan】 The user wants a deep dive into the specific surf breaks and conditions at Niyama Private Islands and Six Senses Laamu.",
+      "【Travel Plan】 The user wants more detail on the kids' club activities and family amenities unique to Niyama Private Islands and Six Senses Laamu.",
+      "【Other Tourism-Related Attributes】 Maldives Trip Details: Trip quality: 5-star. Inclusions: All-inclusive. Transfer method: Seaplane. Budget: Under 50k AUD."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 4,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2228,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0088",
+    "query_content": "Yeah, good on ya, mate. That's a solid list. For starters, let's definitely hit up the **surf potential** – gotta know where I can catch some decent waves, eh? That's probably number one for me.\n\nAnd ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 160,
+    "session_identifier": "Travel_Planning_7:S6_02",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 User's primary criterion for resort selection now includes high surfing potential, with a specific interest in resorts near good breaks in Thaa and Laamu atolls."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2132,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0089",
+    "query_content": "G'day. How's that comparison table looking for the three resorts? Ready to have a squiz?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 162,
+    "session_identifier": "Travel_Planning_7:S7_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The user has confirmed the shortlist of three Maldives resorts for overwater villa video tours: Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll. Finolhu Baa Atoll was eliminated because it 'looked a bit tired'.",
+      "【Travel Plan】 The user has prioritized the following comparison criteria for the shortlisted resorts (Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll): 1. Surf Potential & Breaks, 2. Kids' Clubs & Family Activities, 3. Overall Value & Pricing, 4. Dining & All-Inclusive Offerings."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2237,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0090",
+    "query_content": "Yeah, that's the one, mate! Spot on this time. Cheers for sorting that out.\n\nAlright, having a squiz now... Niyama and Six Senses are definitely looking good for the surf, that's for sure. And the 'Ba",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 162,
+    "session_identifier": "Travel_Planning_7:S7_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 The user eliminated Soneva Fushi due to its minimal surf potential for a surf trip.",
+      "【Travel Plan】 The user wants a deep dive into the specific surf breaks and conditions at Niyama Private Islands and Six Senses Laamu.",
+      "【Travel Plan】 The user wants more detail on the kids' club activities and family amenities unique to Niyama Private Islands and Six Senses Laamu."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2186,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0091",
+    "query_content": "Right, that's better, cheers for chucking that in. Good to know I won't be stuck with just dodgy local brews – international brands and decent cocktails sound spot on.\n\nI get that the exact stuff can ",
+    "topic": "Travel_Planning",
+    "category": "Implicit Preference",
+    "session_index": 164,
+    "session_identifier": "Travel_Planning_7:S8_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The user has narrowed down their preferred resort options to Niyama Private Islands and Six Senses Laamu, noting both are strong contenders for surf. A deeper dive into these two resorts is needed to help make a final decision. The primary criterion for resort selection includes high surfing potential, with a specific interest in resorts near good breaks in Thaa and Laamu atolls.",
+      "【Travel Plan】 Assistant has proposed to proceed with a deeper dive into Niyama Private Islands and Six Senses Laamu."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2203,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0092",
+    "query_content": "G'day. That $48k quote for the resort was a shocker. Way too much for what I was expecting. We need to re-evaluate this whole thing. Can we start looking at the other options on the table, focusing ha",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 169,
+    "session_identifier": "Travel_Planning_7:S9_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The previous quote for Resort A for May was 48,000, which the user finds too expensive and wants to rethink the budget.",
+      "【Travel Plan】 User's primary plan is to first adjust the parameters for Resort A to get a better price, before considering other resorts."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2159,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0093",
+    "query_content": "Yeah, good on ya for remembering that. $48k is just taking the piss, mate. Let's definitely try to tweak Resort A first.\n\nSee what a 7-night stay, maybe real early or late May, does to the price. If w",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 169,
+    "session_identifier": "Travel_Planning_7:S9_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The desired trip length for Resort A is now seven nights (instead of ten).",
+      "【Travel Plan】 The desired time for the trip to Resort A in May is either the very start or very end of the month."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2147,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0094",
+    "query_content": "Fair enough, mate, if you can't actually do that, then I'm not gonna spend my arvo doing the digging myself. That's a pain in the arse, and I already said 'don't make me do the digging', eh?\n\nAlright,",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 169,
+    "session_identifier": "Travel_Planning_7:S9_02",
+    "turn_index": 6,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Travel Plan】 The user has narrowed down their preferred resort options to Niyama Private Islands and Six Senses Laamu, noting both are strong contenders for surf. A deeper dive into these two resorts is needed to help make a final decision. The primary criterion for resort selection includes high surfing potential, with a specific interest in resorts near good breaks in Thaa and Laamu atolls.",
+      "【Travel Plan】 Proposal to dive deeper into Niyama Private Islands and Six Senses Laamu as top contenders (especially for surf) to help make a final decision."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2212,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0095",
+    "query_content": "Spot on, mate! Glad we're finally ditching that dead weight. No point mucking around if we can't get the real numbers without me doing all the hard yakka.\n\nYeah, Niyama and Six Senses, those were the ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 169,
+    "session_identifier": "Travel_Planning_7:S9_02",
+    "turn_index": 8,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 The user prefers the 'Barefoot Eco-Luxury' vibe of Six Senses Laamu over the 'Sophisticated & Active' vibe of Niyama Private Islands.",
+      "【Food Scheme】 User is satisfied with the 'Food & Drink' details for all-inclusive packages at Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll, specifically that they typically include international beer brands and a wide range of decent cocktails.",
+      "【Travel Plan】 The user wants more detail on the kids' club activities and family amenities unique to Niyama Private Islands and Six Senses Laamu."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2233,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0096",
+    "query_content": "G'day. That last resort price quote was a bit of a shocker, hey? I'm keen to see the numbers now that we're tracking all three resorts. How's that comparison looking for May versus Christmas?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 172,
+    "session_identifier": "Travel_Planning_7:S10_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 4,
+    "gt_memories": [
+      "【Travel Plan】 The previous quote for Resort A for May was 48,000, which the user finds too expensive and wants to rethink the budget.",
+      "【Travel Plan】 The user has decided to abandon Resort A as an option because they cannot get a quote without doing the legwork themselves.",
+      "【Travel Plan】 The user wants to compare Niyama Private Islands and Six Senses Laamu for value, focusing on their costs and inclusions.",
+      "【Other Tourism-Related Attributes】 User accepted the provision of precise YouTube search terms for overwater villa tours for Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll, as direct video links cannot be provided by the AI."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 4,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2246,
+      "output_tokens": 12
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0097",
+    "query_content": "Woah, hold your horses, mate! First, you tell me you've got a 24-hour old price for Resort C, and now you're saying you don't actually have *any* numbers stored for *any* of the resorts? That's a fair",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 175,
+    "session_identifier": "Travel_Planning_7:S11_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 AI capability limitation: The AI cannot fetch live, real-time price quotes from resorts or travel agents."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2123,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0098",
+    "query_content": "Strewth, mate, this is an absolute shocker! You're telling me you can't fetch *any* price quotes, live or historical, for *any* of the resorts? After all this time, and after I told you to \"track the ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Updating",
+    "session_index": 175,
+    "session_identifier": "Travel_Planning_7:S11_01",
+    "turn_index": 6,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 Comparison tool provided: A structured table framework for Maldives resort price comparison (10-day trip for Mid-May and Christmas Week) including Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll.",
+      "【Travel Plan】 User action item: User will personally chase up resort price quotes and plug them into the provided comparison table."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2177,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0099",
+    "query_content": "Alright, mate, that's a much clearer explanation, cheers for that. Still pretty spewing about the runaround, but at least we know where we stand now.\n\nYeah, let's get that quote request sorted. Don't ",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 175,
+    "session_identifier": "Travel_Planning_7:S11_01",
+    "turn_index": 8,
+    "result_text": "",
+    "gt_memory_count": 6,
+    "gt_memories": [
+      "【Travel Plan】 Resorts for price comparison: Niyama Private Islands, Six Senses Laamu, and LUX* South Ari Atoll. The comparison should focus on value, costs, and inclusions.",
+      "【Travel Plan】 Trip duration for comparison: 10 days.",
+      "【Travel Plan】 Preferred dates for May trip: mid-May.",
+      "【Travel Plan】 Preferred dates for Christmas trip: Christmas week.",
+      "【Travel Plan】 Maldives family trip for 2 adults and 2 children (ages 7 and 9 next year). Travel dates: Next year, either June/July school holidays or next Christmas/New Year's. For price comparison, a 10-day trip duration is requested, with preferred dates being mid-May or Christmas week.",
+      "【Other Tourism-Related Attributes】 Maldives Trip Details: Trip quality: 5-star. Inclusions: All-inclusive. Transfer method: Seaplane. Budget: Under 50k AUD."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 6,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2301,
+      "output_tokens": 16
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0100",
+    "query_content": "Yeah, nah, that's the goods, mate! Bloody oath, that's exactly what I needed. Spot on with all the details, you've nailed it.\n\nRight, I'm gonna copy this bad boy and fire it off to a few travel agents",
+    "topic": "Travel_Planning",
+    "category": "Implicit Preference",
+    "session_index": 175,
+    "session_identifier": "Travel_Planning_7:S11_01",
+    "turn_index": 10,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Travel Plan】 Future interaction plan: User will initiate a new chat with the AI when they have the prices plugged into the table and are ready to compare them properly."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2131,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0101",
+    "query_content": "Hi mate, I've had a good look at those prices. Christmas is definitely too much, so May it is. Resort B looks like the best bet for us, good value. What's the next step to lock it all in?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 177,
+    "session_identifier": "Travel_Planning_7:S12_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 5,
+    "gt_memories": [
+      "【Other Tourism-Related Attributes】 Maldives Trip Details: Trip quality: 5-star. Inclusions: All-inclusive. Transfer method: Seaplane. Budget: Under 50k AUD.",
+      "【Travel Plan】 Maldives family trip for 2 adults and 2 children (ages 7 and 9 next year). Travel dates: Next year, either June/July school holidays or next Christmas/New Year's. For price comparison, a 10-day trip duration is requested, with preferred dates being mid-May or Christmas week.",
+      "【Travel Plan】 Trip duration for comparison: 10 days.",
+      "【Travel Plan】 User action item: User will personally gather resort price quotes from travel agents using the AI-generated draft request.",
+      "【Travel Plan】 Future interaction plan: User will initiate a new chat with the AI once they have gathered the resort price quotes. The AI will then help the user plug these quotes into the previously provided comparison table framework, analyze and compare the figures, weighing up value, inclusions, and specific resort features (e.g., surf breaks, kids' clubs, accommodation types, 'Barefoot Eco-Luxury' vibe), and brainstorm additional questions for travel agents."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 5,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2348,
+      "output_tokens": 14
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0102",
+    "query_content": "G'day. We decided on Resort B for May. What's the next step for getting this holiday officially booked? Do you need anything from me to lock it in properly?",
+    "topic": "Travel_Planning",
+    "category": "Dynamic Incremental",
+    "session_index": 179,
+    "session_identifier": "Travel_Planning_7:S12_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Travel Plan】 User Action Item: User will take the confirmed trip details to a travel agent to secure the booking this week.",
+      "【Other Tourism-Related Attributes】 Future Interaction Plan: User will inform the AI once the booking is officially sorted/complete.",
+      "【Travel Plan】 Confirmed Trip Details: Resort: The Reef Retreat Maldives. Travel Dates: May 10th to May 20th, 2026 (10 days). Travellers: 2 Adults, 2 Children (who will be 7 and 9 years old in 2026). Package: 5-star, All-Inclusive. Transfers: Seaplane. Budget: Under 50,000 AUD."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2241,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0103",
+    "query_content": "Whoa, hold on, mate. Saturday morning is for the beach with the kids, non-negotiable. And I'm usually knackered by Friday arvo. We need to be realistic about this schedule.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 184,
+    "session_identifier": "Knowledge_Learning_8:S2_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 User prefers to complete study modules when feeling fresh and able to properly focus, ideally early in the morning. Friday nights are unavailable for studying due to family time (BBQ). Friday afternoons/evenings are generally unsuitable for tasks/learning due to being 'knackered' and the user being keen to knock off early for a surf. Saturday mornings are sacred for surfing with the kids and are non-negotiable for beach time, making them unavailable for study. Monday mornings are a bit hectic."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2204,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0104",
+    "query_content": "Yeah, mate, that sounds spot on. You've nailed it, exactly what I was after. Cheers for getting that sorted.\n\nRight then, now that we've got the times locked in, let's get stuck into \"slotting in your",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 184,
+    "session_identifier": "Knowledge_Learning_8:S2_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Training Schedule】 User has confirmed the 2-day full-body maintenance program. The main goal is to maintain current gains and strength without spending too much time in the gym. The program includes Workout A (Barbell Squat, Barbell Bench Press, Lat Pulldown/Pull-ups, optional accessory) and Workout B (Deadlift, Barbell Overhead Press, Barbell Row/Dumbbell Row, optional accessory). The confirmed schedule is Workout A on Tuesday evenings (7:00 - 8:30 PM) and Workout B on Thursday evenings (7:00 - 8:30 PM). Specific details for Workout B include: Main Focus (Deadlift, Overhead Press, Horizontal Pull); Exercises (Deadlift: 2-3 sets of 3-5 reps @ RPE 6-8; Barbell Overhead Press: 3 sets of 5-8 reps @ RPE 6-8; Barbell Row or Dumbbell Row: 3 sets of 8-12 reps @ RPE 7-9); Optional Accessory (Walking Lunges, Tricep Pushdowns or Dips, or Leg Raises, 2-3 sets of 10-15 reps)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2354,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0105",
+    "query_content": "Alright, mate. The study schedule's locked in. What's the next thing we need to tackle for this builder's license?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 187,
+    "session_identifier": "Knowledge_Learning_8:S2_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes - Schedule】 The confirmed learning/task schedule is locked in and includes: Tuesday evenings (7:00 - 8:30 PM), Thursday evenings (7:00 - 8:30 PM), and two flexible 90-minute blocks over the weekend (Saturday or Sunday arvo, depending on conditions)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2163,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0106",
+    "query_content": "G'day. That chat with Gaz and Davo was spot on. Good to know we're hitting waterproofing and contracts hard in the study plan. What's the go for getting stuck into it then?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 189,
+    "session_identifier": "Knowledge_Learning_8:S3_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Learning Attributes - Schedule】 The confirmed learning/task schedule is locked in and includes: Tuesday evenings (7:00 - 8:30 PM), Thursday evenings (7:00 - 8:30 PM), and two flexible 90-minute blocks over the weekend (Saturday or Sunday arvo, depending on conditions).",
+      "【Other Learning Attributes】 User prefers to complete study modules when feeling fresh and able to properly focus, ideally early in the morning. Friday nights are unavailable for studying due to family time (BBQ). Friday afternoons/evenings are generally unsuitable for tasks/learning due to being 'knackered' and the user being keen to knock off early for a surf. Saturday mornings are sacred for surfing with the kids and are non-negotiable for beach time, making them unavailable for study. Monday mornings are a bit hectic.",
+      "【Learning Path/Syllabus - Slot Allocation】 Two flexible 90-minute blocks over the weekend (Saturday or Sunday arvo, depending on conditions) are for catching up on missed sessions or for any other tasks that pop up."
+    ],
+    "recall": 0.6666666666666666,
+    "hits": 2,
+    "total": 3,
+    "judge_details": [
+      true,
+      false,
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2322,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0107",
+    "query_content": "G'day mate. The surf was epic, but I'm back on deck now. Ready to get stuck into that builder's course again. What's next?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 191,
+    "session_identifier": "Knowledge_Learning_8:S4_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 Dedicated study for 'waterproofing' is scheduled for Sunday mornings at 6 AM for 90 minutes.",
+      "【Learning Path/Syllabus】 Dedicated study for 'contracts' is scheduled for Wednesday mornings for 90 minutes.",
+      "【Learning Path/Syllabus】 The next step for the builder's license application is to start gathering initial documents and resources. These include the NCC 2022 - Volumes One & Two (Digital Subscription) from the Australian Building Codes Board (ABCB) website, and QBCC forms (specifically the QBCC Application Form and the QBCC Low-Rise Builder License Guide) from the Queensland Building and Construction Commission (QBCC) website."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2248,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0108",
+    "query_content": "Hey. Back from the waves, sunburnt but stoked. Ready to hit the books again. How'd we go with setting up that Jargon Buster for us?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 195,
+    "session_identifier": "Knowledge_Learning_8:S5_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 A 'Jargon Buster' glossary has been set up as a simple list within the chat and includes the terms 'Deemed-to-Satisfy' and 'Performance Solution' with their respective Lego analogies."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2145,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0109",
+    "query_content": "Yeah, that Jargon Buster looks ace, mate! Perfect. Good to know we've got that spot to chuck all the tricky words.\n\nAnd yeah, definitely ready to dive back into the books. My brain's probably still fu",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 195,
+    "session_identifier": "Knowledge_Learning_8:S5_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The next step for the builder's license application is to start gathering initial documents and resources. These include the NCC 2022 - Volumes One & Two (Digital Subscription) from the Australian Building Codes Board (ABCB) website, and QBCC forms (specifically the QBCC Application Form and the QBCC Low-Rise Builder License Guide) from the Queensland Building and Construction Commission (QBCC) website.",
+      "【Learning Path/Syllabus】 'Waterproofing' study session has been rescheduled to Sunday, December 28th, at 6 AM for 90 minutes."
+    ],
+    "recall": 0.5,
+    "hits": 1,
+    "total": 2,
+    "judge_details": [
+      true,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2225,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0110",
+    "query_content": "G'day. The little fella's finally sleeping through the night, thank god. I'm still a bit knackered, but keen to ease back into the NCC stuff when you reckon. What do we do?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 200,
+    "session_identifier": "Knowledge_Learning_8:S7_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The immediate next step for the builder's license application is to locate and download/bookmark the initial documents and resources: NCC 2022 - Volumes One & Two (Digital Subscription from ABCB website) and QBCC forms (e.g., QBCC Application Form and QBCC Low-Rise Builder License Guide from QBCC website)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 7.152557373046875e-07,
+    "judge_usage": {
+      "input_tokens": 2171,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0111",
+    "query_content": "G'day. That contract analysis was grouse, mate. Really cleared things up about those dodgy clauses. What's next on the agenda for today?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 202,
+    "session_identifier": "Knowledge_Learning_8:S8_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "Download and bookmark NCC 2022 - Volumes One & Two and QBCC forms by 2025-12-22 morning",
+      "【Other Learning Attributes】 User has committed to completing the download and bookmarking of NCC and QBCC documents this afternoon (Sunday) or first thing tomorrow morning (Monday)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2161,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0112",
+    "query_content": "Yeah, nah, good as gold, mate. I'm just about to get stuck into that now. Got the laptop open and a cold beer in hand. Should be all sorted in no time.\n\nAnything specific I should be looking out for w",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 202,
+    "session_identifier": "Knowledge_Learning_8:S8_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The immediate next step for the builder's license application is to locate and download/bookmark the initial documents and resources: NCC 2022 - Volumes One & Two (Digital Subscription from ABCB website) and QBCC forms (e.g., QBCC Application Form and QBCC Low-Rise Builder License Guide from QBCC website)."
+    ],
+    "recall": 1.0,
+    "hits": 1,
+    "total": 1,
+    "judge_details": [
+      true
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2171,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0113",
+    "query_content": "Yeah, nah, she's a proper shocker, mate. Feels like I've got a couple of angry gnomes having a wrestle in my lower back. Lying flat on the floor or the couch is about all I can manage for more than fi",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Updating",
+    "session_index": 205,
+    "session_identifier": "Knowledge_Learning_8:S9_01",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 6,
+    "gt_memories": [
+      "Study 'contracts' for 90 minutes every Wednesday morning",
+      "Study 'waterproofing' for 90 minutes on 2025-12-28 (Sunday) at 6 AM",
+      "Download and bookmark NCC 2022 - Volumes One & Two and QBCC forms by 2025-12-22 morning",
+      "【Learning Path/Syllabus】 Dedicated study for 'contracts' is scheduled for Wednesday mornings for 90 minutes.",
+      "【Learning Path/Syllabus】 'Waterproofing' study session has been rescheduled to Sunday, December 28th, at 6 AM for 90 minutes.",
+      "【Other Learning Attributes】 User has committed to completing the download and bookmarking of NCC and QBCC documents this afternoon (Sunday) or first thing tomorrow morning (Monday)."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 6,
+    "judge_details": [
+      false,
+      false,
+      false,
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2272,
+      "output_tokens": 16
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0114",
+    "query_content": "Yeah, mate, pretty much anything that needs me sitting upright at a desk or cracking open a textbook for long is gonna be a no-go for a bit. My back just ain't having it.\n\nYou know how you mentioned s",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 205,
+    "session_identifier": "Knowledge_Learning_8:S9_01",
+    "turn_index": 4,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "Study 'contracts' for 90 minutes every Wednesday morning",
+      "Study 'waterproofing' for 90 minutes on 2025-12-28 (Sunday) at 6 AM"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2139,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0115",
+    "query_content": "Alright mate, back's still a bit dodgy, but I'm keen to give those audio sessions a go. Resting up, but don't want to fall behind.\n\nWhat's first up for the WHS module? How do we kick this off?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 207,
+    "session_identifier": "Knowledge_Learning_8:S9_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 User wants to focus on learning about bites, stings, and burns. 【Other Learning Attributes】 User prefers to learn through quizzes, specifically scenario-based micro-quizzes, and is interested in infographics.",
+      "【Other Learning Attributes】 User is interested in switching to audio learning methods (e.g., listening to modules, audio flashcards) for study due to their back injury, as an alternative to traditional desk-based study."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2190,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0116",
+    "query_content": "Alright, mate. Ready to tackle that mock Site Safety Management Plan. Let's make this WHS stuff real. What's the first step?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 209,
+    "session_identifier": "Knowledge_Learning_8:S10_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Other Learning Attributes】 The previously created 'Smoko Checklist' for framing was successful and made a real difference on site.",
+      "【Other Learning Attributes】 The 'Smoko Checklist: Concrete Slab Pour (Pre-Pour Checks)' provided by the assistant in Turn 4, focusing on Rebar & Formwork - NCC Considerations, was accepted by the user as 'absolutely spot on' and useful for their upcoming pour."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2185,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0117",
+    "query_content": "G'day. That mock safety plan came out pretty good, eh? I reckon it'll be handy. What's the next step for this, or what should we tackle next?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 212,
+    "session_identifier": "Knowledge_Learning_8:S10_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 2,
+    "gt_memories": [
+      "【Learning Path/Syllabus】 The next proposed sections for the mock SSMP are 'Key Personnel and their WHS Responsibilities' or 'Site-Specific Hazards and Risks.'",
+      "【Other Learning Attributes】 User prefers practical, real-world application of WHS concepts, aiming to move beyond theoretical 'legal mumbo-jumbo' to something useful. User finds projects with 'plenty of risks' good for practice."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 2,
+    "judge_details": [
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2183,
+      "output_tokens": 8
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0118",
+    "query_content": "Right, that mock exam was a shocker, but I'm ready to hit this revision sprint hard. Where do we start with the NCC and contract law stuff? I'm keen to get stuck into those flashcards.",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 217,
+    "session_identifier": "Knowledge_Learning_8:S11_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 5,
+    "gt_memories": [
+      "【Other Learning Attributes】 User scored 55% on a mock exam.",
+      "【Other Learning Attributes】 User finds NCC Volume One (covering commercial buildings, fire safety, egress) challenging as it feels like a different language compared to their daily work.",
+      "【Other Learning Attributes】 User struggles with direct recall questions (e.g., 'What is the definition of X according to Y?' or 'Which clause number covers Z in NCC Volume One?') requiring exact legal definitions and numbers. This includes specific clause numbers and legal definitions, such as contract law terminology (e.g., 'novation', 'liquidated damages').",
+      "【Learning Path/Syllabus】 Flashcards for legal terms are planned to be used after NCC Volume One is addressed.",
+      "【Learning Path/Syllabus】 The user wants to break down NCC Volume One into smaller, easier bits. The Assistant has presented the full structure of NCC 2022 Volume One (Sections and Parts) and is awaiting the user's choice of which Section or Part to tackle first."
+    ],
+    "recall": 0.4,
+    "hits": 2,
+    "total": 5,
+    "judge_details": [
+      false,
+      true,
+      true,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2314,
+      "output_tokens": 14
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0119",
+    "query_content": "Yeah, that sounds like a solid plan, mate. Good to know we're hitting the right spots.\n\nFor the **NCC Volume One** stuff, let's dive headfirst into **Section C: Fire Safety**. That's the one that alwa",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 217,
+    "session_identifier": "Knowledge_Learning_8:S11_02",
+    "turn_index": 2,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Learning Path/Syllabus - Slot Allocation】 Two flexible 90-minute blocks over the weekend (Saturday or Sunday arvo, depending on conditions) are for catching up on missed sessions or for any other tasks that pop up.",
+      "【Other Learning Attributes】 User is interested in switching to audio learning methods (e.g., listening to modules, audio flashcards) for study due to their back injury, as an alternative to traditional desk-based study.",
+      "【Learning Path/Syllabus】 User will download and bookmark NCC 2022 - Volumes One & Two from the Australian Building Codes Board (ABCB) website (requiring registration for a free digital subscription) and the latest QBCC forms (including the main application form and the 'Low-Rise Builder License Guide') from the Queensland Building and Construction Commission (QBCC) website by tomorrow morning (Monday, Dec 22nd) in short bursts from the couch tonight, as the user cannot sit upright at a desk."
+    ],
+    "recall": 0.3333333333333333,
+    "hits": 1,
+    "total": 3,
+    "judge_details": [
+      true,
+      false,
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2297,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0120",
+    "query_content": "G'day. Remember those project descriptions we talked about for the portfolio? Keen to see how they turned out. What's next?",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 222,
+    "session_identifier": "Knowledge_Learning_8:S12_02",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 1,
+    "gt_memories": [
+      "【Other Learning Attributes】 Project 1: Comprehensive Outdoor Living Area Renovation – Burleigh Heads. Project Type: Residential Renovation & Extension – Outdoor Living Area Development. Project Overview: This project involved a complete transformation of an existing outdoor space for a private residential client in Burleigh Heads. The scope encompassed the demolition of an outdated concrete patio, extensive site preparation, and the construction of a new, expansive timber deck with an integrated pergola, alongside the installation of a storage shed and associated landscaping works. Key Tasks & Scope of Work: Demolition & Site Preparation (safe and efficient demolition and removal of existing concrete patio structure, excavation and preparation of footings for new timber deck and pergola); Structural Construction (construction of a substantial timber deck, approximately 40 square metres, erection of a new timber pergola, installation of a pre-fabricated storage shed); Landscaping (execution of minor landscaping works around the newly constructed elements). Challenges & Solutions: Material Logistics (restricted access by a narrow side path, necessitating manual handling of materials, managed through careful planning and efficient team coordination); Ground Conditions (encountered unexpectedly hard ground and rock during footing excavation, overcome by promptly sourcing and utilising specialised rock-breaking equipment). Outcome: The project was completed to the client's full satisfaction, delivering a significantly enhanced and highly functional outdoor living area."
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 1,
+    "judge_details": [
+      false
+    ],
+    "retrieval_latency": 4.76837158203125e-07,
+    "judge_usage": {
+      "input_tokens": 2374,
+      "output_tokens": 6
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  },
+  {
+    "persona": "Liam_O_Connor",
+    "query_id": "Q-0121",
+    "query_content": "G'day. Just wanted to let you know, the QBCC application is officially in. Submitted it earlier today. Huge thanks for all the help getting it over the line, mate. Couldn't have done it without you. W",
+    "topic": "Knowledge_Learning",
+    "category": "Dynamic Incremental",
+    "session_index": 224,
+    "session_identifier": "Knowledge_Learning_8:S13_01",
+    "turn_index": 0,
+    "result_text": "",
+    "gt_memory_count": 3,
+    "gt_memories": [
+      "【Other Learning Attributes】 User is preparing a professional portfolio for the QBCC to make their projects sound more legitimate.",
+      "【Learning Path/Syllabus】 User has requested to proceed with the next project description for their portfolio.",
+      "Download and bookmark NCC 2022 - Volumes One & Two and QBCC forms by 2025-12-22 morning"
+    ],
+    "recall": 0.0,
+    "hits": 0,
+    "total": 3,
+    "judge_details": [
+      false,
+      false,
+      false
+    ],
+    "retrieval_latency": 2.384185791015625e-07,
+    "judge_usage": {
+      "input_tokens": 2174,
+      "output_tokens": 10
+    },
+    "encode_usage_snapshot": {
+      "input_tokens": 652365,
+      "output_tokens": 414337
+    },
+    "graph_snapshot": {
+      "type": "summary",
+      "summary_length": 6657
+    },
+    "mode": "summary"
+  }
+]
