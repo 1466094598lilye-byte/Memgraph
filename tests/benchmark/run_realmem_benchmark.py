@@ -545,6 +545,7 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
     api_key = os.environ.get("OPENAI_API_KEY", "")
     base_url = os.environ.get("OPENAI_BASE_URL", "")
 
+    # DeepSeek doesn't support embeddings API, always use huggingface embedder
     config = MemoryConfig(
         llm={
             "provider": "openai",
@@ -555,37 +556,14 @@ def _run_mem0_baseline(persona_name, persona_data, query_info, total_sessions, t
             }
         },
         embedder={
-            "provider": "openai",
+            "provider": "huggingface",
             "config": {
-                "model": "text-embedding-3-small",
-                "api_key": api_key,
-                "openai_base_url": base_url,
+                "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
             }
         },
     )
 
-    try:
-        mem = Memory(config)
-    except Exception as e:
-        # Fallback: if DeepSeek doesn't support embeddings, use huggingface
-        print(f"  ⚠️ OpenAI embedder failed ({e}), falling back to huggingface embedder")
-        config = MemoryConfig(
-            llm={
-                "provider": "openai",
-                "config": {
-                    "model": "deepseek-chat",
-                    "api_key": api_key,
-                    "openai_base_url": base_url,
-                }
-            },
-            embedder={
-                "provider": "huggingface",
-                "config": {
-                    "model": "sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2",
-                }
-            },
-        )
-        mem = Memory(config)
+    mem = Memory(config)
 
     user_id = f"bench_{persona_name}"
 
