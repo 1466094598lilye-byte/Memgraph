@@ -166,8 +166,9 @@ jobs:
                   with open(f) as fp:
                       data = json.load(fp)
                   results = data if isinstance(data, list) else data.get('results', [])
-                  enc_in = sum(r.get('encode_usage_snapshot', {}).get('input_tokens', 0) for r in results)
-                  enc_out = sum(r.get('encode_usage_snapshot', {}).get('output_tokens', 0) for r in results)
+                  # encode usage: take max per persona (snapshot is cumulative, same value repeated per query)
+                  enc_in = max((r.get('encode_usage_snapshot', {}).get('input_tokens', 0) for r in results), default=0)
+                  enc_out = max((r.get('encode_usage_snapshot', {}).get('output_tokens', 0) for r in results), default=0)
                   jdg_in = sum(r.get('judge_usage', {}).get('input_tokens', 0) for r in results)
                   jdg_out = sum(r.get('judge_usage', {}).get('output_tokens', 0) for r in results)
                   total = enc_in + enc_out + jdg_in + jdg_out
