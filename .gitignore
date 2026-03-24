@@ -10,3 +10,14 @@ __pycache__/
 .venv/
 venv/
 .cache/
+
+# Data / runtime
+data/
+
+# macOS
+.DS_Store
+._*
+
+# IDE
+.cursor/
+.cursor-transcripts/

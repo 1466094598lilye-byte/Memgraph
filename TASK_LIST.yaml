@@ -1,0 +1,190 @@
+# [CHECKPOINT: task-decomposer]
+# 需求摘要: 构建 MemGraph 对话历史编码插件框架，将多轮对话压缩为结构化状态图
+# 总任务数: 8（模块任务 7 个 + 集成检查点 1 个）
+# 外部依赖: 2 项（API Key + Python 工具链）
+# 执行顺序: 模块任务 → 集成检查点
+
+task_list:
+  - id: 1
+    title: "项目初始化：目录结构、requirements.txt、config.py"
+    status: pending
+    complexity: simple
+    verification_mode: auto
+    priority: 1
+    dependencies: []
+    success_criteria:
+      hard_pass:
+        - "memgraph/ 目录存在且包含 __init__.py, config.py"
+        - "requirements.txt 包含 pydantic, instructor, openai, anthropic, numpy"
+        - "python -c \"from memgraph.config import MemGraphConfig\" 无报错"
+      soft_check:
+        - "无硬编码密钥"
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.config import MemGraphConfig; c = MemGraphConfig(llm_provider='openai', model='gpt-4o-mini'); print('OK')\""
+      test_fixtures: []
+    auth_required:
+      - type: toolchain
+        name: Python 3.10
+        check_command: "python3 --version"
+        expected_output: "3.10"
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && pip install -r requirements.txt -q && python -c \"from memgraph.config import MemGraphConfig; print('Config OK')\""
+      expect: "终端输出 Config OK，无报错"
+
+  - id: 2
+    title: "models.py：Pydantic 数据模型（Node, Edge, StateGraph, NodeType）"
+    status: pending
+    complexity: simple
+    verification_mode: auto
+    priority: 2
+    dependencies: [1]
+    success_criteria:
+      hard_pass:
+        - "Node 包含 id, type, value, turn, importance, embedding 字段"
+        - "Edge 包含 src_id, dst_id, relation, weight 字段"
+        - "StateGraph 包含 nodes, edges, turn_count 字段"
+        - "NodeType 枚举包含 INTENT, ENTITY, CONSTRAINT, STATE, COMPLETED"
+      soft_check:
+        - "类型注解完整"
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.models import Node, Edge, StateGraph, NodeType; n = Node(id='1', type=NodeType.INTENT, value='test', turn=0); g = StateGraph(nodes=[n], edges=[], turn_count=1); assert len(g.nodes)==1; print('OK')\""
+      test_fixtures: []
+    auth_required: []
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.models import *; print('Models OK')\""
+      expect: "终端输出 Models OK"
+
+  - id: 3
+    title: "graph.py：StateGraph 数据结构封装"
+    status: pending
+    complexity: simple
+    verification_mode: auto
+    priority: 3
+    dependencies: [2]
+    success_criteria:
+      hard_pass:
+        - "提供 add_nodes、add_edges 方法"
+        - "提供 merge_nodes 去重逻辑（相同 value+type 合并）"
+        - "inspect() 返回 dict 格式的状态图"
+      soft_check:
+        - "代码可读"
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.graph import GraphStore; g = GraphStore(); g.add_nodes([{'id':'1','type':'intent','value':'RPG','turn':0}]); d = g.inspect(); assert 'nodes' in d and len(d['nodes'])==1; print('OK')\""
+      test_fixtures: []
+    auth_required: []
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.graph import GraphStore; g = GraphStore(); g.add_nodes([{'id':'1','type':'intent','value':'test','turn':0}]); print(g.inspect()); print('Graph OK')\""
+      expect: "输出包含 nodes 的 dict"
+
+  - id: 4
+    title: "embedder.py：占位实现（返回原节点）"
+    status: pending
+    complexity: simple
+    verification_mode: auto
+    priority: 4
+    dependencies: [2]
+    success_criteria:
+      hard_pass:
+        - "Embedder.embed(nodes) 返回原节点列表，embedding 为 None"
+      soft_check: []
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.embedder import Embedder; from memgraph.models import Node, NodeType; e = Embedder(); n = Node(id='1', type=NodeType.INTENT, value='x', turn=0); out = e.embed([n]); assert out[0].value=='x' and out[0].embedding is None; print('OK')\""
+      test_fixtures: []
+    auth_required: []
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.embedder import Embedder; print('Embedder OK')\""
+      expect: "输出 Embedder OK"
+
+  - id: 5
+    title: "activator.py：占位实现（返回所有节点文本序列化）"
+    status: pending
+    complexity: simple
+    verification_mode: auto
+    priority: 5
+    dependencies: [2]
+    success_criteria:
+      hard_pass:
+        - "Activator.activate(graph, query) 返回包含所有节点 [type] value 的文本"
+        - "格式为 'Current context state:\\n[type] value'"
+      soft_check: []
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.activator import Activator; from memgraph.models import StateGraph, Node, NodeType; g = StateGraph(nodes=[Node(id='1', type=NodeType.INTENT, value='RPG', turn=0)]); a = Activator(); t = a.activate(g, 'test'); assert 'RPG' in t and '[intent]' in t; print('OK')\""
+      test_fixtures: []
+    auth_required: []
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.activator import Activator; print('Activator OK')\""
+      expect: "输出 Activator OK"
+
+  - id: 6
+    title: "extractor.py：Instructor + LLM 节点/边抽取（每N轮触发，支持 openai/anthropic）"
+    status: pending
+    complexity: complex
+    verification_mode: auto
+    priority: 6
+    dependencies: [1, 2]
+    success_criteria:
+      hard_pass:
+        - "extract(conversation_chunk, existing_nodes) 返回 (new_nodes, new_edges)"
+        - "支持 llm_provider 为 openai 或 anthropic"
+        - "LLM 调用有错误处理和重试"
+        - "输出结构符合 Node/Edge 模型"
+      soft_check:
+        - "去重逻辑：与 existing_nodes 语义相同的不重复创建"
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.extractor import Extractor; print('Extractor import OK')\""
+      test_fixtures: []
+    auth_required:
+      - type: api_key
+        name: OPENAI_API_KEY 或 ANTHROPIC_API_KEY
+        check_command: "echo $OPENAI_API_KEY | head -c 5"
+        expected_output: "sk-"
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph.extractor import Extractor; e = Extractor(provider='openai', model='gpt-4o-mini'); print('Extractor OK')\""
+      expect: "输出 Extractor OK（需配置 API Key）"
+
+  - id: 7
+    title: "core.py：MemGraph 主入口（encode, activate, inspect）"
+    status: pending
+    complexity: complex
+    verification_mode: auto
+    priority: 7
+    dependencies: [3, 4, 5, 6]
+    success_criteria:
+      hard_pass:
+        - "MemGraph(llm_provider, model) 可实例化"
+        - "mg.encode(conversation) 接受 list[dict] 格式（role+content）"
+        - "mg.activate(query) 返回 str"
+        - "mg.inspect() 返回 dict"
+      soft_check: []
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph import MemGraph; mg = MemGraph(llm_provider='openai', model='gpt-4o-mini'); d = mg.inspect(); assert isinstance(d, dict); print('Core OK')\""
+      test_fixtures: []
+    auth_required: []
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph import MemGraph; mg = MemGraph(llm_provider='openai', model='gpt-4o-mini'); print(mg.inspect()); print('Core OK')\""
+      expect: "输出 dict 和 Core OK"
+
+  - id: 8
+    title: "[集成] encode + activate 端到端测试"
+    status: pending
+    complexity: complex
+    verification_mode: auto
+    priority: 8
+    dependencies: [7]
+    success_criteria:
+      hard_pass:
+        - "encode + activate 的语义正确性由 RealMem / 人工 E2E 验收（不再维护单元测试）"
+        - "verify_command 仅做冒烟：MemGraph 可导入"
+      soft_check:
+        - "输出结构合理"
+      verify_command: "cd /Users/lilysmac/memgraph && python -c \"from memgraph import MemGraph; print('MemGraph import OK')\""
+      test_fixtures: []
+    auth_required:
+      - type: api_key
+        name: OPENAI_API_KEY
+        check_command: "echo $OPENAI_API_KEY | head -c 5"
+        expected_output: "sk-"
+    final_verification:
+      method: script
+      command: "cd /Users/lilysmac/memgraph && python -m tests.benchmark.run_realmem_benchmark --dry-run"
+      expect: "dry-run 正常；完整召回指标请按 tests/benchmark 说明跑 RealMem"
