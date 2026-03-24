@@ -221,7 +221,7 @@ def check_context(payload: CheckContextRequest) -> dict[str, object]:
         return {"needs_recall": False, "missing_turn_ids": [], "reason": "no turns stored"}
 
     # Get query embedding
-    query_vec = router.embedder.embed(payload.query)
+    query_vec = router.embedder.embed_query(payload.query)
     if query_vec is None:
         return {"needs_recall": False, "missing_turn_ids": [], "reason": "embedding failed"}
 
