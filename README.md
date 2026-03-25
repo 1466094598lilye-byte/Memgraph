@@ -6,19 +6,13 @@ Attention-routed conversation memory for LLMs. Achieves **92.1% recall** on a 10
 
 Evaluated on [RealMem](tests/benchmark/realmem_data/) — 10 personas × 207 sessions × 126 ground-truth queries. Each query tests whether the system can recall specific facts from past conversations.
 
-| Persona | MemGraph (attention) | mem0 | summary |
-|---------|--------------------:|-----:|--------:|
-| Adeleke_Okonjo | 84.9% | 29.3% | 35.7% |
-| Ethan_Hunt | 100.9% | 26.9% | 19.9% |
-| Kenta_Tanaka | 103.1% | 34.7% | 24.5% |
-| Kim_Ji_young | 84.1% | 31.0% | 7.2% |
-| Liam_O_Connor | 85.1% | 32.9% | 30.7% |
-| Lin_Wanyu | 94.9% | 23.1% | 34.2% |
-| Oliver_Smith | 96.9% | 38.5% | 29.3% |
-| Pak_Budi | 100.6% | 31.7% | 2.5% |
-| Sarah_Miller | 84.0% | 26.2% | 8.6% |
-| Sophie_Dubois | 86.0% | 31.9% | 38.8% |
-| **Average** | **92.1%** | **30.6%** | **23.1%** |
+| Method | Average Recall | Range |
+|--------|---------------:|------:|
+| **MemGraph (attention)** | **92.1%** | 84.0% – 103.1% |
+| mem0 | 30.6% | 23.1% – 38.5% |
+| summary | 23.1% | 2.5% – 38.8% |
+
+Per-persona and per-query breakdowns are available in the JSON result files under `tests/benchmark/`.
 
 > Recall >100% occurs when the judge credits the system for recalling related information beyond the ground-truth set. This is a known artifact of LLM-as-judge evaluation — see [Known Limitations](#known-limitations).
 
