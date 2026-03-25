@@ -21,3 +21,8 @@ data/
 # IDE
 .cursor/
 .cursor-transcripts/
+
+# Debug logs (local dev only)
+tests/benchmark/debug_*.log
+tests/benchmark/debug_*.txt
+tests/benchmark/*.log
