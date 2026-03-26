@@ -265,34 +265,34 @@ class AttentionRouter:
         evicted = 0
 
         # Phase 1: 合并语义重复的 key 对 (sim > 0.85)
-        changed = True
-        while changed and len(self.memo) > self.MAX_MEMO_KEYS:
-            changed = False
-            keys = list(self.memo.keys())
-            best_pair = None
-            best_sim = 0.85
-            for i in range(len(keys)):
-                ei = self.memo[keys[i]]
-                if ei.embedding is None:
+        # 一次性计算所有 pair 的 cosine，排序后贪心合并，避免每删一个就重扫全部（O(K×N²) → O(N²)）
+        keys = list(self.memo.keys())
+        pairs: list[tuple[float, str, str]] = []
+        for i in range(len(keys)):
+            ei = self.memo[keys[i]]
+            if ei.embedding is None:
+                continue
+            for j in range(i + 1, len(keys)):
+                ej = self.memo[keys[j]]
+                if ej.embedding is None:
                     continue
-                for j in range(i + 1, len(keys)):
-                    ej = self.memo[keys[j]]
-                    if ej.embedding is None:
-                        continue
-                    sim = _cosine(ei.embedding, ej.embedding)
-                    if sim > best_sim:
-                        best_sim = sim
-                        best_pair = (keys[i], keys[j])
-            if best_pair:
-                k1, k2 = best_pair
-                e1, e2 = self.memo[k1], self.memo[k2]
-                # 保留 value 更长的那个
-                if len(e1.value) >= len(e2.value):
-                    del self.memo[k2]
-                else:
-                    del self.memo[k1]
-                merged += 1
-                changed = True
+                sim = _cosine(ei.embedding, ej.embedding)
+                if sim > 0.85:
+                    pairs.append((sim, keys[i], keys[j]))
+        # 按相似度从高到低排序，贪心合并
+        pairs.sort(key=lambda x: x[0], reverse=True)
+        for sim, k1, k2 in pairs:
+            if len(self.memo) <= self.MAX_MEMO_KEYS:
+                break
+            if k1 not in self.memo or k2 not in self.memo:
+                continue  # 其中一个已被合并删除，跳过
+            e1, e2 = self.memo[k1], self.memo[k2]
+            # 保留 value 更长的那个
+            if len(e1.value) >= len(e2.value):
+                del self.memo[k2]
+            else:
+                del self.memo[k1]
+            merged += 1
 
         # Phase 2: 按与最近 turns 的相关性淘汰
         if len(self.memo) > self.MAX_MEMO_KEYS:
