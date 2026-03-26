@@ -247,6 +247,75 @@ class AttentionRouter:
         except (json.JSONDecodeError, Exception) as e:
             logger.debug("[memo-extract] failed to parse: %s", e)
 
+        self._compact_memo()
+
+    MAX_MEMO_KEYS = 80
+
+    def _compact_memo(self) -> None:
+        """如果 memo 超过 MAX_MEMO_KEYS，合并语义重复 + 淘汰低相关性条目。"""
+        if len(self.memo) <= self.MAX_MEMO_KEYS:
+            return
+
+        original_count = len(self.memo)
+        merged = 0
+        evicted = 0
+
+        # Phase 1: 合并语义重复的 key 对 (sim > 0.85)
+        changed = True
+        while changed and len(self.memo) > self.MAX_MEMO_KEYS:
+            changed = False
+            keys = list(self.memo.keys())
+            best_pair = None
+            best_sim = 0.85
+            for i in range(len(keys)):
+                ei = self.memo[keys[i]]
+                if ei.embedding is None:
+                    continue
+                for j in range(i + 1, len(keys)):
+                    ej = self.memo[keys[j]]
+                    if ej.embedding is None:
+                        continue
+                    sim = _cosine(ei.embedding, ej.embedding)
+                    if sim > best_sim:
+                        best_sim = sim
+                        best_pair = (keys[i], keys[j])
+            if best_pair:
+                k1, k2 = best_pair
+                e1, e2 = self.memo[k1], self.memo[k2]
+                # 保留 value 更长的那个
+                if len(e1.value) >= len(e2.value):
+                    del self.memo[k2]
+                else:
+                    del self.memo[k1]
+                merged += 1
+                changed = True
+
+        # Phase 2: 按与最近 turns 的相关性淘汰
+        if len(self.memo) > self.MAX_MEMO_KEYS:
+            recent_turns = [t for t in self.turns[-10:] if t.embedding is not None]
+            if recent_turns:
+                relevance: dict[str, float] = {}
+                for k, entry in self.memo.items():
+                    if entry.embedding is None:
+                        relevance[k] = 0.0
+                        continue
+                    max_sim = max(
+                        _cosine(entry.embedding, t.embedding)
+                        for t in recent_turns
+                    )
+                    relevance[k] = max_sim
+                # 按相关性排序，淘汰最不相关的
+                sorted_keys = sorted(relevance, key=relevance.get)
+                to_remove = len(self.memo) - self.MAX_MEMO_KEYS
+                for k in sorted_keys[:to_remove]:
+                    del self.memo[k]
+                    evicted += 1
+
+        logger.info(
+            "[memo-compact] %d -> %d keys (merged %d, evicted %d)",
+            original_count, len(self.memo), merged, evicted,
+        )
+
     # ── 检索 ──
 
     @property
@@ -261,7 +330,7 @@ class AttentionRouter:
         max_output_chars: int | None = None,
         **kwargs,
     ) -> ActivateResult:
-        """备忘录全量注入 + 原文 cosine top-k。"""
+        """备忘录 cosine top-k + 原文 cosine top-k。"""
         lines: list[str] = []
 
         query_vec = np.array(
@@ -269,10 +338,18 @@ class AttentionRouter:
             dtype=np.float32,
         )
 
-        # 1. 备忘录：全量注入（条目精简，不需要路由）
+        # 1. 备忘录：embedding top-k（只注入与 query 最相关的条目）
         if self.memo:
-            memo_lines = [f"  {e.key}: {e.value}" for e in self.memo.values()]
-            lines.append("[memo]\n" + "\n".join(memo_lines))
+            scored_memo: list[tuple[MemoEntry, float]] = []
+            for entry in self.memo.values():
+                if entry.embedding is not None:
+                    sim = _cosine(query_vec, entry.embedding)
+                    scored_memo.append((entry, sim))
+            scored_memo.sort(key=lambda x: x[1], reverse=True)
+            top_memo = scored_memo[:memo_k]
+            memo_lines = [f"  {e.key}: {e.value}" for e, s in top_memo if s > 0.1]
+            if memo_lines:
+                lines.append("[memo]\n" + "\n".join(memo_lines))
 
         # 2. 注意力路由：cosine top-k
         if self.turns:
