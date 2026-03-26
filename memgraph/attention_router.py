@@ -364,7 +364,7 @@ class AttentionRouter:
                     scored_memo.append((entry, sim))
             scored_memo.sort(key=lambda x: x[1], reverse=True)
             top_memo = scored_memo[:memo_k]
-            memo_lines = [f"  {e.key}: {e.value}" for e, s in top_memo if s > 0.1]
+            memo_lines = [f"  {e.key}: {e.value}" for e, s in top_memo if s > 0.4]
             if memo_lines:
                 lines.append("[memo]\n" + "\n".join(memo_lines))
 
