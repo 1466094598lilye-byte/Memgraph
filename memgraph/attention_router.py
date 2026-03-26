@@ -143,6 +143,10 @@ class AttentionRouter:
         self._model = model
         self._encode_usage: dict = {"input_tokens": 0, "output_tokens": 0}
         self._client = None
+        self.CONTEXT_WINDOW_TURNS: int = 30
+        self._last_recall_query_vec: np.ndarray | None = None
+        self._last_recall_turn_count: int = 0
+        self._last_recall_result: ActivateResult | None = None
 
     def _call_llm(self, prompt: str, max_tokens: int = 300) -> tuple[str, dict]:
         """调用 LLM。"""
@@ -331,12 +335,25 @@ class AttentionRouter:
         **kwargs,
     ) -> ActivateResult:
         """备忘录 cosine top-k + 原文 cosine top-k。"""
-        lines: list[str] = []
-
         query_vec = np.array(
             self.embedder.embed_query(query),
             dtype=np.float32,
         )
+
+        if (
+            len(self.turns) == self._last_recall_turn_count
+            and self._last_recall_query_vec is not None
+            and _cosine(query_vec, self._last_recall_query_vec) > 0.92
+            and self._last_recall_result is not None
+        ):
+            return self._last_recall_result
+
+        if not self.should_recall(query_vec):
+            if self._last_recall_result is not None:
+                return self._last_recall_result
+            return ActivateResult("")
+
+        lines: list[str] = []
 
         # 1. 备忘录：embedding top-k（只注入与 query 最相关的条目）
         if self.memo:
@@ -378,7 +395,30 @@ class AttentionRouter:
             if last_nl > 0:
                 result = result[:last_nl]
 
-        return ActivateResult(result)
+        activated = ActivateResult(result)
+        self._last_recall_query_vec = query_vec.copy()
+        self._last_recall_turn_count = len(self.turns)
+        self._last_recall_result = activated
+        return activated
+
+    def should_recall(self, query_vec: np.ndarray) -> bool:
+        """只有相似命中落到当前 context window 之外时才触发 recall。"""
+        total_turns = len(self.turns)
+        if total_turns <= self.CONTEXT_WINDOW_TURNS:
+            return False
+
+        scored: list[tuple[Turn, float]] = []
+        for turn in self.turns:
+            if turn.embedding is not None:
+                scored.append((turn, _cosine(query_vec, turn.embedding)))
+
+        if not scored:
+            return False
+
+        scored.sort(key=lambda x: x[1], reverse=True)
+        cutoff_turn_id = total_turns - self.CONTEXT_WINDOW_TURNS
+        top_turns = scored[:5]
+        return any(turn.turn_id < cutoff_turn_id for turn, _ in top_turns)
 
     def inspect(self) -> dict:
         return {

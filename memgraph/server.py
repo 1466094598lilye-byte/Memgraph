@@ -210,7 +210,9 @@ def recall(payload: RecallRequest) -> dict[str, object]:
 @app.post("/check_context")
 def check_context(payload: CheckContextRequest) -> dict[str, object]:
     """Check if query's top-k matches point to turns outside the current context.
-    
+
+    Deprecated: use /recall directly, throttling is now handled server-side.
+
     Returns needs_recall=True if any top-k turn is NOT in context_turn_ids.
     This enables the "recall only when needed" pattern:
     - embedding similarity runs every turn (free, local model)
