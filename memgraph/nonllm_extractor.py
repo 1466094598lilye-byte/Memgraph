@@ -29,10 +29,11 @@ def _load_spacy():
             return spacy.load("xx_ent_wiki_sm")
         except OSError:
             import subprocess
-            subprocess.run(["python", "-m", "spacy", "download", "xx_ent_wiki_sm"], check=True)
+            import sys
+            subprocess.run([sys.executable, "-m", "spacy", "download", "xx_ent_wiki_sm"], check=True)
             return spacy.load("xx_ent_wiki_sm")
     except Exception as e:
-        raise RuntimeError(f"spaCy NER 加载失败，请运行: python -m spacy download xx_ent_wiki_sm. 错误: {e}") from e
+        raise RuntimeError(f"spaCy NER 加载失败，请运行: python3 -m spacy download xx_ent_wiki_sm. 错误: {e}") from e
 
 
 def _extract_ner(text: str, turn: int, nlp) -> list[Node]:

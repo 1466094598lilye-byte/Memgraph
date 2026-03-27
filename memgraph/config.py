@@ -9,11 +9,12 @@ class MemGraphConfig:
     """MemGraph 运行时配置。"""
 
     llm_provider: Literal["openai", "anthropic"] = "openai"
-    model: str = "gpt-4o-mini"
+    model: str = "deepseek-chat"  # default matches DeepSeek .env; override for other providers
 
     # 话题聚类（纯 embedding，领域无关）
     topic_shift_threshold: float = 0.55  # cosine < 此值 → 判定为新话题
     min_cluster_size: int = 3            # 聚类 >= 此大小才抽取，否则只存 raw trace
+    min_content_length: int = 10         # 内容 < 此字符数 → 跳过（噪声过滤，不存入 cluster）
     max_cluster_size: int = 50           # 硬上限，防止单话题无限累积
 
     # 图邻居扩展（在线检索）：baseline seed 数、额外邻居槽、dense 在混合分中的权重

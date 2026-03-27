@@ -210,6 +210,12 @@ class MemGraph:
         # 过滤代码块和 tool call
         content = _strip_code_and_tools(content)
         message = {**message, "content": content}
+
+        # 短消息过滤：内容太短 → 噪声，不存入 cluster，不参与话题判断
+        if len(content.strip()) < self.config.min_content_length:
+            self._total_turns += 1
+            return
+
         msg_vec = np.array(
             self._embedder.embed_query(content),
             dtype=np.float32,
@@ -221,7 +227,9 @@ class MemGraph:
             centroid = np.mean(self._cluster_vecs, axis=0)
             sim = _cosine(centroid, msg_vec)
             if sim < self.config.topic_shift_threshold:
-                should_close = True
+                # Guard: cluster 太小时不关闭，继续累积
+                if len(self._cluster) >= self.config.min_cluster_size:
+                    should_close = True
 
         if len(self._cluster) >= self.config.max_cluster_size:
             should_close = True
@@ -251,7 +259,14 @@ class MemGraph:
                 _, current_node_ids, focus_raw_ids = self._compress_cluster()
             except Exception as e:
                 logger.warning("L2 compression failed (%s), falling back to NonLLM extractor", e)
-                _, current_node_ids, focus_raw_ids = self._extract_cluster_fallback()
+                try:
+                    _, current_node_ids, focus_raw_ids = self._extract_cluster_fallback()
+                except Exception as e2:
+                    logger.warning(
+                        "NonLLM extractor also failed (%s), storing as raw traces only", e2
+                    )
+                    focus_raw_ids = self._store_as_raw_traces()
+                    current_node_ids = []
         else:
             focus_raw_ids = self._store_as_raw_traces()
             current_node_ids = []
